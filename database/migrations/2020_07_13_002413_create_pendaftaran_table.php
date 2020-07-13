@@ -18,7 +18,7 @@ class CreatePendaftaranTable extends Migration
             Schema::dropIfExists('pendaftaran');
         }
         Schema::create('pendaftaran', function (Blueprint $table) {
-            $table->char('id',255);
+            $table->uuid('id',255)->primary();
             $table->string('nomer_induk',255);
             $table->string('nama_lengkap',255);
             $table->string('no_ktp',255)->unique();

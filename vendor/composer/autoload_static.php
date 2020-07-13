@@ -138,6 +138,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'GoldSpecDigital\\LaravelEloquentUUID\\' => 36,
         ),
         'F' => 
         array (
@@ -407,6 +408,10 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'GoldSpecDigital\\LaravelEloquentUUID\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/goldspecdigital/laravel-eloquent-uuid/src',
+        ),
         'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
@@ -539,6 +544,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'App\\Konfigurasi_model' => __DIR__ . '/../..' . '/app/Konfigurasi_model.php',
         'App\\Nav_model' => __DIR__ . '/../..' . '/app/Nav_model.php',
         'App\\Pemesanan_model' => __DIR__ . '/../..' . '/app/Pemesanan_model.php',
+        'App\\Pendaftaran_model' => __DIR__ . '/../..' . '/app/Pendaftaran_model.php',
         'App\\Produk_model' => __DIR__ . '/../..' . '/app/Produk_model.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -1389,6 +1395,11 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
         'Fruitcake\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/CorsServiceProvider.php',
         'Fruitcake\\Cors\\HandleCors' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/HandleCors.php',
+        'GoldSpecDigital\\LaravelEloquentUUID\\Console\\UuidModelCommand' => __DIR__ . '/..' . '/goldspecdigital/laravel-eloquent-uuid/src/Console/UuidModelCommand.php',
+        'GoldSpecDigital\\LaravelEloquentUUID\\Database\\Eloquent\\Model' => __DIR__ . '/..' . '/goldspecdigital/laravel-eloquent-uuid/src/Database/Eloquent/Model.php',
+        'GoldSpecDigital\\LaravelEloquentUUID\\Database\\Eloquent\\Uuid' => __DIR__ . '/..' . '/goldspecdigital/laravel-eloquent-uuid/src/Database/Eloquent/Uuid.php',
+        'GoldSpecDigital\\LaravelEloquentUUID\\Foundation\\Auth\\User' => __DIR__ . '/..' . '/goldspecdigital/laravel-eloquent-uuid/src/Foundation/Auth/User.php',
+        'GoldSpecDigital\\LaravelEloquentUUID\\UuidServiceProvider' => __DIR__ . '/..' . '/goldspecdigital/laravel-eloquent-uuid/src/UuidServiceProvider.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',

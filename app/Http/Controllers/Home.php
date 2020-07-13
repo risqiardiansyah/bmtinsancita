@@ -69,11 +69,6 @@ class Home extends Controller
     }
     // pendaftaran
 
-    public function pendaftaran()
-    {
-        
-    }
-
     // Proses
     public function proses_pemesanan(Request $request)
     {
