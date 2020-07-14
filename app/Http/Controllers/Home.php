@@ -15,6 +15,7 @@ use App\Pesan_model;
 use App\Team_model;
 use App\Testimoni_model;
 use Ramsey\Uuid\Uuid;
+use App\Rules\Captcha;
 use PDF;
 
 class Home extends Controller
@@ -118,7 +119,7 @@ class Home extends Controller
             "no_kk" => "required|unique:pendaftaran|regex:/^([0-9\s\-\+\(\)]*)$/|min:16|max:16",
             "no_whatsapp" => "required|unique:pendaftaran|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:13",
             "pekerjaan" => "required|max:225",
-            'g-recaptcha-response' => 'required|captcha',
+            'g-recaptcha-response' => new Captcha(),
         ]);
         $pesan  = new Pendaftaran_model();
         $check  = $pesan->nomor_akhir();

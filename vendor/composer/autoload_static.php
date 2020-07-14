@@ -93,6 +93,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         ),
         'R' => 
         array (
+            'ReCaptcha\\' => 10,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -313,6 +314,10 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -536,6 +541,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'App\\Http\\Controllers\\Admin\\Produk' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Produk.php',
         'App\\Http\\Controllers\\Admin\\Rekening' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Rekening.php',
         'App\\Http\\Controllers\\Admin\\Service' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Service.php',
+        'App\\Http\\Controllers\\Admin\\Team' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Team.php',
         'App\\Http\\Controllers\\Admin\\User' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/User.php',
         'App\\Http\\Controllers\\Admin\\Video' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Video.php',
         'App\\Http\\Controllers\\Berita' => __DIR__ . '/../..' . '/app/Http/Controllers/Berita.php',
@@ -568,6 +574,8 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Rekening_model' => __DIR__ . '/../..' . '/app/Rekening_model.php',
+        'App\\Rules\\Captcha' => __DIR__ . '/../..' . '/app/Rules/Captcha.php',
+        'App\\Team_model' => __DIR__ . '/../..' . '/app/Team_model.php',
         'App\\Testimoni_model' => __DIR__ . '/../..' . '/app/Testimoni_model.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\User_model' => __DIR__ . '/../..' . '/app/User_model.php',
@@ -4318,6 +4326,15 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'ReCaptcha\\ReCaptcha' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/ReCaptcha.php',
+        'ReCaptcha\\RequestMethod' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod.php',
+        'ReCaptcha\\RequestMethod\\Curl' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod/Curl.php',
+        'ReCaptcha\\RequestMethod\\CurlPost' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod/CurlPost.php',
+        'ReCaptcha\\RequestMethod\\Post' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod/Post.php',
+        'ReCaptcha\\RequestMethod\\Socket' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod/Socket.php',
+        'ReCaptcha\\RequestMethod\\SocketPost' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod/SocketPost.php',
+        'ReCaptcha\\RequestParameters' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestParameters.php',
+        'ReCaptcha\\Response' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/Response.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',

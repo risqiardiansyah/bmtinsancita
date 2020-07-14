@@ -55,18 +55,15 @@
                     <span class="text-danger">*Pastikan semua inputan diisi dengan benar,
                         sebelum menekan tombol submit.</span>
                 </div>
-                <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                    <label class="ontrol-label">Captcha</label>
-
-                    <div class="pull-center">
-                        {!! app('captcha')->display() !!}
-
-                        @if ($errors->has('g-recaptcha-response'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                        </span>
-                        @endif
-                    </div>
+                <div class="form-group row">
+                        <div class="col-md-6 offset-md-4">
+                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="invalid-feedback" style="display: block"></span>
+                                <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                            @endif
+                        </div>
+                        
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" title="Mengirim data ke admin">Submit</button>

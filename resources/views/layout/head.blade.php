@@ -32,8 +32,9 @@ $site = DB::table('konfigurasi')->first();
 
     @stack("custom-css")
 
-    <script src="{{ asset("public/frontend/html") }}/js/vendor/modernizr-2.8.1.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
+    <script src="{{ asset("public/frontend/html") }}/js/vendor/modernizr-2.8.1.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 <?php echo $site->metatext; ?>
