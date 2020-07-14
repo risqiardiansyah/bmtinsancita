@@ -42,7 +42,7 @@
 				<div class="form-group row">
 					<label class="col-sm-3 control-label text-right">Upload foto profil</label>
 					<div class="col-sm-9">
-                        <input type="file" name="foto" class="form-control" id="file" placeholder="Upload Foto" value="{{$value->foto}}" >
+                        <input type="file" name="foto" class="form-control" id="file" placeholder="Upload Foto" >
                         <div id="imagePreview"></div>
 					</div>
 				</div>

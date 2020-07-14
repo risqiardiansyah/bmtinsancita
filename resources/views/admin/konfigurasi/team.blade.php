@@ -10,15 +10,9 @@
 <p>
     @include('admin/konfigurasi/tambahteam')
 </p>
-<form action="{{ asset('admin/team/deletemultiple') }}" method="post" accept-charset="utf-8">
-    {{ csrf_field() }}
     <div class="row">
-
         <div class="col-md-12">
             <div class="btn-group">
-                <button class="btn btn-danger" type="submit" name="hapus" onClick="check();">
-                    <i class="fa fa-trash"></i>
-                </button>
                 <button type="button" class="btn btn-success " data-toggle="modal" data-target="#Tambah">
                     <i class="fa fa-plus"></i> Tambah Baru
                 </button>
@@ -47,11 +41,7 @@
 
                         <tr>
                             <td class="text-center">
-                                <div class="icheck-primary">
-                                    <input type="checkbox" class="icheckbox_flat-blue " name="id[]"
-                                        value="{{$value->id}}" id="check<?php echo $i ?>">
-                                    <label for="check<?php echo $i ?>"></label>
-                                </div>
+                                {{$i}}
                             </td>
                             <td>
                                 <?php if($value->foto != "") { ?>
@@ -85,4 +75,3 @@
             </div>
         </div>
     </div>
-</form>

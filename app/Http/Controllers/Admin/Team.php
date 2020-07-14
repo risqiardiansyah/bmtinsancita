@@ -127,18 +127,4 @@ class Team extends Controller
 
 
     }
-
-      // Proses
-      public function deletemultiple(Request $request)
-      {
-          // PROSES HAPUS MULTIPLE
-          if(isset($_POST['hapus'])) {
-              $id       = $request->id;
-              for($i=0; $i < sizeof($id);$i++) {
-                  DB::table('tim')->where('id',$id[$i])->delete();
-              }
-              return redirect('admin/team')->with(['sukses' => 'Data telah dihapus']);
-          }
-      }
-     
 }
