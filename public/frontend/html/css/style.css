@@ -1405,12 +1405,12 @@ ul{
    height:148px; 
    border-radius:100%; 
 }
-.team-kami-wrapper .cnt-block h3{ 
-   color:#2a2a2a; 
-   font-size:20px; 
-   font-weight:500; 
-   padding:6px 0;
-   text-transform:uppercase;
+.team-kami-wrapper .cnt-block h3 {
+    color: #2a2a2a;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 6px 0;
+    text-transform: uppercase;
 }
 .team-kami-wrapper .cnt-block h3 a{
   text-decoration:none;
