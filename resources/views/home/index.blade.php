@@ -218,7 +218,7 @@
                 <img src="{{asset('public/frontend/html')}}/img/icone-people.png">
             </div>
             <p class="description">
-                {!! $value->message!!}
+                {!! $value->message!!} - <?= \Illuminate\Support\Str::limit(strip_tags($value->nama_produk), 20, $end='...') ?>
             </p>
             <h3 class="title">{!! $value->nama_lengkap!!}</h3>
             <small class="post">- {!! $value->pekerjaan!!}</small>
