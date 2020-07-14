@@ -17,11 +17,14 @@ class Download extends Controller
                     ->select('download.*', 'kategori_download.nama_kategori_download')
                     ->orderBy('download.id_download','DESC')
                     ->paginate(10);
+        $slider = DB::table('galeri')->where('jenis_galeri', 'Homepage')->limit(5)->orderBy('id_galeri', 'DESC')->get();
 
-		$data = array(  'title'		=> 'Data Unduhan File',
+		$data = array(  'title'		=> 'Data Laporan File',
 						'deskripsi'	=> 'Data Unduhan File',
 						'keywords'	=> 'Data Unduhan File',
-						'downloads'	=> $download,
+                        'downloads'	=> $download,
+                        'slider'    => $slider,
+                        'aktif'     => 'laporan',
                         'content'	=> 'download/index'
                     );
         return view('layout/wrapper',$data);

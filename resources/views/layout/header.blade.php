@@ -63,7 +63,7 @@ $nav_profil           = $myproduk->nav_profil();
                       </div> <!-- /.submenu-wrapper -->
                   </li>
                   <li class="<?php if($aktif == 'program'){echo " active";} ?>"><a href="{{ asset('/') }}">Program</a></li>
-                  <li class="<?php if($aktif == 'laporan'){echo " active";} ?>"><a href="{{ asset('/') }}">Laporan</a></li>
+                  <li class="<?php if($aktif == 'laporan'){echo " active";} ?>"><a href="{{ asset('download') }}">Laporan</a></li>
                   <li class="<?php if($aktif == 'kontak'){echo " active";} ?>"><a href="{{ asset('kontak') }}">Kontak</a></li>
               </ul>
           </div><!-- /.navbar-collapse -->

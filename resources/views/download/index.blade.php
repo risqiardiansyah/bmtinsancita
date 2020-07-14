@@ -6,11 +6,10 @@
         <div class="kotak">
           <div class="row">
             <div class="col-md-12 text-center">
-              <h1><?php echo $title ?></h1>
-              <hr>
+              <br>
+              <h1>{{$title}}</h1>
             </div>
-            <div class="col-md-12">
-              
+            <div class="col-md-11">
               <table id="example1" class="display table table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
@@ -19,10 +18,10 @@
                             NO
                         </th>
                         
-                        <th width="25%">JUDUL</th>
-                        <th width="30%">KATEGORI</th>
+                        <th width="20%">JUDUL</th>
+                        <th width="20%">KATEGORI</th>
                         <th width="5%">HITS</th>
-                        <th width="20%">UNDUH</th>
+                        <th width="15%">UNDUH</th>
                 </tr>
                 </thead>
                 <tbody>
