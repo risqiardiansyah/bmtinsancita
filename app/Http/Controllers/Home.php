@@ -150,7 +150,7 @@ class Home extends Controller
             'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
         ]);
-        $msg = array("msg" => "Hai.. $request->nama_lengkap,<b></b> Selamat Pendaftaran kamu berhasil di kirim, Admin akan segera meninjau dan hubungi kamu nanti Simpan Jangan Lupa Simpan Kode ini $request->kd_tansaksi .<br><br>Terimakasih.");
+        $msg = array("msg" => "Hai.. $request->nama_lengkap,<b></b> Selamat Pendaftaran kamu berhasil di kirim, Admin akan segera meninjau dan hubungi kamu nanti Simpan Jangan Lupa Simpan Kode ini $kd_tansaksi .<br><br>Terimakasih.");
         return back()->with($msg);
     }
 
