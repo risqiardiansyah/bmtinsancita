@@ -18,7 +18,8 @@ class Galeri extends Controller
 		$kategori_galeri 	= DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'				=> 'Data Galeri',
-						'galeri'			=> $galeri,
+                        'galeri'			=> $galeri,
+                        'aktif'             => 'galeri',
 						'kategori_galeri'	=> $kategori_galeri,
                         'content'			=> 'admin/galeri/index'
                     );
@@ -106,6 +107,7 @@ class Galeri extends Controller
 
         $data = array(  'title'             => 'Tambah Galeri',
                         'kategori_galeri'   => $kategori_galeri,
+                        'aktif'             => 'tambah',
                         'content'           => 'admin/galeri/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -121,6 +123,7 @@ class Galeri extends Controller
 
         $data = array(  'title'             => 'Edit Galeri',
                         'galeri'            => $galeri,
+                        'aktif'             => 'galeri',
                         'kategori_galeri'   => $kategori_galeri,
                         'content'           => 'admin/galeri/edit'
                     );

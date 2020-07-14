@@ -14,7 +14,8 @@ class User extends Controller
 		$user 	= DB::table('users')->orderBy('id_user','DESC')->get();
 
 		$data = array(  'title'     => 'Pengguna Website',
-						'user'      => $user,
+                        'user'      => $user,
+                        'aktif'        => 'pengguna',
                         'content'   => 'admin/user/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -28,6 +29,7 @@ class User extends Controller
 
         $data = array(  'title'     => 'Edit Pengguna Website',
                         'user'      => $user,
+                        'aktif'        => 'pengguna',
                         'content'   => 'admin/user/edit'
                     );
         return view('admin/layout/wrapper',$data);

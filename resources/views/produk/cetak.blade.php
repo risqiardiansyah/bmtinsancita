@@ -34,26 +34,6 @@
       <td>: <?php echo $produk->nama_produk ?></td>
     </tr>
     <tr>
-      <td width="30%">Jumlah Produk</td>
-      <td>: <?php echo $produk->stok ?> pcs</td>
-    </tr>
-    <tr>
-      <td width="30%">Berat produk</td>
-      <td>: <?php echo $produk->berat ?> kg</td>
-    </tr>
-    <tr>
-      <td width="30%">Urutan (PXLXT cm)</td>
-      <td>: <?php echo $produk->ukuran ?> cm</td>
-    </tr>
-    <tr>
-      <td width="30%">Harga beli</td>
-      <td>: Rp <?php echo number_format($produk->harga_beli,'0',',','.') ?></td>
-    </tr>
-    <tr>
-      <td width="30%">Harga jual</td>
-      <td>: Rp <?php echo number_format($produk->harga_jual,'0',',','.') ?></td>
-    </tr>
-    <tr>
       <td width="30%">Kategori</td>
       <td>: <?php echo $produk->nama_kategori_produk ?></td>
     </tr>

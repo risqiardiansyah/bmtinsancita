@@ -12,7 +12,8 @@ class Kategori_download extends Controller
     	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
 		$kategori_download 	= DB::table('kategori_download')->orderBy('urutan','ASC')->get();
 
-		$data = array(  'title'             => 'Kategori Download',
+        $data = array(  'title'             => 'Kategori Download',
+                        'aktif'             => 'kategoridownload',
 						'kategori_download'	=> $kategori_download,
                         'content'           => 'admin/kategori_download/index'
                     );

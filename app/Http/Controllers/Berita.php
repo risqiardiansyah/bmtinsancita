@@ -30,16 +30,19 @@ class Berita extends Controller
     public function read($slug_berita)
     {
         $site   = DB::table('konfigurasi')->first();
-        $slider = DB::table('galeri')->where('jenis_galeri','Beritapage')->orderBy('id_galeri', 'DESC')->first();
+        $slider = DB::table('galeri')->where('jenis_galeri', 'Homepage')->limit(5)->orderBy('id_galeri', 'DESC')->get();
         // $berita = DB::table('berita')->where('status_berita','Publish')->orderBy('id_berita', 'DESC')->get();
         $model  = new Berita_model();
         $berita = $model->read($slug_berita);
+        $berita_all         = $model->all_kategori($berita->id_kategori);
+
 
         $data = array(  'title'     => $berita->judul_berita,
                         'deskripsi' => $berita->judul_berita,
                         'keywords'  => $berita->judul_berita,
                         'slider'    => $slider,
                         'site'      => $site,
+                        'aktif'     => 'read',
                         'berita'    => $berita,
                         'content'   => 'berita/read'
                     );

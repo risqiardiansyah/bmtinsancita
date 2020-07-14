@@ -1,195 +1,324 @@
-<section id="hero" style="color: #fff;">
-  <div class="container">
+<section class="intro-wrapper">
     <div class="row">
-        <div class="owl-carousel owl-theme">
-          <?php foreach($slider as $slider) { ?>
-          <div class="item">
-            <div class="row">
-              <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
-                <div data-aos="zoom-out" class="slideku">
-                  <h1><?php echo $slider->judul_galeri ?></h1>
-                  <h4><?php echo $slider->isi ?></h4>
-                  <div class="text-center text-lg-left">
-                    <a href="<?php echo $slider->website ?>" class="btn-get-started scrollto"><i class="fa fa-eye"></i> Lihat Detail...</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-5 order-1 order-lg-2 hero-img text-center" data-aos="zoom-out" data-aos-delay="300">
-                <div class="slideku">
-                  <p class="text-center"><img src="{{ asset('public/upload/image/'.$slider->gambar) }}" class="img img-fluid animated" alt="<?php echo $slider->judul_galeri ?>"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <?php } ?>
-      </div>
-    </div>
-  </div>
-  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-    <defs>
-      <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-    </defs>
-    <g class="wave1">
-      <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
-    </g>
-    <g class="wave2">
-      <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
-    </g>
-    <g class="wave3">
-      <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
-    </g>
-  </svg>
-</section><!-- End Hero --><!-- Start main -->
-<main id="main">
-
- <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container-fluid">
-
-        <div class="row">
-          <div class="col-xl-4 col-lg-6 d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-            <img src="{{ asset('public/upload/image/'.$site->icon) }}" alt="{{ $site->namaweb }}" class="img img-fluid img-thumbnail">
-          </div>
-
-          <div class="col-xl-8 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
-            <h3>Selamat datang di {{ $site->namaweb }}</h3>
-            <?php echo $site->tentang ?>
-
-          </div>
+        <div class="col-lg-6 col-md-6">
+            <h2 class="wow fadeInDown">Welcome to <span style="color: darkred;">{!! $site->namaweb !!}</span></h2>
+            {!! $site->tentang!!}
         </div>
-
-      </div>
-      <hr>
-    </section><!-- End About Section -->
-
-<!-- ======= Apa itu Nitrico? Section ======= -->
-<section id="apa-itu-nitrico" class="about">
-
-      
-  <div class="container">
-    <div class="col-xl-12 col-lg-12 col-md-12 text-center" data-aos="fade-up">
-          <h2>Produk <?php $site->namaweb ?></h2>
-          <p><?php echo $site->deskripsi ?></p>
-          <br><br>
-    </div>
-        <!-- START -->
-    <div class="row">
-      <?php  
-            if($produks) {
-            foreach($produks as $produk) { ?>
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 produk text-center">
-                  <figure class="thumnail">
-                    <a href="{{ asset('produk/detail/'.$produk->slug_produk) }}">
-                      <img src="{{ asset('public/upload/image/'.$produk->gambar) }}" alt="<?php  echo $produk->nama_produk ?>" class="img-fluid img-thumbnail">
-                    </a>
-                  </figure>
-                  <div class="keterangan">
-                      <h3>
-                        <a href="{{ asset('produk/detail/'.$produk->slug_produk) }}">
-                          <?php  echo $produk->nama_produk ?>
-                        </a>
-                      </h3>
-                    <p class="harga">Rp <?php echo $produk->harga_jual; ?></p>
-                  </div>
-                  <div class="link-produk">
-                    <p>
-                      <input type="hidden" name="quantity" id="{{ $produk->id_produk }}" value="1" class="quantity">
-                      <a href="{{ asset('produk/detail/'.$produk->slug_produk) }}" class="btn btn-success btn-sm"><i class="fa fa-search"></i> Detail</a>
-                        <a href="{{ asset('pemesanan?id_produk='.$produk->id_produk) }}" class="btn btn-info btn-sm">
-                          <i class="fa fa-shopping-cart"></i> Pesan Produk Ini
-                        </a>
-                    </p>
+        <div class="col-lg-6 col-md-6" style="background: whitesmoke; border-radius: 6px; padding-top: 10px!important;">
+            <form action="{{ asset('proses_pendaftaran') }}" method="post" enctype="multipart/form-data">
+                <h2 class="wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Formulir
+                    Registrasi Anggota
+                </h2>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </div>
-            
-          <?php } ?>
-          <div class="clearfix"></div>
-            <div class="col-md-12">
-              <hr>
-               {{ $produks->links() }}
-              </div>
-        <?php }else{ ?>
-          <div class="col-md-12">
-            <p class="alert alert-info">Produk tidak ditemukan. Gunakan kata kunci pencarian yang berbeda.</p>
-          </div>
-          <?php } ?>
-          
-    </div>
-    <!-- END -->
-    </div>
-  <hr>
+                @endif
+                @if(session("msg"))
+                <div class="alert alert-success">{!! session("msg") !!}</div>
+                @endif
+                @csrf
+                @method("post")
+                <div class="form-group">
+                    <label for="">Nama Lengkap</label>
+                    <input type="text" name="nama_lengkap" class="form-control" value="{{old('nama_lengkap')}}"
+                        placeholder="Nama lengkap" onkeypress="return hanyaHuruf(this);" maxlength="255" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Nomor KTP </label>
+                    <input type="tel" name="no_ktp" class="form-control" value=""
+                        placeholder="Nomor Kartu Tanda Penduduk" onkeypress="return hanyaAngka(this);" minlength="16"
+                        maxlength="16" required="" value="{{old('no_ktp')}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Nomor KK</label>
+                    <input type="text" name="no_kk" class="form-control" onkeypress="return hanyaAngka(this);"
+                        placeholder="Nomor Kartu Keluarga" required="" minlength="16" maxlength="16"
+                        value="{{old('no_kk')}}">
+                </div>
+                <div class="form-group">
+                    <label for="">Nomor Whatsapp </label>
+                    <input type="tel" name="no_whatsapp" class="form-control" value="" placeholder="Nomor WA yang aktif"
+                        onkeypress="return hanyaAngka(this);" value="{{old('no_whatsapp')}}" minlength="10"
+                        maxlength="13" required="">
+                </div>
+                <div class="form-group">
+                    <label for="">Pekerjaan</label>
+                    <input type="tel" name="pekerjaan" class="form-control" value="{{old('pekerjaan')}}"
+                        placeholder="Pekerjaan" required="">
+                </div>
+                <div class="form-group">
+                    <span class="text-danger">*Pastikan semua inputan diisi dengan benar,
+                        sebelum menekan tombol submit.</span>
+                </div>
+                <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                    <label class="ontrol-label">Captcha</label>
+
+                    <div class="pull-center">
+                        {!! app('captcha')->display() !!}
+
+                        @if ($errors->has('g-recaptcha-response'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" title="Mengirim data ke admin">Submit</button>
+                    <button type="reset" class="btn btn-danger" title="Menghapus semua isi form">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div><!-- /.row -->
+</section><!-- /.intro-wrapper -->
+
+<!-- Our Service-->
+<section class="service-wrapper">
+    <h2 class="section-title wow fadeInDown">Our Services</h2>
+    <div class="row">
+        <div class="col-md-6 wow fadeInRight">
+            <div class="media">
+                <a class="media-left" href="#">
+                    <span class="icon bg1 {!! $site->setting_logo_service_1 !!}"></span>
+                </a>
+                <div class="media-body">
+                    <h3 class="media-heading"><a href="#">{!! $site->setting_title_service_1 !!}</a></h3>
+                    {!! $site->setting_service_1 !!}
+                </div> <!-- /.media-body -->
+            </div> <!-- /.media -->
+        </div> <!-- /.col-md-6 -->
+
+        <div class="col-md-6 wow fadeInRight">
+            <div class="media">
+                <a class="media-left" href="#">
+                    <span class="icon bg2 {!! $site->setting_logo_service_2 !!}"></span>
+                </a>
+                <div class="media-body">
+                    <h3 class="media-heading"><a href="#">{!! $site->setting_title_service_2 !!}</a></h3>
+                    {!! $site->setting_service_2 !!}
+                </div> <!-- /.media-body -->
+            </div> <!-- /.media -->
+        </div> <!-- /.col-md-6 -->
+
+        <div class="col-md-6 wow fadeInRight">
+            <div class="media">
+                <a class="media-left" href="#">
+                    <span class="icon bg3 {!! $site->setting_logo_service_3 !!}"></span>
+                </a>
+                <div class="media-body">
+                    <h3 class="media-heading"><a href="#">{!! $site->setting_title_service_3 !!}</a></h3>
+                    {!! $site->setting_service_2 !!}
+                </div> <!-- /.media-body -->
+            </div> <!-- /.media -->
+        </div> <!-- /.col-md-6 -->
+
+        <div class="col-md-6 wow fadeInRight">
+            <div class="media">
+                <a class="media-left" href="#">
+                    <span class="icon bg4 {!! $site->setting_logo_service_4 !!}"></span>
+                </a>
+                <div class="media-body">
+                    <h3 class="media-heading"><a href="#">{!! $site->setting_title_service_4 !!}</a></h3>
+                    {!! $site->setting_service_4 !!}
+                </div> <!-- /.media-body -->
+            </div> <!-- /.media -->
+        </div> <!-- /.col-md-6 -->
+    </div> <!-- /.row -->
 </section>
-<!-- End Apa itu Nitrico? Section -->
+<!-- End Our Service-->
 
- <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
+<!-- Our Project-->
+<section class="handover-wrapper">
+    <h2 class="section-title wow fadeInDown">Our Project</h2>
+    <ul class="row">
+        <div id="project-kami-slider" class="owl-carousel">
+            @foreach($produks as $produk)
+            <li class="col-md-10 col-sm-6">
+                <div class="example-2 card">
+                    <div class="wrapper"
+                        style="background: url('{{ asset('public/upload/image/'.$produk->gambar) }}') center/cover no-repeat; ">
+                        <div class="header">
+                            <div class="date">
+                                {!! $produk->tanggal_post!!}
+                            </div>
 
-        <div class="section-title text-center" data-aos="fade-up">
-          <h2>Berita terbaru</h2>
-          <p><?php echo $site->namaweb ?></p>
+                        </div>
+                        <div class="data">
+                            <div class="content">
+                                <h3 class="title"><a
+                                        href="{{ asset('produk/detail/'.$produk->slug_produk) }}"><?php  echo $produk->nama_produk ?></a>
+                                </h3>
+                                <p class="text"><?= nl2br($produk->deskripsi) ?></p>
+                                <a href="{{ asset('produk/detail/'.$produk->slug_produk) }}" class="button">Read
+                                    more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            @endforeach
         </div>
+    </ul>
+</section>
 
-        <div class="row">
-
-          <?php  
-            if($berita) {
-            foreach($berita as $berita) { ?>
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 berita">
-                  <figure class="thumnail">
-                    <a href="{{ asset('berita/detail/'.$berita->slug_berita) }}">
-                      <img src="{{ asset('public/upload/image/thumbs/'.$berita->gambar) }}" alt="<?php  echo $berita->judul_berita ?>" class="img-fluid img-thumbnail">
-                    </a>
-                  </figure>
-                  <div class="keterangan">
-                      <h3>
-                        <a href="{{ asset('berita/detail/'.$berita->slug_berita) }}">
-                          <?php  echo $berita->judul_berita ?>
-                        </a>
-                      </h3>
-                    <p class="harga"><?php echo \Illuminate\Support\Str::limit(strip_tags($berita->isi), 250, $end='...') ?></p>
-                    <div class="link-berita">
-                      <p>
-                        <input type="hidden" name="quantity" id="<?php echo $berita->id_berita;?>" value="1" class="quantity">
-                        <a href="{{ asset('berita/read/'.$berita->slug_berita) }}" class="btn btn-success btn-sm"><i class="fa fa-search"></i> Baca Detail...</a>
-                          
-                      </p>
-                  </div>
-                  </div>
-                  
+<!-- Our Berita-->
+<section class="probootstrap-section">
+    <div class="text-center section-heading fadeIn probootstrap-animated" data-animate-effect="fadeIn">
+        <h2>BERITA DAN AGENDA</h2>
+        <p class="lead">Sed a repudiandae impedit voluptate nam Deleniti dignissimos perspiciatis nostrum porro
+            nesciunt</p>
+    </div>
+</section>
+<div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        @foreach($berita as $key => $value)
+        <div class="item {{ $key == 0 ? "active" : "" }}">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3"><img src="{{ asset('public/upload/image/thumbs/'.$value->gambar) }}"
+                            alt="<?=$value->judul_berita ?>" class="img-responsive"></div>
+                    <div class="col-md-9">
+                        <h2><a href="{{ asset('berita/read/'.$value->slug_berita) }}"><?=$value->judul_berita ?></a>
+                        </h2>
+                        <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 500, $end='...') ?></p>
+                    </div>
+                </div>
             </div>
-          <?php }}else{ ?>
-          <div class="col-md-12">
-            <p class="alert alert-info">Produk tidak ditemukan. Gunakan kata kunci pencarian yang berbeda.</p>
-          </div>
-          <?php } ?>
-          <div class="col-md-12">
-            <hr>
-            <p class="text-center">
-              <a href="{{ asset('berita') }}" class="btn btn-info"><i class="fa fa-newspaper"></i> Lihat berita lainnya...</a>
-            </p>
-            
-          </div>
         </div>
+        @endforeach
+        <!-- End Item -->
+    </div>
+    <!-- End Carousel Inner -->
+    <div class="controls">
+        <ul class="nav">
+            @foreach($berita as $key => $value)
+            <li data-target="#custom_carousel" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}><a
+                    href="{{ asset('berita/read/'.$value->slug_berita) }}"><img style="width: 50px"
+                        src="{{ asset('public/upload/image/thumbs/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+<!-- Our Berita-->
 
-      </div>
-    </section><!-- End Contact Section -->
+<!-- Our Testimoni-->
+<section class="testimonial-wrapper">
+    <h2 class="section-title wow fadeInDown">Testimoni Member</h2>
+    <div id="testimonial-slider" class="owl-carousel">
+        @foreach($testimoni as $value)
+        <div class="testimonial">
+            <div class="pic">
+                <img src="{{asset('public/frontend/html')}}/img/icone-people.png">
+            </div>
+            <p class="description">
+                {!! $value->message!!}
+            </p>
+            <h3 class="title">{!! $value->nama_lengkap!!}</h3>
+            <small class="post">- {!! $value->pekerjaan!!}</small>
+        </div>
+        @endforeach
+    </div>
+    <!-- /.carousel -->
+</section><!-- /.testimonial-wrapper -->
 
-</main>
-<script>
-var owl = $('.owl-carousel');
-owl.owlCarousel({
-    items:1,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:5000,
-    autoplayHoverPause:true
-});
-$('.play').on('click',function(){
-    owl.trigger('play.owl.autoplay',[1000])
-})
-$('.stop').on('click',function(){
-    owl.trigger('stop.owl.autoplay')
-})
-</script>
+<!-- Our Tim-->
+<section class="team-kami-wrapper padding-lg">
+    <h2 class="section-title wow fadeInDown">Tim Kami</h2>
+    <ul class="row">
+        <div id="team-kami-slider" class="owl-carousel">
+            <li class="col-md-12 ">
+                <div class="cnt-block equal-hight" style="height: 349px;">
+                    <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="">
+                    </figure>
+                    <h3><a href="http://www.webcoderskull.com/">Web coder skull</a></h3>
+                    <p>Freelance Web Developer</p>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-md-12 ">
+                <div class="cnt-block equal-hight" style="height: 349px;">
+                    <figure><img src="http://www.webcoderskull.com/img/team1.png" class="img-responsive" alt="">
+                    </figure>
+                    <h3><a href="#">Kappua </a></h3>
+                    <p>Freelance Web Developer</p>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-md-12 ">
+                <div class="cnt-block equal-hight" style="height: 349px;">
+                    <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="">
+                    </figure>
+                    <h3><a href="http://www.webcoderskull.com/">Manish </a></h3>
+                    <p>Freelance Web Developer</p>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-md-12 ">
+                <div class="cnt-block equal-hight" style="height: 349px;">
+                    <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt="">
+                    </figure>
+                    <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
+                    <p>Freelance Web Developer</p>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-md-12 ">
+                <div class="cnt-block equal-hight" style="height: 349px;">
+                    <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt="">
+                    </figure>
+                    <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
+                    <p>Freelance Web Developer</p>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-md-12 ">
+                <div class="cnt-block equal-hight" style="height: 349px;">
+                    <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt="">
+                    </figure>
+                    <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
+                    <p>Freelance Web Developer</p>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </li>
+        </div>
+    </ul>
+
+    <!-- /.carousel -->
+</section><!-- /.team-kami-wrapper -->

@@ -17,9 +17,9 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
@@ -132,6 +132,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         array (
             'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
+            'Igoshev\\Captcha\\' => 16,
         ),
         'G' => 
         array (
@@ -174,6 +175,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         array (
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'Anhskohbo\\NoCaptcha\\' => 20,
         ),
     );
 
@@ -396,6 +398,10 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Igoshev\\Captcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bonecms/laravel-captcha/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -480,6 +486,10 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Anhskohbo\\NoCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/anhskohbo/no-captcha/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -504,6 +514,9 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
     );
 
     public static $classMap = array (
+        'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+        'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
         'App\\Berita_model' => __DIR__ . '/../..' . '/app/Berita_model.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Download_model' => __DIR__ . '/../..' . '/app/Download_model.php',
@@ -519,8 +532,10 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'App\\Http\\Controllers\\Admin\\Kategori_produk' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Kategori_produk.php',
         'App\\Http\\Controllers\\Admin\\Konfigurasi' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Konfigurasi.php',
         'App\\Http\\Controllers\\Admin\\Pemesanan' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Pemesanan.php',
+        'App\\Http\\Controllers\\Admin\\Pesan' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Pesan.php',
         'App\\Http\\Controllers\\Admin\\Produk' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Produk.php',
         'App\\Http\\Controllers\\Admin\\Rekening' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Rekening.php',
+        'App\\Http\\Controllers\\Admin\\Service' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Service.php',
         'App\\Http\\Controllers\\Admin\\User' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/User.php',
         'App\\Http\\Controllers\\Admin\\Video' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Video.php',
         'App\\Http\\Controllers\\Berita' => __DIR__ . '/../..' . '/app/Http/Controllers/Berita.php',
@@ -545,6 +560,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'App\\Nav_model' => __DIR__ . '/../..' . '/app/Nav_model.php',
         'App\\Pemesanan_model' => __DIR__ . '/../..' . '/app/Pemesanan_model.php',
         'App\\Pendaftaran_model' => __DIR__ . '/../..' . '/app/Pendaftaran_model.php',
+        'App\\Pesan_model' => __DIR__ . '/../..' . '/app/Pesan_model.php',
         'App\\Produk_model' => __DIR__ . '/../..' . '/app/Produk_model.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -552,6 +568,7 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Rekening_model' => __DIR__ . '/../..' . '/app/Rekening_model.php',
+        'App\\Testimoni_model' => __DIR__ . '/../..' . '/app/Testimoni_model.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\User_model' => __DIR__ . '/../..' . '/app/User_model.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
@@ -1550,6 +1567,17 @@ class ComposerStaticInitfde77ff30b54ce51ae473f65051fb0fe
         'Highlight\\RegExMatch' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExMatch.php',
         'Highlight\\RegExUtils' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/RegExUtils.php',
         'Highlight\\Terminators' => __DIR__ . '/..' . '/scrivo/highlight.php/Highlight/Terminators.php',
+        'Igoshev\\Captcha\\Captcha\\Captcha' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Captcha.php',
+        'Igoshev\\Captcha\\Captcha\\Code\\CodeInterface' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Code/CodeInterface.php',
+        'Igoshev\\Captcha\\Captcha\\Code\\SimpleCode' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Code/SimpleCode.php',
+        'Igoshev\\Captcha\\Captcha\\Generator\\AbstractGenerator' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Generator/AbstractGenerator.php',
+        'Igoshev\\Captcha\\Captcha\\Generator\\GeneratorInterface' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Generator/GeneratorInterface.php',
+        'Igoshev\\Captcha\\Captcha\\Generator\\GeneratorWaves' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Generator/GeneratorWaves.php',
+        'Igoshev\\Captcha\\Captcha\\Storage\\SessionStorage' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Storage/SessionStorage.php',
+        'Igoshev\\Captcha\\Captcha\\Storage\\StorageInterface' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Captcha/Storage/StorageInterface.php',
+        'Igoshev\\Captcha\\Controllers\\CaptchaController' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Controllers/CaptchaController.php',
+        'Igoshev\\Captcha\\Facades\\Captcha' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Facades/Captcha.php',
+        'Igoshev\\Captcha\\Providers\\CaptchaServiceProvider' => __DIR__ . '/..' . '/bonecms/laravel-captcha/src/Providers/CaptchaServiceProvider.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',

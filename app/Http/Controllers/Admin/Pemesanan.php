@@ -25,6 +25,7 @@ class Pemesanan extends Controller
 
 		$data = array(  'title'       => 'Data Pemesanan',
 						'pemesanan'   => $pemesanan,
+						'aktif'       => 'pemesanan',
                         'content'     => 'admin/pemesanan/index'
                     );
         return view('admin/layout/wrapper',$data);

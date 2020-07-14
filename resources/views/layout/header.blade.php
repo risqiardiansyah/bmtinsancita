@@ -10,55 +10,102 @@ $myprofil             = new Nav_model();
 $nav_profil           = $myproduk->nav_profil();
 ?>
 <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <!-- offcanvas-trigger-effects -->
+              <a style="width: 195px; margin-left: 20px" href="{{ asset('/') }}"><img style="width: 60px;" src="{{ asset('public/upload/image/'.$site->logo) }}" alt="{!! $site->namaweb !!}"></a>
+              <span class="text-uppercase " style="color: white;font-size: small;font-weight: bold;">{!! $site->namaweb !!}</span>
 
-      <div class="logo mr-auto">
-        <h1 class="text-light"><a href="{{ asset('/') }}"><span>
-          <img src="{{ asset('public/upload/image/'.$site->logo) }}" alt="Nitrico" style="min-height: 50px; width: auto;">
-        </span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="{{ asset('/') }}"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
+            </div>
 
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          
-            <li class="active"><a href="{{ asset('/') }}">Home</a></li>
-            <li><a href="{{ asset('berita') }}">Berita</a></li>
-            <li class="drop-down"><a href="{{ asset('profil') }}review">Profil</a>
-              <ul>
-                <?php foreach($nav_profil as $nav_profil) { ?>
-                <li><a href="{{ asset('berita/read/'.$nav_profil->slug_berita) }}"><?php echo $nav_profil->judul_berita ?></a></li>
-                <?php } ?>
-              </ul>
-            </li>
-           
-            <li class="drop-down"><a href="{{ asset('produk') }}">Produk</a>
-              <ul>
-                <?php foreach($nav_kategori_produk as $nkp) { ?>
-                <li><a href="{{ asset('produk/kategori/'.$nkp->slug_kategori_produk) }}"><?php echo $nkp->nama_kategori_produk ?></a></li>
-                <?php } ?>
-                <li><a href="#"><hr style="margin: 0; padding: 0;"></a></li>
-                <li><a href="{{ asset('produk') }}">Semua Produk</a></li>
-              </ul>
-            </li>
-            <li class="drop-down"><a href="#">Galeri</a>
-              <ul>
-                
-                <li><a href="{{ asset('video') }}">Video Youtube</a></li>
-                <li><a href="{{ asset('galeri') }}">Galeri Gambar</a></li>
-                <li><a href="{{ asset('download') }}">Unduhan File</a></li>
-              </ul>
-            </li>
-            <li><a href="{{ asset('kontak') }}">Kontak</a></li>
-              <li>
-                  <a href="{{ asset('pemesanan') }}" class="orange" title="Form Pemesanan"><div class="belanja"><i class="fa fa-shopping-cart"></i> Form Order</div></a>
-              </li>
-                     
-            
-        </ul>
-      </nav><!-- .nav-menu -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="<?php if($aktif == 'nameweb'){echo " active";} ?>"><a href="{{ asset('/') }}">Home</a></li>
+                  <li class="dropdown <?php if($aktif == 'read'){echo " active";} ?>"><a href="{{ asset('profil') }}">Tentang Kami <b class="caret"></b></a>
+                      <!-- submenu-wrapper -->
+                      <div class="submenu-wrapper submenu-wrapper-topbottom">
+                          <div class="submenu-inner  submenu-inner-topbottom">
+                              <ul class="dropdown-menu">
+                                  @foreach($nav_profil as $nav_profil)
+                                  <li><a
+                                          href="{{ asset('berita/read/'.$nav_profil->slug_berita) }}"><?=$nav_profil->judul_berita ?></a>
+                                  </li>
+                                  @endforeach
+                              </ul>
+                          </div><!-- /.submenu-inner -->
+                      </div> <!-- /.submenu-wrapper -->
+                  </li>
 
+                  <li class="dropdown <?php if($aktif == 'produk'){echo " active";} ?>"><a href="{{ asset('produk') }}">Produk <b class="caret"></b></a>
+                      <!-- submenu-wrapper -->
+                      <div class="submenu-wrapper submenu-wrapper-topbottom">
+                          <div class="submenu-inner  submenu-inner-topbottom">
+                              <ul class="dropdown-menu">
+                                  @foreach($nav_kategori_produk as $nkp)
+                                  <li><a
+                                          href="{{ asset('produk/kategori/'.$nkp->slug_kategori_produk) }}"><?=$nkp->nama_kategori_produk ?></a>
+                                  </li>
+                                  @endforeach
+                                  <li><a href="#">
+                                          <hr style="margin: 0; padding: 0;"></a></li>
+                                  <li><a href="{{ asset('produk') }}">Semua Produk</a></li>
+                              </ul>
+                          </div><!-- /.submenu-inner -->
+                      </div> <!-- /.submenu-wrapper -->
+                  </li>
+                  <li class="<?php if($aktif == 'program'){echo " active";} ?>"><a href="{{ asset('/') }}">Program</a></li>
+                  <li class="<?php if($aktif == 'laporan'){echo " active";} ?>"><a href="{{ asset('/') }}">Laporan</a></li>
+                  <li class="<?php if($aktif == 'kontak'){echo " active";} ?>"><a href="{{ asset('kontak') }}">Kontak</a></li>
+              </ul>
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+  </nav>
+</header>
+<!-- End Header -->
+<!-- ======= Hero Section ======= -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach($slider as $key => $value)
+            <li data-target="#carousel-example-generic"
+                data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}></li>
+        @endforeach
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        @foreach($slider as $key => $slider)
+        <div class="item {{ $key == 0 ? "active" : "" }}">
+            <img src="{{ asset('public/upload/image/'.$slider->gambar) }}" alt="<?= $slider->judul_galeri ?>">
+            <!-- Static Header -->
+            <div class="header-text hidden-xs">
+                <div class="col-md-12 text-center">
+                    <h2>
+                        <span><?= $slider->judul_galeri ?></span>
+                    </h2>
+                    <h4 style="color: white;margin-right: 238px;margin-left: 238px;"><?= \Illuminate\Support\Str::limit(strip_tags($slider->isi), 500, $end='...') ?></h4>
+                    <br>
+                    <div class="">
+                        <a class="btn btn-theme btn-sm btn-min-block" href="<?= $slider->website ?>">Read More</a></div>
+                </div>
+            </div><!-- /header-text -->
+        </div>
+        @endforeach
     </div>
-  </header><!-- End Header --><!-- ======= Hero Section ======= -->
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div><!-- Carousel END -->
+

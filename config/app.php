@@ -161,6 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Igoshev\Captcha\Providers\CaptchaServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -225,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'captcha'=>Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
 ];

@@ -34,15 +34,34 @@ class Dasbor extends Controller
         $Konfirmasi   = DB::table('pemesanan')->where('status_pemesanan','Konfirmasi')->sum('total_harga');
         $Dikirim   = DB::table('pemesanan')->where('status_pemesanan','Dikirim')->sum('total_harga');
         $Selesai   = DB::table('pemesanan')->where('status_pemesanan','Selesai')->sum('total_harga');
+        $count_pendaftaran   = DB::table('pendaftaran')->count();
+        $count_testimoni   = DB::table('testimoni')->count();
+		$pendaftaran 	= DB::table('pendaftaran')->orderBy('id','DESC')->get();
 
 		$data = array(  'title'     => $site->namaweb.' - '.$site->tagline,
                         'pemesanan' => $pemesanan,
                         'kategori'  => $kategori,
                         'menunggu'  => $menunggu,
                         'Konfirmasi'=> $Konfirmasi,
+                        'pendaftaran'  => $pendaftaran,
+                        'count_testimoni'    => $count_testimoni,
+                        'aktif'=> 'dashboard',
                         'Dikirim'=> $Dikirim,
+                        'count_pendaftaran'=> $count_pendaftaran,
                         'Selesai'=> $Selesai,
-                        'content'   => 'admin/dasbor/index'
+                        'content'   => 'admin/dasbor/index2'
+                    );
+        return view('admin/layout/wrapper',$data);
+    }
+    public function pendaftaran()
+    {
+        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+		$pendaftaran 	= DB::table('pendaftaran')->orderBy('id','DESC')->get();
+
+		$data = array(  'title'     => 'Pendaftaran Anggota',
+                        'pendaftaran'      => $pendaftaran,
+                        'aktif'        => 'pendaftaran',
+                        'content'   => 'admin/dasbor/pendaftaran'
                     );
         return view('admin/layout/wrapper',$data);
     }

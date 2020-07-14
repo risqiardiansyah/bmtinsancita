@@ -14,7 +14,8 @@ class Kategori_produk extends Controller
 		$kategori_produk 	= DB::table('kategori_produk')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'             => 'Kategori Produk',
-						'kategori_produk'	=> $kategori_produk,
+                        'kategori_produk'	=> $kategori_produk,
+                        'aktif'             => 'kategori_produk',
                         'content'           => 'admin/kategori_produk/index'
                     );
         return view('admin/layout/wrapper',$data);

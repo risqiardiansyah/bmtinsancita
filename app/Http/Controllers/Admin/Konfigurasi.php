@@ -1,108 +1,155 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
 use App\Konfigurasi_model;
+use App\Service_model;
+use App\Team_model;
 
 class Konfigurasi extends Controller
 {
     // Main page
     public function index()
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
-    	$mykonfigurasi 	= new Konfigurasi_model();
-		$site 			= $mykonfigurasi->listing();
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
+        $mykonfigurasi     = new Konfigurasi_model();
+        $site             = $mykonfigurasi->listing();
 
-		$data = array(  'title'        => 'Data Konfigurasi',
-						'site'         => $site,
-                        'content'      => 'admin/konfigurasi/index'
-                    );
-        return view('admin/layout/wrapper',$data);
+        $data = array(
+            'title'        => 'Data Konfigurasi',
+            'site'         => $site,
+            'aktif'        => 'konfigurasi',
+            'content'      => 'admin/konfigurasi/index'
+        );
+        return view('admin/layout/wrapper', $data);
+    }
+
+    public function service()
+    {
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
+        $mykonfigurasi  = new Konfigurasi_model();
+        $site           = $mykonfigurasi->listing();
+
+        $data = array(
+            'title'        => 'Our Service',
+            'site'         => $site,
+            'aktif'        => 'service',
+            'content'      => 'admin/konfigurasi/service'
+        );
+        return view('admin/layout/wrapper', $data);
     }
 
     // logo
     public function logo()
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
-        $data = array(  'title'        => 'Update Logo',
-                        'site'         => $site,
-                        'content'      => 'admin/konfigurasi/logo'
-                    );
-        return view('admin/layout/wrapper',$data);
+        $data = array(
+            'title'        => 'Update Logo',
+            'site'         => $site,
+            'aktif'        => 'logo',
+            'content'      => 'admin/konfigurasi/logo'
+        );
+        return view('admin/layout/wrapper', $data);
     }
 
     // gambar
     public function gambar()
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
-        $data = array(  'title'        => 'Update Gambar Banner',
-                        'site'         => $site,
-                        'content'      => 'admin/konfigurasi/gambar'
-                    );
-        return view('admin/layout/wrapper',$data);
+        $data = array(
+            'title'        => 'Update Gambar Banner',
+            'site'         => $site,
+            'aktif'        => 'gambar',
+            'content'      => 'admin/konfigurasi/gambar'
+        );
+        return view('admin/layout/wrapper', $data);
     }
 
     // icon
     public function icon()
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
-        $data = array(  'title'        => 'Update Icon',
-                        'site'         => $site,
-                        'content'      => 'admin/konfigurasi/icon'
-                    );
-        return view('admin/layout/wrapper',$data);
+        $data = array(
+            'title'        => 'Update Icon',
+            'site'         => $site,
+            'aktif'        => 'icon',
+            'content'      => 'admin/konfigurasi/icon'
+        );
+        return view('admin/layout/wrapper', $data);
     }
 
     // email
     public function email()
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
-        $data = array(  'title'        => 'Update Setting Email',
-                        'site'         => $site,
-                        'content'      => 'admin/konfigurasi/email'
-                    );
-        return view('admin/layout/wrapper',$data);
+        $data = array(
+            'title'        => 'Update Setting Email',
+            'site'         => $site,
+            'aktif'        => 'email',
+            'content'      => 'admin/konfigurasi/email'
+        );
+        return view('admin/layout/wrapper', $data);
     }
 
     // pembayaran
     public function pembayaran()
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
-        $data = array(  'title'        => 'Update Panduan Pembayaran',
-                        'site'         => $site,
-                        'content'      => 'admin/konfigurasi/pembayaran'
-                    );
-        return view('admin/layout/wrapper',$data);
+        $data = array(
+            'title'        => 'Update Panduan Pembayaran',
+            'site'         => $site,
+            'aktif'        => 'pembayaran',
+            'content'      => 'admin/konfigurasi/pembayaran'
+        );
+        return view('admin/layout/wrapper', $data);
     }
 
     // Proses
     public function proses(Request $request)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         request()->validate([
-                            'namaweb'          => 'required'
-                            ]);
-       DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+            'namaweb'          => 'required'
+        ]);
+        DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
             'namaweb'           => $request->namaweb,
             'nama_singkat'      => $request->nama_singkat,
+            'jam_operasional'      => $request->jam_operasional,
             'singkatan'         => $request->singkatan,
             'tagline'           => $request->tagline,
             'tagline2'          => $request->tagline2,
@@ -132,19 +179,50 @@ class Konfigurasi extends Controller
         return redirect('admin/konfigurasi')->with(['sukses' => 'Data telah diupdate']);
     }
 
+    //proses Our Service
+    public function proses_our_service(Request $request)
+    {
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
+        request()->validate([
+            'setting_title_service_1'          => 'required'
+        ]);
+        DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
+            'setting_title_service_1'           => $request->setting_title_service_1,
+            'setting_service_1'           => $request->setting_service_1,
+            'setting_title_service_2'           => $request->setting_title_service_2,
+            'setting_service_2'           => $request->setting_service_2,
+            'setting_title_service_3'           => $request->setting_title_service_3,
+            'setting_service_3'           => $request->setting_service_3,
+            'setting_title_service_4'           => $request->setting_title_service_4,
+            'setting_service_4'           => $request->setting_service_4,
+            'setting_logo_service_1'           => $request->setting_logo_service_1,
+            'setting_logo_service_2'           => $request->setting_logo_service_2,
+            'setting_logo_service_3'           => $request->setting_logo_service_3,
+            'setting_logo_service_4'           => $request->setting_logo_service_4,
+            'id_user'           => Session()->get('id_user'),
+        ]);
+        return redirect('admin/konfigurasi/service')->with(['sukses' => 'Data telah diupdate']);
+    }
+
+
+
     // Proses
     public function proses_email(Request $request)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         request()->validate([
-                            'protocol'          => 'required',
-                            'smtp_host'          => 'required',
-                            'smtp_port'          => 'required',
-                            'smtp_timeout'       => 'required',
-                            'smtp_user'          => 'required',
-                            'smtp_pass'          => 'required'
-                            ]);
-       DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+            'protocol'          => 'required',
+            'smtp_host'          => 'required',
+            'smtp_port'          => 'required',
+            'smtp_timeout'       => 'required',
+            'smtp_user'          => 'required',
+            'smtp_pass'          => 'required'
+        ]);
+        DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
             'protocol'          => $request->protocol,
             'smtp_host'         => $request->smtp_host,
             'smtp_port'         => $request->smtp_port,
@@ -159,26 +237,28 @@ class Konfigurasi extends Controller
     // logo
     public function proses_logo(Request $request)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         request()->validate([
-                            'logo'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-                            ]);
+            'logo'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
         // UPLOAD START
         $image                  = $request->file('logo');
         $filenamewithextension  = $request->file('logo')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-        $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
+        $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
         $destinationPath        = public_path('upload/image/thumbs/');
-        $img = Image::make($image->getRealPath(),array(
+        $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
-        $img->save($destinationPath.'/'.$input['nama_file']);
+        $img->save($destinationPath . '/' . $input['nama_file']);
         $destinationPath = public_path('upload/image/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
-        DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+        DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
             'id_user'  => Session()->get('id_user'),
             'logo'     => $input['nama_file']
         ]);
@@ -188,26 +268,28 @@ class Konfigurasi extends Controller
     // icon
     public function proses_icon(Request $request)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         request()->validate([
-                            'icon'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-                            ]);
+            'icon'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
         // UPLOAD START
         $image                  = $request->file('icon');
         $filenamewithextension  = $request->file('icon')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-        $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
+        $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
         $destinationPath        = public_path('upload/image/thumbs/');
-        $img = Image::make($image->getRealPath(),array(
+        $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
-        $img->save($destinationPath.'/'.$input['nama_file']);
+        $img->save($destinationPath . '/' . $input['nama_file']);
         $destinationPath = public_path('upload/image/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
-        DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+        DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
             'id_user'  => Session()->get('id_user'),
             'icon'     => $input['nama_file']
         ]);
@@ -217,26 +299,28 @@ class Konfigurasi extends Controller
     // gambar
     public function proses_gambar(Request $request)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         request()->validate([
-                            'gambar'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-                            ]);
+            'gambar'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
         // UPLOAD START
         $image                  = $request->file('gambar');
         $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-        $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
+        $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
         $destinationPath        = public_path('upload/image/thumbs/');
-        $img = Image::make($image->getRealPath(),array(
+        $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
-        $img->save($destinationPath.'/'.$input['nama_file']);
+        $img->save($destinationPath . '/' . $input['nama_file']);
         $destinationPath = public_path('upload/image/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
-        DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+        DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
             'id_user'  => Session()->get('id_user'),
             'gambar'     => $input['nama_file']
         ]);
@@ -246,36 +330,38 @@ class Konfigurasi extends Controller
     // edit
     public function proses_pembayaran(Request $request)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if (Session()->get('username') == "") {
+            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }
         request()->validate([
-                            'judul_pembayaran'  => 'required',
-                            'isi_pembayaran'    => 'required',
-                            'gambar_pembayaran' => 'image|mimes:jpeg,png,jpg|max:2048',
-                            ]);
+            'judul_pembayaran'  => 'required',
+            'isi_pembayaran'    => 'required',
+            'gambar_pembayaran' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
         // UPLOAD START
         $image                  = $request->file('gambar_pembayaran');
-        if(!empty($image)) {
+        if (!empty($image)) {
             $filenamewithextension  = $request->file('gambar_pembayaran')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
-            $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
+            $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
             $destinationPath        = public_path('upload/image/thumbs/');
-            $img = Image::make($image->getRealPath(),array(
+            $img = Image::make($image->getRealPath(), array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
-            $img->save($destinationPath.'/'.$input['nama_file']);
+            $img->save($destinationPath . '/' . $input['nama_file']);
             $destinationPath = public_path('upload/image/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
-            DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+            DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
                 'judul_pembayaran'  => $request->judul_pembayaran,
                 'isi_pembayaran'    => $request->isi_pembayaran,
                 'gambar_pembayaran' => $input['nama_file'],
                 'id_user'           => Session()->get('id_user'),
             ]);
-        }else{
-             DB::table('konfigurasi')->where('id_konfigurasi',$request->id_konfigurasi)->update([
+        } else {
+            DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
                 'judul_pembayaran'  => $request->judul_pembayaran,
                 'isi_pembayaran'    => $request->isi_pembayaran,
                 'id_user'           => Session()->get('id_user'),

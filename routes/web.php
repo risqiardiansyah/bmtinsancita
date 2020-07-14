@@ -25,6 +25,8 @@ Route::get('pemesanan', 'Home@pemesanan');
 Route::get('konfirmasi', 'Home@konfirmasi');
 Route::get('pembayaran', 'Home@pembayaran');
 Route::post('proses_pemesanan', 'Home@proses_pemesanan');
+Route::post('proses_pesan', 'Home@proses_pesan');
+Route::post('proses_pendaftaran', 'Home@proses_pendaftaran');
 Route::get('berhasil/{par1}', 'Home@berhasil');
 Route::get('cetak/{par1}', 'Home@cetak');
 // Login
@@ -46,6 +48,7 @@ Route::get('video', 'Video@index');
 Route::get('video/detail/{par1}', 'Video@detail');
 // Produk
 Route::get('produk', 'Produk@index');
+Route::post('produk/proses_testimoni', 'Produk@proses_testimoni');
 Route::get('produk/kategori/{par1}', 'Produk@kategori');
 Route::get('produk/detail/{par1}', 'Produk@detail');
 Route::get('produk/cetak/{par1}', 'Produk@cetak');
@@ -56,6 +59,7 @@ function()
 {
 	// dasbor
     Route::get('admin/dasbor', 'Dasbor@index');
+    Route::get('admin/dasbor/pendaftaran', 'Dasbor@pendaftaran');
     Route::get('admin/dasbor/konfigurasi', 'Dasbor@konfigurasi');
     // pemesanan
     Route::get('admin/pemesanan', 'Pemesanan@index');
@@ -69,6 +73,10 @@ function()
     Route::post('admin/pemesanan/proses', 'Pemesanan@proses');
     Route::post('admin/pemesanan/tambah_proses', 'Pemesanan@tambah_proses');
     Route::post('admin/pemesanan/edit_proses', 'Pemesanan@edit_proses');
+    // pesan
+    Route::get('admin/pesan', 'Pesan@index');
+    Route::post('admin/pesan/proses', 'Pesan@proses');
+
     // user
     Route::get('admin/user', 'User@index');
     Route::post('admin/user/tambah', 'User@tambah');
@@ -79,16 +87,22 @@ function()
     // konfigurasi
     Route::get('admin/konfigurasi', 'Konfigurasi@index');
     Route::get('admin/konfigurasi/logo', 'Konfigurasi@logo');
+    Route::get('admin/konfigurasi/service', 'Konfigurasi@service');
     Route::get('admin/konfigurasi/icon', 'Konfigurasi@icon');
     Route::get('admin/konfigurasi/email', 'Konfigurasi@email');
     Route::get('admin/konfigurasi/gambar', 'Konfigurasi@gambar');
     Route::get('admin/konfigurasi/pembayaran', 'Konfigurasi@pembayaran');
+    Route::get('admin/konfigurasi/team', 'Konfigurasi@team');
     Route::post('admin/konfigurasi/proses', 'Konfigurasi@proses');
+    Route::post('admin/konfigurasi/proses_our_service', 'Konfigurasi@proses_our_service');
     Route::post('admin/konfigurasi/proses_logo', 'Konfigurasi@proses_logo');
     Route::post('admin/konfigurasi/proses_icon', 'Konfigurasi@proses_icon');
     Route::post('admin/konfigurasi/proses_email', 'Konfigurasi@proses_email');
     Route::post('admin/konfigurasi/proses_gambar', 'Konfigurasi@proses_gambar');
     Route::post('admin/konfigurasi/proses_pembayaran', 'Konfigurasi@proses_pembayaran');
+    // team
+    Route::get('admin/team', 'Team@index');
+    Route::post('admin/team/tambahteam', 'Team@tambahteam');
     // berita
     Route::get('admin/berita', 'Berita@index');
     Route::get('admin/berita/cari', 'Berita@cari');

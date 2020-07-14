@@ -14,8 +14,9 @@ class Rekening extends Controller
 		$rekening 	= DB::table('rekening')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'     => 'Data Rekening',
-						'rekening'	=> $rekening,
-                        'content'           => 'admin/rekening/index'
+                        'rekening'	=> $rekening,
+                        'aktif'        => 'rekening',
+                        'content'   => 'admin/rekening/index'
                     );
         return view('admin/layout/wrapper',$data);
     }
@@ -28,6 +29,7 @@ class Rekening extends Controller
 
         $data = array(  'title'     => 'Edit Data Rekening',
                         'rekening'  => $rekening,
+                        'aktif'        => 'rekening',
                         'content'   => 'admin/rekening/edit'
                     );
         return view('admin/layout/wrapper',$data);

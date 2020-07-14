@@ -343,7 +343,7 @@ TESTIMONIAL STYLE
     border-radius: 50%;
     overflow: hidden;
     position: absolute;
-    top: 60px;
+    top: 26px;
     left: 20px;
 }
 .testimonial .pic img{
@@ -2876,7 +2876,7 @@ PORTFOLIO PAGE
     height: 40px;
     position: absolute;
     top: -100%;
-    left: 50%;
+    left: 58%;
     margin-top: -20px;
     margin-left: -44px;
 }
@@ -3021,7 +3021,7 @@ CONTACT US PAGE
 
 
 .directions-wrapper {
-    margin-bottom: 60px;
+    margin-bottom: 25px;
 }
 
 .contact-directions {

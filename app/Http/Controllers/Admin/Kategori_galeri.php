@@ -13,7 +13,8 @@ class Kategori_galeri extends Controller
 		$kategori_galeri 	= DB::table('kategori_galeri')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'             => 'Kategori Galeri',
-						'kategori_galeri'	=> $kategori_galeri,
+                        'kategori_galeri'	=> $kategori_galeri,
+                        'aktif'             => 'kategori',
                         'content'           => 'admin/kategori_galeri/index'
                     );
         return view('admin/layout/wrapper',$data);

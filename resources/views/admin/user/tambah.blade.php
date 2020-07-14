@@ -9,7 +9,7 @@
 			</div>
 			<div class="modal-body">
 				<form action="{{ asset('admin/user/tambah') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-{{ csrf_field() }}
+				{{ csrf_field() }}
 				<div class="form-group row">
 					<label class="col-sm-3 control-label text-right">Nama lengkap</label>
 					<div class="col-sm-9">

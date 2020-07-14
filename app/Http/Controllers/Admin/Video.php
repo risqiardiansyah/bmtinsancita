@@ -15,6 +15,7 @@ class Video extends Controller
 
         $data = array(  'title'     => 'Data Video',
                         'video'  => $video,
+                        'aktif'        => 'video',
                         'content'   => 'admin/video/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -28,6 +29,7 @@ class Video extends Controller
 
         $data = array(  'title'     => 'Edit Data Video',
                         'video'     => $video,
+                        'aktif'        => 'video',
                         'content'   => 'admin/video/edit'
                     );
         return view('admin/layout/wrapper',$data);

@@ -1,4 +1,8 @@
 @include('layout/head')
 @include('layout/header')
-@include($content)
+<div class="container">
+    <div class="content-wrapper">
+        @include($content)
+    </div>
+</div>
 @include('layout/footer')

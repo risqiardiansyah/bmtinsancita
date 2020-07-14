@@ -19,7 +19,8 @@ class Download extends Controller
 
 		$data = array(  'title'				=> 'Data Download',
 						'download'			=> $download,
-						'kategori_download'	=> $kategori_download,
+                        'kategori_download'	=> $kategori_download,
+                        'aktif'             => 'download',
                         'content'			=> 'admin/download/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -92,6 +93,7 @@ class Download extends Controller
 
         $data = array(  'title'             => 'Data Download',
                         'download'            => $download,
+                        'aktif'             => 'download',
                         'kategori_download'   => $kategori_download,
                         'content'           => 'admin/download/index'
                     );
@@ -106,6 +108,7 @@ class Download extends Controller
 
         $data = array(  'title'             => 'Tambah Download',
                         'kategori_download'   => $kategori_download,
+                        'aktif'             => 'tambah',
                         'content'           => 'admin/download/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -135,6 +138,7 @@ class Download extends Controller
 
         $data = array(  'title'             => 'Edit Download',
                         'download'            => $download,
+                        'aktif'             => 'download',
                         'kategori_download'   => $kategori_download,
                         'content'           => 'admin/download/edit'
                     );

@@ -48,7 +48,7 @@ $site                 = DB::table('konfigurasi')->first();
       <hr class="sidebar-divider">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'dashboard'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/dasbor') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -56,25 +56,33 @@ $site                 = DB::table('konfigurasi')->first();
 
       <!-- TRANSAKSI -->
       <hr class="sidebar-divider">
-      <div class="sidebar-heading">Order &amp; Pemesanan</div>
+      <div class="sidebar-heading">AKTIFITAS LAYANAN</div>
       <hr class="sidebar-divider">
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'pemesanan'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/pemesanan') }}">
           <i class="fas fa-fw fa-money-bill-alt"></i> <span>Pemesanan</span></a>
+      </li>
+      <li class="nav-item <?php if($aktif == 'pendaftaran'){echo " active";} ?>">
+        <a class="nav-link" href="{{ asset('admin/dasbor/pendaftaran') }}">
+          <i class="fas fa-fw fa-user"></i> <span>Pendaftaran</span></a>
       </li>
       <!-- PRODUK -->
       <hr class="sidebar-divider">
       <div class="sidebar-heading">Produk &amp; Layanan</div>
       <hr class="sidebar-divider">
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'pesan'){echo " active";} ?>">
+        <a class="nav-link" href="{{ asset('admin/pesan') }}">
+          <i class="fas fa-fw fa-envelope-open-text"></i> <span>Pesan</span></a>
+      </li>
+      <li class="nav-item <?php if($aktif == 'produk'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/produk') }}">
           <i class="fas fa-fw fa-book"></i> <span>Produk &amp; Layanan</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'tambah'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/produk/tambah') }}">
           <i class="fas fa-fw fa-plus"></i> <span>Tambah Produk</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'kategori_produk'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/kategori_produk') }}">
           <i class="fas fa-fw fa-tags"></i> <span>Kategori Produk</span></a>
       </li>
@@ -91,8 +99,8 @@ $site                 = DB::table('konfigurasi')->first();
         </a>
         <div id="berita" class="collapse" aria-labelledby="berita" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ asset('admin/berita') }}"><i class="fa fa-newspaper"></i> Data Berita</a>
-            <a class="collapse-item" href="{{ asset('admin/berita/tambah') }}"><i class="fa fa-plus"></i> Tambah Berita</a>
+            <a class="collapse-item <?php if($aktif == 'berita'){echo " active";} ?>" href="{{ asset('admin/berita') }}"><i class="fa fa-newspaper"></i> Data Berita</a>
+            <a class="collapse-item <?php if($aktif == 'tambah'){echo " active";} ?>" href="{{ asset('admin/berita/tambah') }}"><i class="fa fa-plus"></i> Tambah Berita</a>
             <a class="collapse-item" href="{{ asset('admin/kategori') }}"><i class="fa fa-tags"></i> Kategori Berita</a>
           </div>
         </div>
@@ -105,9 +113,9 @@ $site                 = DB::table('konfigurasi')->first();
         </a>
         <div id="download" class="collapse" aria-labelledby="download" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ asset('admin/download') }}"><i class="fa fa-newspaper"></i> Data File</a>
-            <a class="collapse-item" href="{{ asset('admin/download/tambah') }}"><i class="fa fa-plus"></i> Tambah File</a>
-            <a class="collapse-item" href="{{ asset('admin/kategori_download') }}"><i class="fa fa-tags"></i> Kategori File</a>
+            <a class="collapse-item <?php if($aktif == 'download'){echo " active";} ?>" href="{{ asset('admin/download') }}"><i class="fa fa-newspaper"></i> Data File</a>
+            <a class="collapse-item <?php if($aktif == 'tambah'){echo " active";} ?>" href="{{ asset('admin/download/tambah') }}"><i class="fa fa-plus"></i> Tambah File</a>
+            <a class="collapse-item <?php if($aktif == 'kategoridownload'){echo " active";} ?>" href="{{ asset('admin/kategori_download') }}"><i class="fa fa-tags"></i> Kategori File</a>
           </div>
         </div>
       </li>
@@ -119,36 +127,38 @@ $site                 = DB::table('konfigurasi')->first();
         </a>
         <div id="Galeri" class="collapse" aria-labelledby="Galeri" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ asset('admin/galeri') }}"><i class="fa fa-newspaper"></i> Data Galeri</a>
-            <a class="collapse-item" href="{{ asset('admin/galeri/tambah') }}"><i class="fa fa-plus"></i> Tambah Galeri</a>
-            <a class="collapse-item" href="{{ asset('admin/kategori_galeri') }}"><i class="fa fa-tags"></i> Kategori Galeri</a>
+            <a class="collapse-item <?php if($aktif == 'galeri'){echo " active";} ?> " href="{{ asset('admin/galeri') }}"><i class="fa fa-newspaper"></i> Data Galeri</a>
+            <a class="collapse-item <?php if($aktif == 'tambah'){echo " active";} ?>  " href="{{ asset('admin/galeri/tambah') }}"><i class="fa fa-plus"></i> Tambah Galeri</a>
+            <a class="collapse-item <?php if($aktif == 'kategori'){echo " active";} ?>  " href="{{ asset('admin/kategori_galeri') }}"><i class="fa fa-tags"></i> Kategori Galeri</a>
           </div>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'video'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/video') }}">
           <i class="fab fa-fw fa-youtube"></i> <span>Video Youtube</span></a>
       </li>
       <?php if(Session()->get('akses_level')=="Admin") { ?>
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'pengguna'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/user') }}">
           <i class="fa fa-fw fa-lock"></i> <span>Pengguna Website</span></a>
       </li>
       <!-- Konfigurasi -->
-      <li class="nav-item">
+      <li class="nav-item <?php if($aktif == 'konfigurasi'){echo " active";} ?> ">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Konfigurasi" aria-expanded="true" aria-controls="collapse') }}">
           <i class="fa fa-fw fa-cog"></i>
           <span>Setting</span>
         </a>
         <div id="Konfigurasi" class="collapse" aria-labelledby="Konfigurasi" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ asset('admin/konfigurasi') }}"><i class="fa fa-newspaper"></i> Setting Website</a>
-            <a class="collapse-item" href="{{ asset('admin/konfigurasi/logo') }}"><i class="fa fa-image"></i> Ganti Logo</a>
-            <a class="collapse-item" href="{{ asset('admin/konfigurasi/icon') }}"><i class="fa fa-tree"></i> Ganti Icon</a>
-            <a class="collapse-item" href="{{ asset('admin/konfigurasi/email') }}"><i class="fa fa-envelope"></i> Setting Email</a>
-            <a class="collapse-item" href="{{ asset('admin/konfigurasi/gambar') }}"><i class="fa fa-lock"></i> Ganti Gambar Login</a>
-            <a class="collapse-item" href="{{ asset('admin/rekening') }}"><i class="fa fa-money-check"></i> Rekening Pembayaran</a>
-            <a class="collapse-item" href="{{ asset('admin/konfigurasi/pembayaran') }}"><i class="fa fa-comment-dollar"></i> Panduan Pembayaran</a>
+            <a class="collapse-item <?php if($aktif == 'konfigurasi'){echo " active";} ?> " href="{{ asset('admin/konfigurasi') }}"><i class="fa fa-newspaper"></i> Setting Website</a>
+            <a class="collapse-item <?php if($aktif == 'service'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/service') }}"><i class="fa fa-newspaper"></i> Our Service</a>
+            <a class="collapse-item <?php if($aktif == 'team'){echo " active";} ?>" href="{{ asset('admin/team') }}"><i class="fa fa-user"></i> Our Team</a>
+            <a class="collapse-item <?php if($aktif == 'logo'){echo " active";} ?> " href="{{ asset('admin/konfigurasi/logo') }}"><i class="fa fa-image"></i> Ganti Logo</a>
+            <a class="collapse-item <?php if($aktif == 'icon'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/icon') }}"><i class="fa fa-tree"></i> Ganti Icon</a>
+            <a class="collapse-item <?php if($aktif == 'email'){echo " active";} ?> " href="{{ asset('admin/konfigurasi/email') }}"><i class="fa fa-envelope"></i> Setting Email</a>
+            <a class="collapse-item <?php if($aktif == 'gambar'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/gambar') }}"><i class="fa fa-lock"></i> Ganti Gambar Login</a>
+            <a class="collapse-item <?php if($aktif == 'rekening'){echo " active";} ?> " href="{{ asset('admin/rekening') }}"><i class="fa fa-money-check"></i> Rekening Pembayaran</a>
+            <a class="collapse-item <?php if($aktif == 'pembayaran'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/pembayaran') }}"><i class="fa fa-comment-dollar"></i> Panduan Pembayaran</a>
           </div>
         </div>
       </li>

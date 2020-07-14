@@ -2,6 +2,21 @@
 $sek  = date('Y');
 $awal = $sek-100;
 ?>
+<script type="text/javascript">
+  function hanyaAngka(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+      return true;
+  }
+
+  function hanyaHuruf(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+      if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) && charCode > 32)
+          return false;
+      return true;
+  }
+</script>
 <script>
 $( ".datepicker" ).datepicker({
   inline: true,
@@ -117,29 +132,7 @@ tinymce.init({
   content_css: '{{ asset("public/template/assets/vendor/bootstrap/css/bootstrap.min.css") }}',
   content_css_cors: true
 });
-// File manager
-// tinymce.init({
-//     selector: ".konten",
-//     theme: "modern",
-//     height: 300,
-//    plugins: [
-//     "advlist autolink link image media filemanager code responsivefilemanager"
-//   ],
-//   toolbar1: "undo redo | bold italic underline | forecolor backcolor",
-//   toolbar2: "| responsivefilemanager | link unlink | image media | code",
-//   image_advtab: true,
-//   external_filemanager_path: "./filemanager/",
-//   filemanager_title: "Responsive Filemanager",
-//   external_plugins: {
-//     "responsivefilemanager": "plugins/responsivefilemanager/plugin.min.js",
-//     "filemanager": "{{ asset('public/filemanager/plugin.min.js') }}"
-//     // "filemanager": "../../filemanager/plugin.min.js"
-//   },
-//  });
 </script>
-              </div>
-            </div>
-          </div>
 
         </div>
         <!-- /.container-fluid -->

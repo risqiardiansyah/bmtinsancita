@@ -21,7 +21,8 @@ class Produk extends Controller
 		$kategori_produk 	= DB::table('kategori_produk')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'				=> 'Data Produk',
-						'produk'			=> $produk,
+                        'produk'			=> $produk,
+                        'aktif'             => 'produk',
 						'kategori_produk'	=> $kategori_produk,
                         'content'			=> 'admin/produk/index'
                     );
@@ -128,6 +129,7 @@ class Produk extends Controller
 
         $data = array(  'title'             => 'Tambah Produk',
                         'kategori_produk'   => $kategori_produk,
+                        'aktif'             => 'tambah',
                         'content'           => 'admin/produk/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -144,6 +146,7 @@ class Produk extends Controller
         $data = array(  'title'             => 'Edit Produk',
                         'produk'            => $produk,
                         'kategori_produk'   => $kategori_produk,
+                        'aktif'             => 'produk',
                         'content'           => 'admin/produk/edit'
                     );
         return view('admin/layout/wrapper',$data);
@@ -196,6 +199,7 @@ class Produk extends Controller
             'urutan'                => $request->urutan,
             'deskripsi'             => $request->deskripsi,
             'isi'                   => $request->isi,
+            'client_name'           => $request->client_name,
             'harga_jual'            => $request->harga_jual,
             'harga_beli'            => $request->harga_beli,
             'harga_terendah'        => $request->harga_terendah,
@@ -264,6 +268,7 @@ class Produk extends Controller
                 'urutan'                => $request->urutan,
                 'deskripsi'             => $request->deskripsi,
                 'isi'                   => $request->isi,
+                'client_name'           => $request->client_name,
                 'harga_jual'            => $request->harga_jual,
                 'harga_beli'            => $request->harga_beli,
                 'harga_terendah'        => $request->harga_terendah,
@@ -303,6 +308,7 @@ class Produk extends Controller
                 'urutan'                => $request->urutan,
                 'deskripsi'             => $request->deskripsi,
                 'isi'                   => $request->isi,
+                'client_name'           => $request->client_name,
                 'harga_jual'            => $request->harga_jual,
                 'harga_beli'            => $request->harga_beli,
                 'harga_terendah'        => $request->harga_terendah,

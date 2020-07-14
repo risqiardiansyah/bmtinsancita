@@ -37,28 +37,31 @@ $(function() {
         </ul>
     </div>
 @endif
-
-<form action="{{ asset('admin/konfigurasi/proses_logo') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-{{ csrf_field() }}
-<div class="row">
-    <input type="hidden" name="id_konfigurasi" value="<?php echo $site->id_konfigurasi ?>">
-    
-    <div class="col-md-6">
-    <div class="form-group">
-        <label>Upload a new logo</label>
-        <input type="file" name="logo" class="form-control" id="file">
-        <div id="imagePreview"></div>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <form action="{{ asset('admin/konfigurasi/proses_logo') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+            {{ csrf_field() }}
+            <div class="row">
+                <input type="hidden" name="id_konfigurasi" value="<?php echo $site->id_konfigurasi ?>">
+                
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label>Upload a new logo</label>
+                    <input type="file" name="logo" class="form-control" id="file">
+                    <div id="imagePreview"></div>
+                </div>
+                </div>
+                
+                <div class="col-md-6 alert alert-success">
+                    <label>Your current logo</label><br>
+                    <img src="{{ asset('public/upload/image/'.$site->logo) }}" style="max-width:200px; height:auto;">
+                </div>
+                
+                <div class="col-md-12">
+                <input type="submit" name="submit" value="Simpan Logo Baru" class="btn btn-primary">
+                <input type="reset" name="reset" value="Reset" class="btn btn-primary">
+            </div>
+            </div>
+            </form>
     </div>
-    </div>
-    
-    <div class="col-md-6 alert alert-success">
-        <label>Your current logo</label><br>
-        <img src="{{ asset('public/upload/image/'.$site->logo) }}" style="max-width:200px; height:auto;">
-    </div>
-    
-    <div class="col-md-12">
-    <input type="submit" name="submit" value="Simpan Logo Baru" class="btn btn-primary">
-    <input type="reset" name="reset" value="Reset" class="btn btn-primary">
 </div>
-</div>
-</form>
