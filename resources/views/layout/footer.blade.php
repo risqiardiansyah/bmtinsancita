@@ -36,13 +36,7 @@ $site       = DB::table('konfigurasi')->first();
                 <div class="footer-widget">
                     <h3 class="wow fadeInDown">Customer Care</h3>
                     <ul class="wow fadeInDown">
-                        <li><a href="#">Customer Support</a></li>
-                        <li><a href="#">Platinum Support</a></li>
-                        <li><a href="#">Gold Support</a></li>
-                        <li><a href="#">Standard Support</a></li>
-                        <li><a href="#">Training</a></li>
-                        <li><a href="#">Online Training</a></li>
-                        <li><a href="#">Custom Training</a></li>
+                        <li><a href="{{'kontak'}}">Kontak</a></li>
                     </ul>
                 </div><!-- /.footer-widget -->
             </div><!-- /.col-md-2 -->
@@ -50,8 +44,9 @@ $site       = DB::table('konfigurasi')->first();
                 <div class="footer-widget">
                     <h3 class="wow fadeInDown">Information</h3>
                     <ul class="wow fadeInDown">
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Articles</a></li>
+                        <li><a href="{{'/'}}">Beranda</a></li>
+                        <li><a href="{{'produk'}}">Produk</a></li>
+                        <li><a href="{{'berita/read/profil-bmtinsan-cita'}}">Tentang Kami</a></li>
                         <li><a href="#">Reviews</a></li>
                         <li><a href="#">Testimonials</a></li>
                         <li><a href="#">Awards</a></li>
