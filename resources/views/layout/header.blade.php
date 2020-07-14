@@ -30,7 +30,7 @@ $nav_profil           = $myproduk->nav_profil();
           <div class="collapse navbar-collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
                   <li class="<?php if($aktif == 'nameweb'){echo " active";} ?>"><a href="{{ asset('/') }}">Home</a></li>
-                  <li class="dropdown <?php if($aktif == 'read'){echo " active";} ?>"><a href="{{ asset('berita/read/'.$nav_profil->slug_berita) }}">Tentang Kami <b class="caret"></b></a>
+                  <li class="dropdown <?php if($aktif == 'read'){echo " active";} ?>"><a href="#">Tentang Kami <b class="caret"></b></a>
                       <!-- submenu-wrapper -->
                       <div class="submenu-wrapper submenu-wrapper-topbottom">
                           <div class="submenu-inner  submenu-inner-topbottom">
