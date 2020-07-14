@@ -83,6 +83,8 @@ class Produk extends Controller
         $request->validate([
             "nama_lengkap" => "required|max:225|unique:testimoni",
             "email" => "required|max:225|unique:testimoni",
+            'g-recaptcha-response' => 'required|captcha',
+
         ]);
         try {
             $message = new Testimoni_model();
