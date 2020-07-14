@@ -22,12 +22,10 @@ $site       = DB::table('konfigurasi')->first();
                     <div class="social-link wow fadeInDown">
                         <ul>
                             <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="<?php echo $site->facebook ?>"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-flickr"></i></a></li>
+                            <li><a href="{{$site->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{$site->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{$site->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="{{$site->instagram}}"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div><!-- /.footer-widget -->

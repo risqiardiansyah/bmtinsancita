@@ -2048,6 +2048,9 @@ SOCIAL LINK
 .social-link ul li a i.fa-linkedin {
     background: #0036e7;
 }
+.social-link ul li a i.fa-instagram {
+    background: #e70000;
+}
 
 .social-link ul li a i.fa-linkedin:hover {
     color: #0036e7;

@@ -17,12 +17,15 @@ class Video extends Controller
                     ->orderBy('id_video','DESC')
                     ->paginate(10);
        	$site 	= DB::table('konfigurasi')->first();
+        $slider = DB::table('galeri')->where('jenis_galeri', 'Homepage')->limit(5)->orderBy('id_galeri', 'DESC')->get();
 
 		$data = array(  'title'		=> 'Video '.$site->namaweb,
 						'deskripsi'	=> 'Video '.$site->namaweb,
 						'keywords'	=> 'Video '.$site->namaweb,
 						'videos'	=> $video,
-						'site'		=> $site,
+                        'site'		=> $site,
+                        'slider'    => $slider,
+                        'aktif'     => 'video',
                         'content'	=> 'video/index'
                     );
         return view('layout/wrapper',$data);
