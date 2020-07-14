@@ -3,6 +3,7 @@ $site = DB::table('konfigurasi')->first();
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
 <head>
     <meta name="description" content="{{ $deskripsi }}">
     <meta name="keywords" content="{{ $keywords }}">
@@ -35,12 +36,22 @@ $site = DB::table('konfigurasi')->first();
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css'>
     <script src="{{ asset("public/frontend/html") }}/js/vendor/modernizr-2.8.1.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "7c4a806c-6b05-48e8-b4dc-a179b2629f54",
+            });
+        });
+
+    </script>
 
 </head>
 <?php echo $site->metatext; ?>
+
 <body>
-<div id="st-container" class="st-container">
-    <div class="st-pusher">
-        <div class="st-content">
-            <div class="st-content-inner">
-            
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <div class="st-content">
+                <div class="st-content-inner">
