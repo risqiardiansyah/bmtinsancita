@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
 use App\Download_model;
+use Ramsey\Uuid\Uuid;
 
 class Download extends Controller
 {
@@ -162,6 +163,7 @@ class Download extends Controller
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         DB::table('download')->insert([
+            'id_download'           => Uuid::uuid4(),
             'id_kategori_download'  => $request->id_kategori_download,
             'id_user'               => Session()->get('id_user'),
             'judul_download'        => $request->judul_download,
