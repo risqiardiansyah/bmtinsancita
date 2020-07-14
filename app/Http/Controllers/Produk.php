@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Produk_model;
 use App\Testimoni_model;
 use Ramsey\Uuid\Uuid;
+use App\Rules\Captcha;
 use PDF;
 
 class Produk extends Controller
@@ -83,7 +84,7 @@ class Produk extends Controller
         $request->validate([
             "nama_lengkap" => "required|max:225|unique:testimoni",
             "email" => "required|max:225|unique:testimoni",
-            'g-recaptcha-response' => 'required|captcha',
+            'g-recaptcha-response' => new Captcha(),
 
         ]);
         try {

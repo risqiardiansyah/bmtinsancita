@@ -129,10 +129,16 @@
                 <textarea id="message" name="contents" class="form-control" rows="6" required="" placeholder="Message"
                     {!! old("content") !!}></textarea>
             </div>
-            <div class="input-group">
-                {!! NoCaptcha::display() !!}
-            </div>
+            <div class="form-group row">
+                <div class="col-md-6 offset-md-4">
+                    <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
+                    @if ($errors->has('g-recaptcha-response'))
+                    <span class="invalid-feedback" style="display: block"></span>
+                    <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                    @endif
+                </div>
 
+            </div>
             <button type="submit" class="btn btn-primary btn-lg">Kirim</button>
         </form>
     </div>

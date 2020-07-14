@@ -75,18 +75,15 @@
                             <textarea class="form-control" rows="4" id="exampleInputMessage"
                                       placeholder="Komentar" name="message" value="{{old('message')}}"></textarea>
                         </div>
-                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-                            <label class="ontrol-label">Captcha</label>
-        
-                            <div class="pull-center">
-                                {!! app('captcha')->display() !!}
-        
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
                                 @if ($errors->has('g-recaptcha-response'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                </span>
+                                <span class="invalid-feedback" style="display: block"></span>
+                                <strong>{{$errors->first('g-recaptcha-response')}}</strong>
                                 @endif
                             </div>
+            
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
