@@ -10,7 +10,7 @@
 <p>
     @include('admin/konfigurasi/tambahteam')
 </p>
-<form action="{{ asset('admin/konfigurasi/prosesteam') }}" method="post" accept-charset="utf-8">
+<form action="{{ asset('admin/team/deletemultiple') }}" method="post" accept-charset="utf-8">
     {{ csrf_field() }}
     <div class="row">
 
@@ -49,7 +49,7 @@
                             <td class="text-center">
                                 <div class="icheck-primary">
                                     <input type="checkbox" class="icheckbox_flat-blue " name="id[]"
-                                        value="<?php echo $value->id ?>" id="check<?php echo $i ?>">
+                                        value="{{$value->id}}" id="check<?php echo $i ?>">
                                     <label for="check<?php echo $i ?>"></label>
                                 </div>
                             </td>
@@ -67,12 +67,13 @@
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                        data-target="#Edit<?php echo $value->id ?>">
+                                        data-target="#Edit{{$value->id}}">
                                         <i class="fa fa-edit"></i> Edit
                                     </button>
                                     <a href="{{ asset('admin/team/delete/'.$value->id) }}"
                                         class="btn btn-danger btn-sm delete-link"><i class="fas fa-trash-alt"></i> Hapus</a>
                                 </div>
+                                @include('admin/konfigurasi/editteam')
                             </td>
                             
                         </tr>

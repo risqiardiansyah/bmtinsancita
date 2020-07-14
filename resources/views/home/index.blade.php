@@ -233,92 +233,47 @@
     <h2 class="section-title wow fadeInDown">Tim Kami</h2>
     <ul class="row">
         <div id="team-kami-slider" class="owl-carousel">
+            @foreach($teams as $value)
             <li class="col-md-12 ">
                 <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="">
+                    <figure><img src="{{ asset('public/upload/image/thumbs/'.$value->foto) }}" class="img-responsive"
+                            alt="{!! $value->nama_lengkap!!}">
                     </figure>
-                    <h3><a href="http://www.webcoderskull.com/">Web coder skull</a></h3>
-                    <p>Freelance Web Developer</p>
+                    <h3><a href="#">{!! $value->nama_lengkap!!}</a></h3>
+                    <p>{!! $value->jabatan!!}</p>
                     <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <li><a href="https://facebook.com/{!! $value->facebook!!}"><i class="fa fa-facebook"
+                                    aria-hidden="true"></i></a></li>
+                        <li><a href="tel:{!! $value->telp!!}"><i class="fa fa-phone" aria-hidden="true"></i></a>
                         </li>
                         <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                     </ul>
                 </div>
             </li>
-            <li class="col-md-12 ">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="http://www.webcoderskull.com/img/team1.png" class="img-responsive" alt="">
-                    </figure>
-                    <h3><a href="#">Kappua </a></h3>
-                    <p>Freelance Web Developer</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="col-md-12 ">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="http://www.webcoderskull.com/img/team4.png" class="img-responsive" alt="">
-                    </figure>
-                    <h3><a href="http://www.webcoderskull.com/">Manish </a></h3>
-                    <p>Freelance Web Developer</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="col-md-12 ">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt="">
-                    </figure>
-                    <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
-                    <p>Freelance Web Developer</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="col-md-12 ">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt="">
-                    </figure>
-                    <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
-                    <p>Freelance Web Developer</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="col-md-12 ">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="http://www.webcoderskull.com/img/team2.png" class="img-responsive" alt="">
-                    </figure>
-                    <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
-                    <p>Freelance Web Developer</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </li>
+            @endforeach
         </div>
     </ul>
 
     <!-- /.carousel -->
 </section><!-- /.team-kami-wrapper -->
+<!-- Our Trusted by-->
+<section class="trusted-client-wrapper">
+    <h2 class="section-title wow fadeInDown">We are Trusted by</h2>
+    <div id="carousel-trusted-generic" class="carousel slide" data-ride="carousel">
+        <!--Indicators -->
+        @foreach($sliderPerusahaan as $key => $value)
+        <ol class="carousel-indicators">
+            <li data-target="#ccarousel-trusted-generic"
+            data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}></li>
+        </ol>
+        @endforeach
+        <!--Wrapper for slides -->
+        <div class="carousel-inner">
+            @foreach($sliderPerusahaan as $key => $value)
+            <div class="item {{ $key == 0 ? "active" : "" }}">
+                <img src="{{ asset('public/upload/image/'.$value->gambar) }}"
+                    alt="<?= $value->judul_galeri ?>">
+            </div>
+            @endforeach
+        </div><!-- Carousel END -->
+</section>

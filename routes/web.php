@@ -103,6 +103,8 @@ function()
     // team
     Route::get('admin/team', 'Team@index');
     Route::post('admin/team/tambahteam', 'Team@tambahteam');
+    Route::get('admin/team/delete{par1}', 'Team@delete');
+    Route::post('admin/team/proses', 'Team@proses');
     // berita
     Route::get('admin/berita', 'Berita@index');
     Route::get('admin/berita/cari', 'Berita@cari');

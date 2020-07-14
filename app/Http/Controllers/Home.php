@@ -12,6 +12,7 @@ use App\Berita_model;
 use App\Pemesanan_model;
 use App\Pendaftaran_model;
 use App\Pesan_model;
+use App\Team_model;
 use App\Testimoni_model;
 use Ramsey\Uuid\Uuid;
 use PDF;
@@ -27,7 +28,11 @@ class Home extends Controller
         $produks = $model->listing();
         $model_testimoni = new Testimoni_model();
         $testimoni= $model_testimoni->semua();
+        $model_team = new Team_model();
+        $team= $model_team->semua();
         $news   = new Berita_model();
+        $sliderPerusahaan = DB::table('galeri')->where('jenis_galeri', 'Galeri')->limit(5)->orderBy('id_galeri', 'DESC')->get();
+
         $berita = $news->home();
 
         $data = array(
@@ -35,10 +40,12 @@ class Home extends Controller
             'deskripsi' => $site->namaweb . ' - ' . $site->tagline,
             'keywords'  => $site->namaweb . ' - ' . $site->tagline,
             'slider'    => $slider,
-            'site'        => $site,
+            'site'      => $site,
             'aktif'     => 'nameweb',
-            'produks'    => $produks,
+            'produks'   => $produks,
+            'teams'     => $team,
             'testimoni'    => $testimoni,
+            'sliderPerusahaan'    => $sliderPerusahaan,
             'berita'    => $berita,
             'content'   => 'home/index'
         );

@@ -18,10 +18,13 @@ class Team extends Controller
         }
         $myteam  = new Team_model();
         $team    = $myteam->semua();
+        $teams 	= DB::table('tim')->orderBy('id','ASC')->get();
+
 
         $data = array(
             'title'        => 'Our Team',
             'team'         => $team,
+            'teams'         => $teams,
             'aktif'        => 'team',
             'content'      => 'admin/konfigurasi/team'
         );
@@ -85,9 +88,57 @@ class Team extends Controller
 
     //edit
 
-    public function edit(Request $request)
+    public function proses(Request $request)
     {
-        # code...
+        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        // UPLOAD START
+        $image                  = $request->file('foto');
+        if(!empty($image)) {
+            // UPLOAD START
+            $filenamewithextension  = $request->file('foto')->getClientOriginalName();
+            $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+            $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
+            $destinationPath        = public_path('upload/image/thumbs/');
+            $img = Image::make($image->getRealPath(),array(
+                'width'     => 150,
+                'height'    => 150,
+                'grayscale' => false
+            ));
+            $img->save($destinationPath.'/'.$input['nama_file']);
+            $destinationPath = public_path('upload/image/');
+            $image->move($destinationPath, $input['nama_file']);
+            // END UPLOAD
+            DB::table('tim')->where('id',$request->id)->update([
+                'nama_lengkap'      => $request->nama_lengkap,
+                'jabatan'           => $request->jabatan,
+                'telp'              => $request->telp,
+                'facebook'          => $request->facebook,
+                'foto'              => $input['nama_file']
+            ]);
+        }else{
+            DB::table('tim')->where('id',$request->id)->update([
+                'nama_lengkap'      => $request->nama_lengkap,
+                'jabatan'           => $request->jabatan,
+                'telp'              => $request->telp,
+                'facebook'          => $request->facebook,
+            ]);
+        }
+        return redirect('admin/team')->with(['sukses' => 'Data telah diupdate']);
+
+
     }
 
+      // Proses
+      public function deletemultiple(Request $request)
+      {
+          // PROSES HAPUS MULTIPLE
+          if(isset($_POST['hapus'])) {
+              $id       = $request->id;
+              for($i=0; $i < sizeof($id);$i++) {
+                  DB::table('tim')->where('id',$id[$i])->delete();
+              }
+              return redirect('admin/team')->with(['sukses' => 'Data telah dihapus']);
+          }
+      }
+     
 }

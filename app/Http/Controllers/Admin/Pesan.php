@@ -32,7 +32,6 @@ class Pesan extends Controller
 
      public function proses(Request $request)
      {
-         $site   = DB::table('pesan')->first();
          // PROSES HAPUS MULTIPLE
          if(isset($_POST['hapus'])) {
              $id       = $request->id;
