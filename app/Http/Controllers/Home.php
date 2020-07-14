@@ -160,6 +160,8 @@ class Home extends Controller
             "name" => "required|max:225",
             "phone" => "required|unique:pesan|regex:/^([0-9\s\-\+\(\)]*)$/|min:3",
             "email" => "required|unique:pesan",
+            'g-recaptcha-response' => 'required|captcha',
+
         ]);
         try {
             $message = new Pesan_model();
