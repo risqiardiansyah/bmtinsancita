@@ -15,6 +15,7 @@
         </ul>
     </div>
     @endif
+    <h3>Kontak</h3>
     <div class="row">
         <div class="col-md-6">
             <div class="mini-contact">
@@ -44,18 +45,22 @@
                         {!! $site->google_map!!}
                         <a href="https://www.embedgooglemap.net/blog/nordvpn-coupon-code/">nordvpn codes</a></div>
                     <style>
-                        .mapouter {
+                        .gmap_canvas {
                             position: relative;
-                            text-align: right;
-                            height: 500px;
-                            width: 679px;
+                            padding-bottom: 56.25%;
+                            padding-top: 30px;
+                            height: 0;
+                            overflow: hidden;
                         }
 
-                        .gmap_canvas {
-                            overflow: hidden;
-                            background: none !important;
-                            height: 500px;
-                            width: 679px;
+                        .gmap_canvas iframe,
+                        .gmap_canvas object,
+                        .gmap_canvas embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
                         }
 
                     </style>
