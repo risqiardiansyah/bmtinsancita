@@ -1,6 +1,13 @@
 <?php
 use Illuminate\Support\Facades\DB;
-$site       = DB::table('konfigurasi')->first();
+use App\Nav_model;
+$site                 = DB::table('konfigurasi')->first();
+// Produk
+$myproduk             = new Nav_model();
+$nav_kategori_produk  = $myproduk->nav_produk();
+// Nav profil
+$myprofil             = new Nav_model();
+$nav_profil           = $myproduk->nav_profil();
 ?>
 <section class="footer-widget-wrapper">
     <div class="container">
@@ -75,7 +82,7 @@ $site       = DB::table('konfigurasi')->first();
             <div class="col-md-12">
                 <div class="copyright wow fadeInDown">
                     <p>Copyright &copy; {{date('Y')}}
-                      <?= $site->namaweb ?>
+                        <?= $site->namaweb ?>
                     </p>
                 </div><!-- /.copyright -->
             </div><!-- /.col-md-12 -->
@@ -96,7 +103,48 @@ $site       = DB::table('konfigurasi')->first();
         <div>
 
             <ul>
-                <li><a href="{{ asset("/") }}">Home</a></li>
+                <li class="<?php if($aktif == 'nameweb'){echo " active";} ?>"><a href="{{ asset('/') }}">Home</a>
+                </li>
+                <li class="dropdown <?php if($aktif == 'read'){echo " active";} ?>"><a href="#">Tentang Kami <b
+                            class="caret"></b></a>
+                    <!-- submenu-wrapper -->
+                    <div class="submenu-wrapper submenu-wrapper-topbottom">
+                        <div class="submenu-inner  submenu-inner-topbottom">
+                            <ul class="dropdown-menu">
+                                @foreach($nav_profil as $nav_profil)
+                                <li><a
+                                        href="{{ asset('berita/read/'.$nav_profil->slug_berita) }}"><?=$nav_profil->judul_berita ?></a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div><!-- /.submenu-inner -->
+                    </div> <!-- /.submenu-wrapper -->
+                </li>
+
+                <li class="dropdown <?php if($aktif == 'produk'){echo " active";} ?>"><a
+                        href="{{ asset('produk') }}">Produk <b class="caret"></b></a>
+                    <!-- submenu-wrapper -->
+                    <div class="submenu-wrapper submenu-wrapper-topbottom">
+                        <div class="submenu-inner  submenu-inner-topbottom">
+                            <ul class="dropdown-menu">
+                                @foreach($nav_kategori_produk as $nkp)
+                                <li><a
+                                        href="{{ asset('produk/kategori/'.$nkp->slug_kategori_produk) }}"><?=$nkp->nama_kategori_produk ?></a>
+                                </li>
+                                @endforeach
+                                <li><a href="#">
+                                        <hr style="margin: 0; padding: 0;"></a></li>
+                                <li><a href="{{ asset('produk') }}">Semua Produk</a></li>
+                            </ul>
+                        </div><!-- /.submenu-inner -->
+                    </div> <!-- /.submenu-wrapper -->
+                </li>
+                <li class="<?php if($aktif == 'video'){echo " active";} ?>"><a href="{{ asset('video') }}">Program</a>
+                </li>
+                <li class="<?php if($aktif == 'laporan'){echo " active";} ?>"><a
+                        href="{{ asset('download') }}">Laporan</a></li>
+                <li class="<?php if($aktif == 'kontak'){echo " active";} ?>"><a href="{{ asset('kontak') }}">Kontak</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -133,63 +181,20 @@ $site       = DB::table('konfigurasi')->first();
 <!-- Custom Script -->
 <script src="{{ asset("public/frontend/html") }}/js/scripts.js"></script>
 <script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-      // Add
-      $('.add_cart').click(function () {
-          var product_id = $(this).data("productid");
-          var product_name = $(this).data("productname");
-          var product_price = $(this).data("productprice");
-          var quantity = $('#' + product_id).val();
-          var pengalihan = $('#' + product_id).val();
-          $.ajax({
-              asset: "{{ asset('/') }}keranjang/tambah",
-              method: "POST",
-              data: {
-                  product_id: product_id,
-                  product_name: product_name,
-                  product_price: product_price,
-                  quantity: quantity,
-                  pengalihan: pengalihan
-              },
-              success: function (data) {
-                  window.location.href = "{{ asset('/') }}keranjang";
-              }
-          });
-      });
-      // Remove
-      $(document).on('click', '.romove_cart', function () {
-          var row_id = $(this).attr("id");
-          $.ajax({
-              asset: "{{ asset('/') }}keranjang/hapus",
-              method: "POST",
-              data: {
-                  row_id: row_id
-              },
-              success: function (data) {
-                  window.location.href = "{{ asset('/') }}keranjang";
-              }
-          });
-      });
-
-  });
-
-</script>
 <script>
-  $(document).ready(function () {
-      $("#testimonial-slider").owlCarousel({
-          items: 2,
-          itemsDesktop: [1000, 2],
-          itemsDesktopSmall: [979, 2],
-          itemsTablet: [768, 1],
-          pagination: false,
-          navigation: true,
-          navigationText: ["", ""],
-          autoPlay: true
-      });
-  });
+    $(document).ready(function () {
+        $("#testimonial-slider").owlCarousel({
+            items: 2,
+            itemsDesktop: [1000, 2],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 1],
+            pagination: false,
+            navigation: true,
+            navigationText: ["", ""],
+            autoPlay: true
+        });
+    });
+
 </script>
 <script>
     $(document).ready(function () {
@@ -204,151 +209,160 @@ $site       = DB::table('konfigurasi')->first();
             autoPlay: true
         });
     });
-  </script>
-<script>
-  // Startup Scripts
-  $(document).ready(function () {
-      $('.hero').css('height', ($(window).height() - $('header').outerHeight()) +
-          'px'); // Set hero to fill page height
 
-      $('#scroll-hero').click(function () {
-          $('html,body').animate({
-              scrollTop: $("#hero-bloc").height()
-          }, 'slow');
-      });
-  });
-
-
-  // Window resize 
-  $(window).resize(function () {
-      $('.hero').css('height', ($(window).height() - $('header').outerHeight()) +
-          'px'); // Refresh hero height  	
-  });
 </script>
 <script>
-  $(document).ready(function () {
-      $("#team-kami-slider").owlCarousel({
-          items: 4,
-          itemsDesktop: [1000, 2],
-          itemsDesktopSmall: [979, 2],
-          itemsTablet: [768, 1],
-          pagination: false,
-          navigation: true,
-          navigationText: ["", ""],
-          autoPlay: true
-      });
-  });
+    // Startup Scripts
+    $(document).ready(function () {
+        $('.hero').css('height', ($(window).height() - $('header').outerHeight()) +
+            'px'); // Set hero to fill page height
+
+        $('#scroll-hero').click(function () {
+            $('html,body').animate({
+                scrollTop: $("#hero-bloc").height()
+            }, 'slow');
+        });
+    });
+
+
+    // Window resize 
+    $(window).resize(function () {
+        $('.hero').css('height', ($(window).height() - $('header').outerHeight()) +
+            'px'); // Refresh hero height  	
+    });
+
 </script>
 <script>
-  $(document).ready(function () {
-      $("#project-kami-slider").owlCarousel({
-          items: 3,
-          itemsDesktop: [1000, 2],
-          itemsDesktopSmall: [979, 2],
-          itemsTablet: [768, 1],
-          pagination: false,
-          navigation: true,
-          navigationText: ["", ""],
-          autoPlay: false
-      });
-  });
+    $(document).ready(function () {
+        $("#team-kami-slider").owlCarousel({
+            items: 4,
+            itemsDesktop: [1000, 2],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 1],
+            pagination: false,
+            navigation: true,
+            navigationText: ["", ""],
+            autoPlay: true
+        });
+    });
+
 </script>
 <script>
-  $(document).ready(function () {
-      $('.tarkikComandSlider').slick({
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 5000,
-          dots: true,
-      });
-  });
+    $(document).ready(function () {
+        $("#project-kami-slider").owlCarousel({
+            items: 3,
+            itemsDesktop: [1000, 2],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 1],
+            pagination: false,
+            navigation: true,
+            navigationText: ["", ""],
+            autoPlay: false
+        });
+    });
+
 </script>
 <script>
-  $(document).ready(function (ev) {
-      $('#custom_carousel').on('slide.bs.carousel', function (evt) {
-          $('#custom_carousel .controls li.active').removeClass('active');
-          $('#custom_carousel .controls li:eq(' + $(evt.relatedTarget).index() + ')').addClass(
-              'active');
-      })
-  });
+    $(document).ready(function () {
+        $('.tarkikComandSlider').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            dots: true,
+        });
+    });
+
 </script>
 <script>
-  $(document).ready(function (ev) {
-      const height = (elem) => {
+    $(document).ready(function (ev) {
+        $('#custom_carousel').on('slide.bs.carousel', function (evt) {
+            $('#custom_carousel .controls li.active').removeClass('active');
+            $('#custom_carousel .controls li:eq(' + $(evt.relatedTarget).index() + ')').addClass(
+                'active');
+        })
+    });
 
-          return elem.getBoundingClientRect().height
+</script>
+<script>
+    $(document).ready(function (ev) {
+        const height = (elem) => {
 
-      }
+            return elem.getBoundingClientRect().height
 
-      const distance = (elemA, elemB, prop) => {
+        }
 
-          const sizeA = elemA.getBoundingClientRect()[prop]
-          const sizeB = elemB.getBoundingClientRect()[prop]
+        const distance = (elemA, elemB, prop) => {
 
-          return sizeB - sizeA
+            const sizeA = elemA.getBoundingClientRect()[prop]
+            const sizeB = elemB.getBoundingClientRect()[prop]
 
-      }
+            return sizeB - sizeA
 
-      const factor = (elemA, elemB, prop) => {
+        }
 
-          const sizeA = elemA.getBoundingClientRect()[prop]
-          const sizeB = elemB.getBoundingClientRect()[prop]
+        const factor = (elemA, elemB, prop) => {
 
-          return sizeB / sizeA
+            const sizeA = elemA.getBoundingClientRect()[prop]
+            const sizeB = elemB.getBoundingClientRect()[prop]
 
-      }
+            return sizeB / sizeA
 
-      document.querySelectorAll('.card').forEach((elem) => {
+        }
 
-          const head = elem.querySelector('.card__head')
-          const image = elem.querySelector('.card__image')
-          const author = elem.querySelector('.card__author')
-          const body = elem.querySelector('.card__body')
-          const foot = elem.querySelector('.card__foot')
+        document.querySelectorAll('.card').forEach((elem) => {
 
-          elem.onmouseenter = () => {
+            const head = elem.querySelector('.card__head')
+            const image = elem.querySelector('.card__image')
+            const author = elem.querySelector('.card__author')
+            const body = elem.querySelector('.card__body')
+            const foot = elem.querySelector('.card__foot')
 
-              elem.classList.add('hover')
+            elem.onmouseenter = () => {
 
-              const imageScale = 1 + factor(head, body, 'height')
-              image.style.transform = `scale(${imageScale})`
+                elem.classList.add('hover')
 
-              const bodyDistance = height(foot) * -1
-              body.style.transform = `translateY(${bodyDistance}px)`
+                const imageScale = 1 + factor(head, body, 'height')
+                image.style.transform = `scale(${imageScale})`
 
-              const authorDistance = distance(head, author, 'height')
-              author.style.transform = `translateY(${authorDistance}px)`
+                const bodyDistance = height(foot) * -1
+                body.style.transform = `translateY(${bodyDistance}px)`
 
-          }
+                const authorDistance = distance(head, author, 'height')
+                author.style.transform = `translateY(${authorDistance}px)`
 
-          elem.onmouseleave = () => {
+            }
 
-              elem.classList.remove('hover')
+            elem.onmouseleave = () => {
 
-              image.style.transform = `none`
-              body.style.transform = `none`
-              author.style.transform = `none`
+                elem.classList.remove('hover')
 
-          }
+                image.style.transform = `none`
+                body.style.transform = `none`
+                author.style.transform = `none`
 
-      });
-  });
+            }
+
+        });
+    });
+
 </script>
 <script type="text/javascript">
-  function hanyaAngka(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-      if (charCode > 31 && (charCode < 48 || charCode > 57))
-          return false;
-      return true;
-  }
+    function hanyaAngka(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
 
-  function hanyaHuruf(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-      if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) && charCode > 32)
-          return false;
-      return true;
-  }
+    function hanyaHuruf(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) && charCode > 32)
+            return false;
+        return true;
+    }
+
 </script>
 </body>
+
 </html>

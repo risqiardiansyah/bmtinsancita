@@ -5,6 +5,9 @@ $site = DB::table('konfigurasi')->first();
 <html lang="en" class="no-js">
 
 <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ $deskripsi }}">
     <meta name="keywords" content="{{ $keywords }}">
     <meta name="author" content="{{ $site->namaweb }}">
@@ -47,9 +50,8 @@ $site = DB::table('konfigurasi')->first();
 
     </script>
 
-</head>
 <?php echo $site->metatext; ?>
-
+</head>
 <body>
     <div id="st-container" class="st-container">
         <div class="st-pusher">
