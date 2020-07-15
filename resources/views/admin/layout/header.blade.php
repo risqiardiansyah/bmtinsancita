@@ -58,10 +58,6 @@ $site                 = DB::table('konfigurasi')->first();
       <hr class="sidebar-divider">
       <div class="sidebar-heading">AKTIFITAS LAYANAN</div>
       <hr class="sidebar-divider">
-      <li class="nav-item <?php if($aktif == 'pemesanan'){echo " active";} ?>">
-        <a class="nav-link" href="{{ asset('admin/pemesanan') }}">
-          <i class="fas fa-fw fa-money-bill-alt"></i> <span>Pemesanan</span></a>
-      </li>
       <li class="nav-item <?php if($aktif == 'pendaftaran'){echo " active";} ?>">
         <a class="nav-link" href="{{ asset('admin/dasbor/pendaftaran') }}">
           <i class="fas fa-fw fa-user"></i> <span>Pendaftaran</span></a>
