@@ -6,7 +6,7 @@
                   <div class="entry-meta">
                   </div><!-- /.entry-meta -->
 
-                  <h2 class="entry-title"><a href="blog-single.html">{!!$title!!}</a></h2>
+                  <h2 class="entry-title"><a href="{{asset('berita')}}">{!!$title!!}</a></h2>
               </header><!-- /.entry-header -->
 
               <div class="post-thumbnail">

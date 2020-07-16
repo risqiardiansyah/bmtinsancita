@@ -1,67 +1,44 @@
 <!-- ======= Hero Section ======= -->
-<section id="hero">
-  <div class="container">
+<div class="inner-content">
     <div class="row">
-      <div class="col-lg-12 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-        <div class="kotak">
-          <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9">
+            @foreach($beritas as $key => $value)
+            <article class="blog-post-wrapper {{ $key == 0 ? "sticky" : "" }}">
+                <header class="entry-header">
+                    <div class="entry-meta">
+                        <ul class="list-inline">
+                            <li><span class="the-time"><a
+                                        href="#">{{date('d-m-Y',strtotime($value->tanggal_publish))}}</a></span></li>
+                        </ul>
+                    </div><!-- /.entry-meta -->
 
-            <div class="col-md-12">
-              <h1 class="text-center"><?php echo $title ?></h1>
-              <hr>
-            </div>
-              
-
-            <?php  
-            if($beritas) {
-            foreach($beritas as $berita) { ?>
-            <div class="col-lg-12 col-md-12 col-sm-12 mb-4 berita">
-              <div class="row">
-                  <figure class="thumnail col-md-4">
-                    <a href="{{ asset('berita/detail/'.$berita->slug_berita) }}">
-                      <img src="{{ asset('public/upload/image/thumbs/'.$berita->gambar) }}" alt="<?php  echo $berita->judul_berita ?>" class="img-fluid img-thumbnail">
-                    </a>
-                  </figure>
-                  <div class="keterangan col-md-8">
-                      <h3>
-                        <a href="{{ asset('berita/detail/'.$berita->slug_berita) }}">
-                          <?php  echo $berita->judul_berita ?>
-                        </a>
-                      </h3>
-                    <p class="harga"><?php echo \Illuminate\Support\Str::limit(strip_tags($berita->isi), 350, $end='...') ?></p>
-                    <div class="link-berita">
-                      <p>
-                        <input type="hidden" name="quantity" id="<?php echo $berita->id_berita;?>" value="1" class="quantity">
-                        <a href="{{ asset('berita/read/'.$berita->slug_berita) }}" class="btn btn-success btn-sm"><i class="fa fa-search"></i> Baca Detail...</a>
-                          
-                      </p>
-                  </div>
-                  </div>
-                  
-                </div>
-            </div>
-          <?php } ?>
-          <div class="col-md-12">
-            <hr>
-                <p class="text-center">
-                  {{ $beritas->links() }}
-                </p>
-            </div>
-          </div>
-          <?php }else{ ?>
-          <div class="col-md-12">
-            <p class="alert alert-info">Produk tidak ditemukan. Gunakan kata kunci pencarian yang berbeda.</p>
-          </div>
-          <?php } ?>
-          <div class="col-md-12">
-            <hr>
-          </div>
-            <div class="col-md-12">
-              
-            </div>
-      </div>
-    </div>
-  </div>
+                    <h2 class="entry-title"><a
+                            href="{{ asset('berita/read/'.$value->slug_berita) }}">{{$value->judul_berita}}</a></h2>
+                </header><!-- /.entry-header -->
+                <div class="entry-content">
+                    <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 350, $end='...') ?></p>
+                </div><!-- /.entry-content -->
+                <div class="post-thumbnail">
+                    <img src="{{ asset('public/upload/image/thumbs/'.$value->gambar) }}" class="img-responsive " alt="">
+                </div><!-- /.post-thumbnail -->
+                <footer class="entry-footer">
+                    <a href="{{ asset('berita/read/'.$value->slug_berita) }}" class="btn btn-primary"> Read More</a>
+                </footer><!-- /.entry-footer -->
+            </article>
+            @endforeach
+            <!-- pagination-wrap -->
+            <nav class="pagination-wrap text-center">
+                <ul class="pagination">
+                    <li class="disabled"><a title="Previous"><i class="flaticon-arrowhead4"></i></a></li>
+                    <li class="active"><a>1</a></li>
+                    <li><a title="2" href="#">2</a></li>
+                    <li><a title="3" href="#">3</a></li>
+                    <li><a title="4" href="#">4</a></li>
+                    <li><a title="Next" href="#"><i class="flaticon-arrow437"></i></a></li>
+                </ul>
+                <div class="counter"> Page 1 of 4</div>
+            </nav>
+            <!-- end pagination-wrap -->
+        </div><!-- /.col-md-9 -->
+    </div><!-- /.row -->
 </div>
-</div>
-</section><!-- End Hero -->
