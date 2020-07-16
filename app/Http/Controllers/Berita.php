@@ -10,7 +10,7 @@ class Berita extends Controller
     public function index()
     {
     	$site 	= DB::table('konfigurasi')->first();
-    	$slider = DB::table('galeri')->where('jenis_galeri','Beritapage')->orderBy('id_galeri', 'DESC')->first();
+        $slider = DB::table('galeri')->where('jenis_galeri', 'Homepage')->limit(5)->orderBy('id_galeri', 'DESC')->get();
     	// $berita = DB::table('berita')->where('status_berita','Publish')->orderBy('id_berita', 'DESC')->get();
     	$model 	= new Berita_model();
 		$berita = $model->listing();
@@ -20,6 +20,7 @@ class Berita extends Controller
                         'keywords'  => $site->namaweb.' - '.$site->tagline,
                         'slider'    => $slider,
                         'site'		=> $site,
+                        'aktif'     => 'Berita',
                         'beritas'	=> $berita,
                         'content'   => 'berita/index'
                     );
