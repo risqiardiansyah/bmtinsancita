@@ -63,24 +63,11 @@
 
                       <!-- Tab panes -->
                       <div class="tab-content">
-                          <div class="tab-pane fade" id="recent-post">
-                              <ul class="tab-recent-post">
-                                  <li><a href="#">Primex is one of the noteable html5
-                                      templates in 2015</a></li>
-                                  <li><a href="#">Image synergistically fabricate covalent
-                                      expertise</a></li>
-                                  <li><a href="#">Primex- the trendy addition for winter</a>
-                                  </li>
-                              </ul>
-                          </div> <!-- /recent post tab -->
-
                           <div class="tab-pane fade active in" id="most-read">
                               <ul class="tab-most-read">
-                                  <li><a href="#">Image synergistically fabricate covalent</a>
-                                  </li>
-                                  <li><a href="#">Primex responsive html5 template</a></li>
-                                  <li><a href="#">Morbi aliquam pellentesque neque tibulum</a>
-                                  </li>
+                                @foreach($berita_all as $value)
+                                <li><a href="{{ asset('berita/read/'.$value->slug_berita) }}">{{$value->judul_berita}}</a></li>
+                                @endforeach
                               </ul>
                           </div><!-- /most read tab -->
                       </div>

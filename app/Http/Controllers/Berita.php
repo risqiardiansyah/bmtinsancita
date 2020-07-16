@@ -40,7 +40,7 @@ class Berita extends Controller
         // $berita = DB::table('berita')->where('status_berita','Publish')->orderBy('id_berita', 'DESC')->get();
         $model  = new Berita_model();
         $berita = $model->read($slug_berita);
-        $berita_all         = $model->all_kategori($berita->id_kategori);
+        $berita_all         = $model->home();
 
 
         $data = array(  'title'     => $berita->judul_berita,
@@ -50,6 +50,7 @@ class Berita extends Controller
                         'site'      => $site,
                         'aktif'     => 'read',
                         'berita'    => $berita,
+                        'berita_all'    => $berita_all,
                         'content'   => 'berita/read'
                     );
         return view('layout/wrapper',$data);
