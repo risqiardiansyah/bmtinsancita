@@ -11,7 +11,8 @@ $site = DB::table('konfigurasi')->first();
     <meta name="description" content="{{ $deskripsi }}">
     <meta name="keywords" content="{{ $keywords }}">
     <meta name="author" content="{{ $site->namaweb }}">
-
+    <!-- CSRF Token -->
+    @csrf
     <title>{{ $title }}</title>
     <link rel="icon" href="{{ asset('public/upload/image/'.$site->icon) }}" type="image/x-icon">
     <!-- Bootstrap Core CSS -->
