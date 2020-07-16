@@ -2,19 +2,24 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User_model;
-
+use App\Rules\Captcha;
+use Illuminate\Support\Facades\DB;
 class Login extends Controller
 {
     // Homepage
     public function index()
     {
-        $data = array(  'title'     => 'Login - Java Web Media');
+        $site     = DB::table('konfigurasi')->first();
+        $data = array(  'title'     => 'Login'.' - '.$site->namaweb);
         return view('login/index',$data);
     }
 
     // Cek
     public function cek(Request $request)
     {
+        $request->validate([
+            'g-recaptcha-response' => new Captcha(),
+        ]);
         $username   = $request->username;
         $password   = $request->password;
         $model      = new User_model();

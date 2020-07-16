@@ -32,7 +32,7 @@ Route::get('cetak/{par1}', 'Home@cetak');
 // Login
 Route::get('login', 'Login@index');
 Route::post('login/cek', 'Login@cek');
-Route::get('login/lupa', 'Login@lupa');
+// Route::get('login/lupa', 'Login@lupa');
 Route::get('login/logout', 'Login@logout');
 // Berita
 Route::get('berita', 'Berita@index');
