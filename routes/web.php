@@ -21,13 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Home@index');
 Route::get('home', 'Home@index');
 Route::get('kontak', 'Home@kontak');
-Route::get('pemesanan', 'Home@pemesanan');
-Route::get('konfirmasi', 'Home@konfirmasi');
-Route::get('pembayaran', 'Home@pembayaran');
-Route::post('proses_pemesanan', 'Home@proses_pemesanan');
 Route::post('proses_pesan', 'Home@proses_pesan');
 Route::post('proses_pendaftaran', 'Home@proses_pendaftaran');
-Route::get('berhasil/{par1}', 'Home@berhasil');
 Route::get('cetak/{par1}', 'Home@cetak');
 // Login
 Route::get('login', 'Login@index');
