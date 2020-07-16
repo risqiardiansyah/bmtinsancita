@@ -12,14 +12,19 @@ class Berita extends Controller
     	$site 	= DB::table('konfigurasi')->first();
         $slider = DB::table('galeri')->where('jenis_galeri', 'Homepage')->limit(5)->orderBy('id_galeri', 'DESC')->get();
     	// $berita = DB::table('berita')->where('status_berita','Publish')->orderBy('id_berita', 'DESC')->get();
-    	$model 	= new Berita_model();
-		$berita = $model->listing();
+        $pagination = DB::table('berita')
+        ->select('*')
+        ->orderBy('id_berita', 'DESC')
+        ->paginate(2);
+        $model 	= new Berita_model();
+        $berita = $model->listing();
 
         $data = array(  'title'     => $site->namaweb.' - '.$site->tagline,
                         'deskripsi' => $site->namaweb.' - '.$site->tagline,
                         'keywords'  => $site->namaweb.' - '.$site->tagline,
                         'slider'    => $slider,
                         'site'		=> $site,
+                        'mypaginate'=> $pagination,
                         'aktif'     => 'Berita',
                         'beritas'	=> $berita,
                         'content'   => 'berita/index'
