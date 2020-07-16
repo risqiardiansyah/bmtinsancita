@@ -15,12 +15,13 @@
                     <h2 class="entry-title"><a
                             href="{{ asset('berita/read/'.$value->slug_berita) }}">{{$value->judul_berita}}</a></h2>
                 </header><!-- /.entry-header -->
-                <div class="entry-content">
-                    <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 350, $end='...') ?></p>
-                </div><!-- /.entry-content -->
                 <div class="post-thumbnail">
                     <img src="{{ asset('public/upload/image/thumbs/'.$value->gambar) }}" class="img-responsive " alt="">
                 </div><!-- /.post-thumbnail -->
+                <div class="entry-content">
+                    <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 350, $end='...') ?></p>
+                </div><!-- /.entry-content -->
+
                 <footer class="entry-footer">
                     <a href="{{ asset('berita/read/'.$value->slug_berita) }}" class="btn btn-primary"> Read More</a>
                 </footer><!-- /.entry-footer -->
