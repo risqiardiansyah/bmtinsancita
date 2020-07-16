@@ -15,7 +15,7 @@ class Berita extends Controller
         $pagination = DB::table('berita')
         ->select('*')
         ->orderBy('id_berita', 'DESC')
-        ->paginate(2);
+        ->paginate(4);
         $model 	= new Berita_model();
         $berita = $model->listing();
 
