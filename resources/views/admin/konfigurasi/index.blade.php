@@ -154,18 +154,6 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h3>Cara Pemesanan Produk</h3>
-                    <hr>
-                    <div class="form-group">
-                        <label>Pilih Cara Pemesanan Produk</label>
-                        <select name="cara_pesan" class="form-control">
-                            <option value="Formulir Pemesanan">Formulir Pemesanan</option>
-                            <option value="Keranjang Belanja"
-                                <?php if($site->cara_pesan=='Keranjang Belanja') { echo 'selected'; } ?>>Keranjang
-                                Belanja</option>
-                        </select>
-                    </div>
-
                     <h3>Text di bawah peta dan link downloadnya</h3>
                     <hr>
                     <div class="form-group">
