@@ -250,7 +250,7 @@ class Berita extends Controller
                 'gambar'            => $input['nama_file'],
                 'icon'              => $request->icon,
                 'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . $request->jam_publish,
+                'tanggal_publish'   => date('Y-m-d'),
                 'urutan'            => $request->urutan,
                 'tanggal_post'      => date('Y-m-d H:i:s')
             ]);
@@ -266,7 +266,7 @@ class Berita extends Controller
                 'status_berita'     => $request->status_berita,
                 'icon'              => $request->icon,
                 'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . $request->jam_publish,
+                'tanggal_publish'   => date('Y-m-d'),
                 'urutan'            => $request->urutan,
                 'tanggal_post'      => date('Y-m-d H:i:s')
             ]);
@@ -313,7 +313,7 @@ class Berita extends Controller
                 'gambar'            => $input['nama_file'],
                 'icon'              => $request->icon,
                 'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . $request->jam_publish,
+                'tanggal_publish'   => date('Y-m-d'),
                 'urutan'            => $request->urutan
             ]);
         } else {
@@ -328,7 +328,7 @@ class Berita extends Controller
                 'status_berita'     => $request->status_berita,
                 'icon'              => $request->icon,
                 'keywords'          => $request->keywords,
-                'tanggal_publish'   => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . $request->jam_publish,
+                'tanggal_publish'   => date('Y-m-d'),
                 'urutan'            => $request->urutan
             ]);
         }

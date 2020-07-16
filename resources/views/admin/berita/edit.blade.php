@@ -36,24 +36,13 @@
             </div>
 
             <div class="row form-group">
-                <label class="col-md-3">Status &amp; Tanggal Publish</label>
-
-                <div class="col-md-2">
+                <label class="col-md-3">Status Publish</label>
+                <div class="col-md-6">
                     <select name="status_berita" class="form-control select2">
                         <option value="Publish">Publikasikan</option>
                         <option value="Draft" <?php if($berita->status_berita=="Draft") { echo "selected"; } ?>>Simpan
                             sebagai draft</option>
                     </select>
-                </div>
-                <div class="col-md-2">
-                    <input type="text" name="tanggal_publish" class="form-control tanggal"
-                        placeholder="Tanggal publikasi"
-                        value="<?php if(isset($_POST['tanggal_publish'])) { echo old('tanggal_publish'); }else{ echo date('Y-m-d',strtotime($berita->tanggal_publish)); } ?>"
-                        data-date-format="dd-mm-yyyy">
-                </div>
-                <div class="col-md-2">
-                    <input type="text" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi"
-                        value="<?php if(isset($_POST['jam_publish'])) { echo old('jam_publish'); }else{ echo date('H:i:s',strtotime($berita->tanggal_publish)); } ?>">
                 </div>
             </div>
 
@@ -72,7 +61,6 @@
                 </div>
 
                 <div class="col-md-3">
-                    <label>Kategori Berita</label>
                     <select name="id_kategori" class="form-control select2">
                         <?php foreach($kategori as $kategori) { ?>
                         <option value="<?php echo $kategori->id_kategori ?>"
