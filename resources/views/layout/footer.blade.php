@@ -55,8 +55,8 @@ $nav_profil           = $myproduk->nav_profil();
                         <li><a href="#">Reviews</a></li>
                         <li><a href="#">Testimonials</a></li>
                         <li><a href="#">Awards</a></li>
-                        <li><a href="#">Video Clips</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="{{'video'}}">Video</a></li>
+                        <li><a href="{{'berita'}}">Blog</a></li>
                     </ul>
                 </div><!-- /.footer-widget -->
             </div><!-- /.col-md-2 -->
@@ -82,7 +82,7 @@ $nav_profil           = $myproduk->nav_profil();
             <div class="col-md-12">
                 <div class="copyright wow fadeInDown">
                     <p>Copyright &copy; {{date('Y')}}
-                        <?= $site->namaweb ?>
+                        <a href="{{$site->website}}">{{$site->namaweb}}</a>
                     </p>
                 </div><!-- /.copyright -->
             </div><!-- /.col-md-12 -->
