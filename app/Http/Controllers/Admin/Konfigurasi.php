@@ -276,14 +276,14 @@ class Konfigurasi extends Controller
         $filenamewithextension  = $request->file('logo')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/logo/');
+        $destinationPath        = public_path('upload/image/logo');
         $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath . '/' . $input['nama_file']);
-        $destinationPath = public_path('upload/image/logo/');
+        $destinationPath = public_path('upload/image/logo');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
