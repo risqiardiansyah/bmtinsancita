@@ -50,7 +50,7 @@
                             </td>
                             <td>
                                 <?php if($value->foto != "") { ?>
-                                <img src="{{ url('upload/image/galeri/'.$value->foto) }}" width="60"
+                                <img src="{{ asset('public/upload/image/galeri/'.$value->foto) }}" width="60"
                                     class="img img-responsive">
                                 <?php }else{ echo 'Tidak ada'; } ?>
                             </td>                            

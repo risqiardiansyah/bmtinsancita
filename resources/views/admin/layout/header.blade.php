@@ -147,14 +147,12 @@ $site                 = DB::table('konfigurasi')->first();
         <div id="Konfigurasi" class="collapse" aria-labelledby="Konfigurasi" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item <?php if($aktif == 'konfigurasi'){echo " active";} ?> " href="{{ asset('admin/konfigurasi') }}"><i class="fa fa-newspaper"></i> Setting Website</a>
+            <a class="collapse-item <?php if($aktif == 'testimoni'){echo " active";} ?> " href="{{ asset('admin/testimoni') }}"><i class="fa fa-user"></i> Setting Testimoni</a>
             <a class="collapse-item <?php if($aktif == 'service'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/service') }}"><i class="fa fa-newspaper"></i> Our Service</a>
             <a class="collapse-item <?php if($aktif == 'team'){echo " active";} ?>" href="{{ asset('admin/team') }}"><i class="fa fa-user"></i> Our Team</a>
             <a class="collapse-item <?php if($aktif == 'logo'){echo " active";} ?> " href="{{ asset('admin/konfigurasi/logo') }}"><i class="fa fa-image"></i> Ganti Logo</a>
             <a class="collapse-item <?php if($aktif == 'icon'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/icon') }}"><i class="fa fa-tree"></i> Ganti Icon</a>
-            <a class="collapse-item <?php if($aktif == 'email'){echo " active";} ?> " href="{{ asset('admin/konfigurasi/email') }}"><i class="fa fa-envelope"></i> Setting Email</a>
             <a class="collapse-item <?php if($aktif == 'gambar'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/gambar') }}"><i class="fa fa-lock"></i> Ganti Gambar Login</a>
-            <a class="collapse-item <?php if($aktif == 'rekening'){echo " active";} ?> " href="{{ asset('admin/rekening') }}"><i class="fa fa-money-check"></i> Rekening Pembayaran</a>
-            <a class="collapse-item <?php if($aktif == 'pembayaran'){echo " active";} ?>" href="{{ asset('admin/konfigurasi/pembayaran') }}"><i class="fa fa-comment-dollar"></i> Panduan Pembayaran</a>
           </div>
         </div>
       </li>

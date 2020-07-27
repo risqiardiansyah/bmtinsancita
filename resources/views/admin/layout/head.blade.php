@@ -9,7 +9,7 @@ $site                 = DB::table('konfigurasi')->first();
 <meta charset="utf-8">
 <title>{{ $title }}</title>
 <!-- icon -->
-<link rel="shortcut icon" href="{{ asset('public/upload/image/'.$site->icon) }}">
+<link rel="shortcut icon" href="{{ asset('public/upload/image/icon/'.$site->icon) }}">
 <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
  

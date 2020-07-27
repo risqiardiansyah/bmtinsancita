@@ -57,7 +57,7 @@
 
                 <div class="col-md-6 alert alert-success">
                     <label>Your current icon</label><br>
-                    <img src="{{ url('upload/image/icon/'.$site->icon) }}" style="max-width:200px; height:auto;">
+                    <img src="{{ asset('public/upload/image/icon/'.$site->icon) }}" style="max-width:200px; height:auto;">
                 </div>
 
                 <div class="col-md-12">

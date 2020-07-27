@@ -14,7 +14,7 @@ $site = DB::table('konfigurasi')->first();
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title }}</title>
-    <link rel="icon" href="{{ asset('public/upload/image/'.$site->icon) }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('public/upload/image/icon/'.$site->icon) }}" type="image/x-icon">
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset("public/frontend/html") }}/css/bootstrap.min.css" rel="stylesheet">
     <!-- Web Fonts -->

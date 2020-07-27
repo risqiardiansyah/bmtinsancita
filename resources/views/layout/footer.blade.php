@@ -27,6 +27,14 @@ $nav_profil           = $myproduk->nav_profil();
                         <a href="#"> {{$site->namaweb}}</a>.
                     </p>
                 </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                      <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                      <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+                    </ul>
+                  </div>
             </div>
         </div>
     </footer>
@@ -122,7 +130,26 @@ $nav_profil           = $myproduk->nav_profil();
 <!-- Custom Script -->
 <script src="{{ asset("public/frontend/html") }}/js/scripts.js"></script>
 <script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
+<script>
+    $(document).ready(function () {
+        $('input[type="submit"]').attr('disabled', true);
+        $('input[type="text"]').on('keyup', function () {
+            var text_nama_lengkap = $('input[name="nama_lengkap"]').val();
+            var text_no_ktp = $('input[name="no_ktp"]').val();
+            var text_no_kk = $('input[name="no_kk"]').val();
+            var text_no_whatsapp = $('input[name="no_whatsapp"]').val();
+            var text_pekerjaan = $('input[name="pekerjaan"]').val();
+            if (text_nama_lengkap != '' && text_no_ktp != '' && text_no_kk != '' &&
+                text_no_whatsapp != '' && text_pekerjaan != ''
+            ) {
+                $('input[type="submit"]').attr('disabled', false);
+            } else {
+                $('input[type="submit"]').attr('disabled', true);
+            }
+        });
+    });
 
+</script>
 <script type="text/javascript">
     //Rotating Menu Share Button DesainKode
     $(document).ready(function (ev) {
@@ -225,7 +252,7 @@ $nav_profil           = $myproduk->nav_profil();
 </script>
 <script>
     $(document).ready(function () {
-        $("#produk-kami-slider").owlCarousel({
+        $("#testimonial-slider").owlCarousel({
             items: 2,
             itemsDesktop: [1000, 2],
             itemsDesktopSmall: [979, 2],
@@ -235,6 +262,70 @@ $nav_profil           = $myproduk->nav_profil();
             navigationText: ["", ""],
             autoPlay: true
         });
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        	/*
+		variables
+	*/
+
+		var $imagesSlider = $(".gallery-slider .gallery-slider__images>div"),
+			  $thumbnailsSlider = $(".gallery-slider__thumbnails>div");
+	/*
+		sliders
+	*/
+		// images options
+		$imagesSlider.slick({
+			speed:300,
+			slidesToShow:1,
+			slidesToScroll:1,
+			cssEase:'linear',
+			fade:true,
+			draggable:false,
+			asNavFor:".gallery-slider__thumbnails>div",
+			prevArrow:'.gallery-slider__images .prev-arrow',
+			nextArrow:'.gallery-slider__images .next-arrow'
+		});
+
+		// thumbnails options
+		$thumbnailsSlider.slick({
+			speed:300,
+			slidesToShow:5,
+			slidesToScroll:1,
+			cssEase:'linear',
+			centerMode:true,
+			draggable:false,
+			focusOnSelect:true,
+			asNavFor:".gallery-slider .gallery-slider__images>div",
+			prevArrow:'.gallery-slider__thumbnails .prev-arrow',
+			nextArrow:'.gallery-slider__thumbnails .next-arrow',
+			responsive: [
+				{
+					breakpoint: 720,
+					settings: {
+						slidesToShow: 4,
+						slidesToScroll: 4
+					}
+				},
+				{
+					breakpoint: 576,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 3
+					}
+				},
+				{
+					breakpoint: 350,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 2
+					}
+				}
+			]
+		});
+
     });
 
 </script>
@@ -261,21 +352,6 @@ $nav_profil           = $myproduk->nav_profil();
 </script>
 <script>
     $(document).ready(function () {
-        $("#team-kami-slider").owlCarousel({
-            items: 4,
-            itemsDesktop: [1000, 2],
-            itemsDesktopSmall: [979, 2],
-            itemsTablet: [768, 1],
-            pagination: false,
-            navigation: true,
-            navigationText: ["", ""],
-            autoPlay: true
-        });
-    });
-
-</script>
-<script>
-    $(document).ready(function () {
         $("#project-kami-slider").owlCarousel({
             items: 3,
             itemsDesktop: [1000, 2],
@@ -289,6 +365,7 @@ $nav_profil           = $myproduk->nav_profil();
     });
 
 </script>
+
 <script>
     $(document).ready(function () {
         $('.tarkikComandSlider').slick({

@@ -65,7 +65,7 @@ function()
     Route::post('admin/pesan/proses', 'Pesan@proses');
     // testimoni
     Route::get('admin/testimoni', 'Testimoni@index');
-    Route::post('admin/testimoni/addtestnimoni', 'Testimoni@addtestnimoni');
+    Route::post('admin/testimoni/addtestimoni', 'Testimoni@addtestimoni');
     Route::post('admin/testimoni/prosesedit', 'Testimoni@prosesedit');
     Route::get('admin/testimoni/delete/{par1}', 'Testimoni@delete');
     Route::post('admin/testimoni/proses_multi', 'Testimoni@proses_multi');

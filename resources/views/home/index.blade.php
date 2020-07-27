@@ -24,32 +24,32 @@
                 @csrf
                 @method("post")
                 <div class="form-group">
-                    <label for="">Nama Lengkap</label>
+                    <label for>Nama Lengkap</label>
                     <input type="text" name="nama_lengkap" class="form-control" value="{{old('nama_lengkap')}}"
                         placeholder="Nama lengkap" onkeypress="return hanyaHuruf(this);" maxlength="255" required>
                 </div>
                 <div class="form-group">
-                    <label for="">Nomor KTP </label>
-                    <input type="tel" name="no_ktp" class="form-control" value=""
-                        placeholder="Nomor Kartu Tanda Penduduk" onkeypress="return hanyaAngka(this);" minlength="16"
-                        maxlength="16" required="" value="{{old('no_ktp')}}">
+                    <label for>Nomor KTP </label>
+                    <input type="tel" name="no_ktp" class="form-control" value placeholder="Nomor Kartu Tanda Penduduk"
+                        onkeypress="return hanyaAngka(this);" minlength="16" maxlength="16" required
+                        value="{{old('no_ktp')}}">
                 </div>
                 <div class="form-group">
-                    <label for="">Nomor KK</label>
+                    <label for>Nomor KK</label>
                     <input type="text" name="no_kk" class="form-control" onkeypress="return hanyaAngka(this);"
-                        placeholder="Nomor Kartu Keluarga" required="" minlength="16" maxlength="16"
+                        placeholder="Nomor Kartu Keluarga" required minlength="16" maxlength="16"
                         value="{{old('no_kk')}}">
                 </div>
                 <div class="form-group">
-                    <label for="">Nomor Whatsapp </label>
-                    <input type="tel" name="no_whatsapp" class="form-control" value="" placeholder="Nomor WA yang aktif"
+                    <label for>Nomor Whatsapp </label>
+                    <input type="tel" name="no_whatsapp" class="form-control" value placeholder="Nomor WA yang aktif"
                         onkeypress="return hanyaAngka(this);" value="{{old('no_whatsapp')}}" minlength="10"
-                        maxlength="13" required="">
+                        maxlength="13" required>
                 </div>
                 <div class="form-group">
-                    <label for="">Pekerjaan</label>
+                    <label for>Pekerjaan</label>
                     <input type="tel" name="pekerjaan" class="form-control" value="{{old('pekerjaan')}}"
-                        placeholder="Pekerjaan" required="">
+                        placeholder="Pekerjaan" required>
                 </div>
                 <div class="form-group">
                     <span class="text-danger">*Pastikan semua inputan diisi dengan benar,
@@ -65,8 +65,8 @@
                     </div>
 
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" title="Mengirim data ke admin">Submit</button>
+                <div class="form-group action">
+                    <input type="submit" class="btn btn-primary" title="Mengirim data ke admin" value="Submit" />
                     <button type="reset" class="btn btn-danger" title="Menghapus semua isi form">Reset</button>
                 </div>
             </form>
@@ -132,9 +132,9 @@
 <!-- Our Project-->
 <section class="handover-wrapper">
     <h2 class="section-title wow fadeInDown">{{$site->link_2}}</h2>
+    @forelse ($produks as $produk)
     <ul class="row">
         <div id="project-kami-slider" class="owl-carousel">
-            @foreach($produks as $produk)
             <li class="col-md-10 col-sm-6">
                 <div class="news-card">
                     <a href="#" class="news-card__card-link"></a>
@@ -149,27 +149,28 @@
                     </div>
                 </div>
             </li>
-            @endforeach
         </div>
     </ul>
+    @empty
+    <p>Produk Tidak Ada</p>
+    @endforelse
 </section>
 
 <!-- Our Berita-->
 <section class="probootstrap-section">
     <div class="text-center section-heading fadeIn probootstrap-animated" data-animate-effect="fadeIn">
-        <h2>BERITA DAN AGENDA</h2>
-        <p class="lead">Sed a repudiandae impedit voluptate nam Deleniti dignissimos perspiciatis nostrum porro
-            nesciunt</p>
+        <h2>{{$site->link_3}}</h2>
+        <p class="lead"></p>
     </div>
 </section>
 <div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">
     <!-- Wrapper for slides -->
+    @forelse ($berita as $key => $value)
     <div class="carousel-inner">
-        @foreach($berita as $key => $value)
         <div class="item {{ $key == 0 ? "active" : "" }}">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3"><img src="{{ asset('public/upload/image/thumbs/'.$value->gambar) }}"
+                    <div class="col-md-3"><img src="{{ asset('public/upload/image/berita/'.$value->gambar) }}"
                             alt="<?=$value->judul_berita ?>" class="img-responsive"></div>
                     <div class="col-md-9">
                         <h2><a href="{{ asset('berita/read/'.$value->slug_berita) }}"><?=$value->judul_berita ?></a>
@@ -179,28 +180,28 @@
                 </div>
             </div>
         </div>
-        @endforeach
         <!-- End Item -->
     </div>
     <!-- End Carousel Inner -->
     <div class="controls">
         <ul class="nav">
-            @foreach($berita as $key => $value)
             <li data-target="#custom_carousel" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}><a
                     href="{{ asset('berita/read/'.$value->slug_berita) }}"><img style="width: 50px"
-                        src="{{ asset('public/upload/image/thumbs/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>
+                        src="{{ asset('public/upload/image/berita/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>
             </li>
-            @endforeach
         </ul>
     </div>
+    @empty
+    <p class="text-center" style="margin: 10px;">Berita dan Agenda Tidak Ada</p>
+    @endforelse
 </div>
 <!-- Our Berita-->
 
 <!-- Our Testimoni-->
 <section class="testimonial-wrapper">
     <h2 class="section-title wow fadeInDown">Testimoni Member</h2>
+    @forelse ($testimoni as $value)
     <div id="testimonial-slider" class="owl-carousel">
-        @foreach($testimoni as $value)
         <div class="testimonial">
             <div class="pic">
                 <img src="{{ asset('public/upload/image/galeri/'.$value->foto) }}">
@@ -212,42 +213,99 @@
             <h3 class="title">{!! $value->nama_lengkap!!}</h3>
             <small class="post">- {!! $value->pekerjaan!!}</small>
         </div>
-        @endforeach
     </div>
+    @empty
+    <p>Testimoni Tidak Ada</p>
+    @endforelse
     <!-- /.carousel -->
 </section><!-- /.testimonial-wrapper -->
-
-<!-- Our Tim-->
-<section class="team-kami-wrapper padding-lg">
-    <h2 class="section-title wow fadeInDown">Tim Kami</h2>
-    <ul class="row">
-        <div id="team-kami-slider" class="owl-carousel">
-            @foreach($teams as $value)
-            <li class="col-md-12 ">
-                <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="{{ asset('public/upload/image/team/'.$value->foto) }}" class="img-responsive"
-                            alt="{!! $value->nama_lengkap!!}">
-                    </figure>
-                    @if($value->id=='4a9de387-9b42-4768-b327-c1ef31429812')
-                    <h3><a href="{{ asset('team/read/'.$value->slug_name) }}">{!! $value->nama_lengkap!!}</a></h3>
-                    @else
-                    <h3><a href="#">{!! $value->nama_lengkap!!}</a></h3>
-                    @endif
-                    <p>{!! $value->jabatan!!}</p>
+<!-- Our 2 column-->
+<section class="probootstrap-section">
+    <div class="text-center section-heading fadeIn probootstrap-animated" data-animate-effect="fadeIn">
+        <h2>{{$site->link_bawah_peta}}</h2>
+        <p class="lead"></p>
+    </div>
+</section>
+<div class="row" style="margin-top: -20px;">
+    <div class="col-xs-12 col-sm-6">
+        <div class="box">
+            <!-- .gallery-slider -->
+            <div class="gallery-slider">
+                <!-- __images -->
+                <div class="gallery-slider__images">
+                    <div>
+                        <!-- .item -->
+                        @foreach($sliderGaleri as $value )
+                        <div class="item">
+                            <div class="img-fill"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"
+                                    alt="{{$value->judul_galeri}}"></div>
+                        </div>
+                        @endforeach
+                        <!-- /.item -->
+                    </div>
+                    <button class="prev-arrow slick-arrow">
+                        <svg xmlns="" viewBox="0 0 1280 1792">
+                            <path fill="#fff"
+                                d="M1171 301L640 832l531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19L173 877q-19-19-19-45t19-45L915 45q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z" />
+                        </svg>
+                    </button>
+                    <button class="next-arrow slick-arrow">
+                        <svg xmlns="" viewBox="0 0 1280 1792">
+                            <path fill="#fff"
+                                d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45L275 45q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z" />
+                        </svg>
+                    </button>
                 </div>
-            </li>
+                <!-- /__images -->
+
+                <!-- __thumbnails -->
+                <div class="gallery-slider__thumbnails">
+                    <div>
+                        <!-- .item -->
+                        @foreach($sliderGaleri as $value)
+                        <div class="item">
+                            <div class="img-fill"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"
+                                    alt="{{$value->judul_galeri}}"></div>
+                        </div>
+                        @endforeach
+                        <!-- /.item -->
+                    </div>
+
+                    <button class="prev-arrow slick-arrow">
+                        <svg xmlns="" viewBox="0 0 1280 1792">
+                            <path fill="#fff"
+                                d="M1171 301L640 832l531 531q19 19 19 45t-19 45l-166 166q-19 19-45 19t-45-19L173 877q-19-19-19-45t19-45L915 45q19-19 45-19t45 19l166 166q19 19 19 45t-19 45z" />
+                        </svg>
+                    </button>
+                    <button class="next-arrow slick-arrow">
+                        <svg xmlns="" viewBox="0 0 1280 1792">
+                            <path fill="#fff"
+                                d="M1107 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45L275 45q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- /__thumbnails -->
+            </div>
+            <!-- /.gallery-slider -->
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="box">
+            @foreach ($video as $item)
+            <iframe id="vid_frame" src="http://youtube.com/embed/{{$item->video}}" width="700" height="390"
+                frameborder="0"></iframe>
             @endforeach
         </div>
-    </ul>
+    </div>
 
-    <!-- /.carousel -->
-</section><!-- /.team-kami-wrapper -->
+</div>
 <!-- Our Trusted by-->
 <section class="trusted-client-wrapper">
     <h2 class="section-title wow fadeInDown">We are Trusted by</h2>
     <section class="customer-logos slider">
         @foreach($sliderPerusahaan as $key => $value)
-        <div class="slide"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" alt="{{$value->judul_galeri}}"></div>
+        <div class="slide"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"
+                alt="{{$value->judul_galeri}}"></div>
         @endforeach
     </section>
 </section>

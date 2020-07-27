@@ -33,6 +33,8 @@ class Home extends Controller
         $team= $model_team->semua();
         $news   = new Berita_model();
         $sliderPerusahaan = DB::table('galeri')->where('jenis_galeri', 'Partner')->limit(5)->orderBy('urutan', 'ASC')->get();
+        $sliderGaleri = DB::table('galeri')->where('jenis_galeri', 'Galeri')->limit(5)->orderBy('urutan', 'ASC')->get();
+        $video = DB::table('video')->where('posisi', 'Video')->limit(5)->orderBy('urutan', 'ASC')->get();
 
         $berita = $news->listing();
 
@@ -45,6 +47,8 @@ class Home extends Controller
             'aktif'     => 'nameweb',
             'produks'   => $produks,
             'teams'     => $team,
+            'video'     => $video,
+            'sliderGaleri'     => $sliderGaleri,
             'testimoni'    => $testimoni,
             'sliderPerusahaan'    => $sliderPerusahaan,
             'berita'    => $berita,

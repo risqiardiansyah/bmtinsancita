@@ -170,7 +170,7 @@
                             class="form-control" required>
                     </div>  --}}
                     <div class="form-group">
-                        <label>Title Heading Official</label>
+                        <label>Title Heading 2 Column</label>
                         <input type="text" name="link_bawah_peta" placeholder="Heading Official" value="{{$site->link_bawah_peta}}"
                             class="form-control" required>
                     </div>

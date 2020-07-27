@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
                 </button>
                 <!-- offcanvas-trigger-effects -->
                 <a style="width: 195px; margin-left: 20px" href=""><img style="width: 60px;"
-                        src="{{ asset('public/upload/image/'.$site->logo) }}" alt="{!! $site->namaweb !!}"></a>
+                        src="{{ asset('public/upload/image/logo/'.$site->logo) }}" alt="{!! $site->namaweb !!}"></a>
                 <span class="text-uppercase " style="color: white;font-size: small;font-weight: bold;">{!!
                     $site->namaweb !!}</span>
 
@@ -79,40 +79,45 @@ use Illuminate\Support\Facades\DB;
 </header>
 <!-- End Header -->
 <!-- ======= Hero Section ======= -->
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="x-corp-carousel" class="carousel slide hero-slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         @foreach($slider as $key => $value)
-        <li data-target="#carousel-example-generic" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}>
+        <li data-target="#x-corp-carousel" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}>
         </li>
         @endforeach
     </ol>
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-        @foreach($slider as $key => $slider)
+    <div class="carousel-inner" role="listbox">
+        @foreach($slider as $key => $value)
         <div class="item {{ $key == 0 ? "active" : "" }}">
-            <img src="{{ asset('public/upload/image/galeri/'.$slider->gambar) }}" alt="<?= $slider->judul_galeri ?>">
-            <!-- Static Header -->
-            <div class="header-text hidden-xs">
-                <div class="col-md-12 text-center">
-                    <h2>
-                        <span><?= $slider->judul_galeri ?></span>
-                    </h2>
-                    <h4 style="color: white;margin-right: 238px;margin-left: 238px;">
-                        <?= \Illuminate\Support\Str::limit(strip_tags($slider->isi), 500, $end='...') ?></h4>
-                    <br>
-                    <div class="">
-                        <a class="btn btn-theme btn-sm btn-min-block" href="<?= $slider->website ?>">Read More</a></div>
+            <img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" alt="{{$value->judul_galeri}}">
+            <!--Slide Image-->
+            <div class="container">
+                <div class="carousel-caption">
+                    <h2 class="animated lightSpeedIn" style="color: black;">{{$value->judul_galeri}}</h2>
+
+                    <p class="lead animated lightSpeedIn"></p>
+
+                    <a class="btn btn-primary animated lightSpeedIn" href="#">Read More</a>
                 </div>
-            </div><!-- /header-text -->
+                <!--.carousel-caption-->
+            </div>
+            <!--.container-->
         </div>
         @endforeach
+        <!--.item-->
     </div>
+    <!--.carousel-inner-->
+
     <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
+    <a class="left carousel-control" href="#x-corp-carousel" role="button" data-slide="prev">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
+    <a class="right carousel-control" href="#x-corp-carousel" role="button" data-slide="next">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+        <span class="sr-only">Next</span>
     </a>
-</div><!-- Carousel END -->
+</div>
+<!-- #x-corp-carousel-->

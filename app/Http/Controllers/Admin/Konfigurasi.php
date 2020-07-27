@@ -136,8 +136,8 @@ class Konfigurasi extends Controller
     {
         if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
@@ -364,8 +364,8 @@ class Konfigurasi extends Controller
     {
         if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
         request()->validate([
             'judul_pembayaran'  => 'required',

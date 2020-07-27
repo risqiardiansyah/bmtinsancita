@@ -54,7 +54,7 @@ $(function() {
                 
                 <div class="col-md-6 alert alert-success">
                     <label>Your current logo</label><br>
-                    <img src="{{ url('upload/image/logo/'.$site->logo) }}" style="max-width:200px; height:auto;">
+                    <img src="{{ asset('public/upload/image/logo/'.$site->logo) }}" style="max-width:200px; height:auto;">
                 </div>
                 
                 <div class="col-md-12">

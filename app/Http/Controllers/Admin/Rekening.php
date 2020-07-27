@@ -12,8 +12,8 @@ class Rekening extends Controller
     {
     	if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
 		$rekening 	= DB::table('rekening')->orderBy('urutan','ASC')->get();
 
@@ -30,8 +30,8 @@ class Rekening extends Controller
     {
         if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
         $rekening   = DB::table('rekening')->where('id_rekening',$id_rekening)->orderBy('urutan','ASC')->first();
 
@@ -46,6 +46,11 @@ class Rekening extends Controller
     // Proses
     public function proses(Request $request)
     {
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
+        }else
         $site   = DB::table('konfigurasi')->first();
         // PROSES HAPUS MULTIPLE
         if(isset($_POST['hapus'])) {
@@ -63,8 +68,8 @@ class Rekening extends Controller
     {
     	if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
     	request()->validate([
 					        'nama_bank' => 'required|unique:rekening',
@@ -109,8 +114,8 @@ class Rekening extends Controller
     {
     	if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
     	request()->validate([
 					       'nama_bank' => 'required',
@@ -156,8 +161,8 @@ class Rekening extends Controller
     {
     	if(Session()->get('username')=="") 
         { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }elseif(Session()->get('akses_level')=="User") 
-        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }elseif(Session()->get('akses_level')=="Admin") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan User']);
         }else
     	DB::table('rekening')->where('id_rekening',$id_rekening)->delete();
     	return redirect('admin/rekening')->with(['sukses' => 'Data telah dihapus']);
