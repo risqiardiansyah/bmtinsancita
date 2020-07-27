@@ -91,7 +91,7 @@ use Illuminate\Support\Facades\DB;
     <div class="carousel-inner">
         @foreach($slider as $key => $slider)
         <div class="item {{ $key == 0 ? "active" : "" }}">
-            <img src="{{ asset('public/upload/image/slider/'.$slider->gambar) }}" alt="<?= $slider->judul_galeri ?>">
+            <img src="{{ asset('public/upload/image/galeri/'.$slider->gambar) }}" alt="<?= $slider->judul_galeri ?>">
             <!-- Static Header -->
             <div class="header-text hidden-xs">
                 <div class="col-md-12 text-center">
