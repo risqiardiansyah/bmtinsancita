@@ -41,7 +41,7 @@
 @endif
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form action="{{ asset('admin/konfigurasi/proses_gambar') }}" enctype="multipart/form-data" method="post"
+        <form action="{{ url('admin/konfigurasi/proses_gambar') }}" enctype="multipart/form-data" method="post"
             accept-charset="utf-8">
             {{ csrf_field() }}
             <div class="row">
@@ -57,7 +57,7 @@
 
                 <div class="col-md-6 alert alert-success">
                     <label>Your current gambar</label><br>
-                    <img src="{{ asset('public/upload/image/'.$site->gambar) }}" style="max-width:200px; height:auto;">
+                    <img src="{{ url('upload/image/galeri/'.$site->gambar) }}" style="max-width:200px; height:auto;">
                 </div>
 
                 <div class="col-md-12">

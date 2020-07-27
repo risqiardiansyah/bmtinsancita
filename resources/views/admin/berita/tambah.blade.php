@@ -24,16 +24,8 @@
       </div>
       
       <div class="row form-group">
-        <label class="col-md-3">Icon berita/profil/layanan</label>
-        <div class="col-md-6">
-          <input type="text" name="icon" class="form-control" placeholder="Icon berita/profil/layanan" value="{{ old('icon') }}">
-          <small class="text-success">Icon menggunakan Fontawesome. Kunjungi <a href="https://fontawesome.com/" target="_blank">https://fontawesome.com/</a></small>
-        </div>
-      </div>
-      
-      <div class="row form-group">
         <label class="col-md-3">Status Publish</label>
-        <div class="col-md-2">
+        <div class="col-md-6">
           <select name="status_berita" class="form-control select2">
             <option value="Publish">Publikasikan</option>
             <option value="Draft">Simpan sebagai draft</option>}
@@ -46,9 +38,6 @@
         <div class="col-md-3">
           <select name="jenis_berita" class="form-control select2">
            <option value="Berita">Berita</option>
-           <option value="Profil">Profil</option>
-           <option value="Layanan">Layanan</option>
-           <option value="Keunggulan">Keunggulan</option>
          </select>
        </div>
        <div class="col-md-3">
@@ -61,12 +50,10 @@
       </div>
       
       <div class="row form-group">
-        <label class="col-md-3">Upload gambar &amp; Urutan</label>
-        <div class="col-md-3">
+        <label class="col-md-3">Upload gambar</label>
+        <div class="col-md-6">
           <input type="file" name="gambar" class="form-control" placeholder="Upload gambar">
-        </div>
-        <div class="col-md-3">
-          <input type="number" name="urutan" class="form-control" placeholder="Urutan" value="{{ old('urutan') }}">
+          <small class="text-danger" style="font-weight: bold;">Gambar harus Ukuran 570 px in width heigt in 400</small>
         </div>
       </div>
       

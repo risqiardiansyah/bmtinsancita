@@ -43,6 +43,7 @@
                     <select name="jenis_galeri" class="form-control">
                         <option value="Galeri">Galeri Biasa</option>
                         <option value="Homepage">Homepage - Gambar Slider</option>
+                        <option value="Partner">Partner  - Gambar Slider</option>
                         <option value="Pop up">Pop up Homepage</option>
                         <option value="Testimonial">Background Testimonial</option>
                     </select>

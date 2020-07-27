@@ -19,4 +19,14 @@ class Team_model extends Model
             ->get();
         return $query;
     }
+
+    public function read($slug_name)
+    {
+        $query = DB::table('tim')
+            ->select('*')
+            ->where('tim.slug_name',$slug_name)
+            ->orderBy('id','DESC')
+            ->first();
+        return $query;
+    }
 }

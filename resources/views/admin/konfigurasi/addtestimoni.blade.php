@@ -1,44 +1,38 @@
-<div class="modal fade" id="Edit{{ $value->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="Tambah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
 
-				<h4 class="modal-title" id="myModalLabel">Edit data?</h4>
+				<h4 class="modal-title" id="myModalLabel">Tambah data?</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="{{ asset('admin/team/proses') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+				<form action="{{ asset('admin/testimoni/addtestnimoni') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                 {{ csrf_field() }}
-                <input type="hidden" name="id" value="{{ $value->id }}">
-				<div class="form-group row">
-					<label class="col-sm-3 control-label text-right">Nama lengkap</label>
-					<div class="col-sm-9">
-						<input type="text" name="nama_lengkap" class="form-control" placeholder="Nama lengkap"value="{{$value->nama_lengkap}}" required>
-					</div>
-                </div>
-                
                 <div class="form-group row">
 					<label class="col-sm-3 control-label text-right">Jabatan</label>
 					<div class="col-sm-9">
-						<input type="text" name="jabatan" class="form-control" placeholder="Jabatan" value="{{$value->jabatan}}"required>
+						<input type="text" name="pekerjaan" class="form-control" placeholder="Jabatan" value="{{ old('pekerjaan') }}" required>
 					</div>
+                </div>
+
+                <div class="form-group row">
+					<label class="col-sm-3 control-label text-right">Keterangan</label>
+					<div class="col-sm-9">
+                        <textarea id="message" name="message" class="form-control" rows="6" required="" placeholder="Keterangan"
+                        {!! old("message") !!}></textarea>					
+                    </div>
                 </div>
 
 				<div class="form-group row">
 					<label class="col-sm-3 control-label text-right">Upload foto profil</label>
 					<div class="col-sm-9">
-                        <input type="file" name="foto" class="form-control" id="file" placeholder="Upload Foto" >
+                        <input type="file" name="foto" class="form-control" id="file" placeholder="Upload Foto" value="{{ old('foto') }}">
                         <div id="imagePreview"></div>
 					</div>
 				</div>
-				
-				<div class="form-group row">
-					<label class="col-sm-3 control-label text-right">Deskripsi profile</label>
-					<div class="col-md-9">
-						<textarea name="deskripsi" class="form-control konten" placeholder="Deskripsi Profile">{{$value->deskripsi}}</textarea>
-					  </div>
-				</div>
-				
+
 				<div class="form-group row">
 					<label class="col-sm-3 control-label text-right"></label>
 					<div class="col-sm-9">

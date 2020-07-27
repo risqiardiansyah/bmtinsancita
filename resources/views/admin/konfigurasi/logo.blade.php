@@ -39,7 +39,7 @@ $(function() {
 @endif
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form action="{{ asset('admin/konfigurasi/proses_logo') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form action="{{ url('admin/konfigurasi/proses_logo') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
             {{ csrf_field() }}
             <div class="row">
                 <input type="hidden" name="id_konfigurasi" value="<?php echo $site->id_konfigurasi ?>">
@@ -54,7 +54,7 @@ $(function() {
                 
                 <div class="col-md-6 alert alert-success">
                     <label>Your current logo</label><br>
-                    <img src="{{ asset('public/upload/image/'.$site->logo) }}" style="max-width:200px; height:auto;">
+                    <img src="{{ url('upload/image/logo/'.$site->logo) }}" style="max-width:200px; height:auto;">
                 </div>
                 
                 <div class="col-md-12">

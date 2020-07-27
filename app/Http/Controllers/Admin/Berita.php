@@ -7,15 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
 use App\Berita_model;
+use Ramsey\Uuid\Uuid;
 
 class Berita extends Controller
 {
     // Main page
     public function index()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $myberita             = new Berita_model();
         $berita             = $myberita->semua();
         $kategori     = DB::table('kategori')->orderBy('urutan', 'ASC')->get();
@@ -33,9 +36,11 @@ class Berita extends Controller
     // Cari
     public function cari(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $myberita           = new Berita_model();
         $keywords           = $request->keywords;
         $berita             = $myberita->cari($keywords);
@@ -53,6 +58,11 @@ class Berita extends Controller
     // Proses
     public function proses(Request $request)
     {
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $site   = DB::table('konfigurasi')->first();
         // PROSES HAPUS MULTIPLE
         if (isset($_POST['hapus'])) {
@@ -96,9 +106,11 @@ class Berita extends Controller
     //Status
     public function status_berita($status_berita)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $myberita           = new Berita_model();
         $berita             = $myberita->status_berita($status_berita);
         $kategori    = DB::table('kategori')->orderBy('urutan', 'ASC')->get();
@@ -136,9 +148,11 @@ class Berita extends Controller
     //Status
     public function author($id_user)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $myberita           = new Berita_model();
         $berita             = $myberita->author($id_user);
         $kategori    = DB::table('kategori')->orderBy('urutan', 'ASC')->get();
@@ -157,9 +171,11 @@ class Berita extends Controller
     //Kategori
     public function kategori($id_kategori)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $myberita           = new Berita_model();
         $berita             = $myberita->all_kategori($id_kategori);
         $kategori    = DB::table('kategori')->orderBy('urutan', 'ASC')->get();
@@ -177,15 +193,17 @@ class Berita extends Controller
     // Tambah
     public function tambah()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $kategori    = DB::table('kategori')->orderBy('urutan', 'ASC')->get();
 
         $data = array(
             'title'             => 'Tambah Berita',
-            'kategori'   => $kategori,
-            'aktif'       => 'tambah',
+            'kategori'          => $kategori,
+            'aktif'             => 'tambah-berita',
             'content'           => 'admin/berita/tambah'
         );
         return view('admin/layout/wrapper', $data);
@@ -194,9 +212,11 @@ class Berita extends Controller
     // edit
     public function edit($id_berita)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $myberita           = new Berita_model();
         $berita             = $myberita->detail($id_berita);
         $kategori    = DB::table('kategori')->orderBy('urutan', 'ASC')->get();
@@ -214,13 +234,15 @@ class Berita extends Controller
     // tambah
     public function tambah_proses(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'judul_berita'  => 'required|unique:berita',
             'isi'           => 'required',
-            'gambar'        => 'file|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar'        => 'file|image|dimensions:max_width=570,max_height=400|mimes:jpeg,png,jpg|max:2048',
         ]);
         // UPLOAD START
         $image                  = $request->file('gambar');
@@ -228,18 +250,19 @@ class Berita extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/berita/');
             $img = Image::make($image->getRealPath(), array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath . '/' . $input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/berita/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             $slug_berita = str_slug($request->judul_berita, '-');
             DB::table('berita')->insert([
+                'id_berita'         => Uuid::uuid4(),        
                 'id_kategori'       => $request->id_kategori,
                 'id_user'           => Session()->get('id_user'),
                 'slug_berita'       => $slug_berita,
@@ -257,6 +280,7 @@ class Berita extends Controller
         } else {
             $slug_berita = str_slug($request->judul_berita, '-');
             DB::table('berita')->insert([
+                'id_berita'         => Uuid::uuid4(),        
                 'id_kategori'       => $request->id_kategori,
                 'id_user'           => Session()->get('id_user'),
                 'slug_berita'       => $slug_berita,
@@ -277,13 +301,15 @@ class Berita extends Controller
     // edit
     public function edit_proses(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'judul_berita'   => 'required',
             'isi'           => 'required',
-            'gambar'        => 'file|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar'        => 'file|image|dimensions:max_width=570,max_height=400|mimes:jpeg,png,jpg|max:2048',
         ]);
         // UPLOAD START
         $image                  = $request->file('gambar');
@@ -291,14 +317,14 @@ class Berita extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/berita/');
             $img = Image::make($image->getRealPath(), array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath . '/' . $input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/berita/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             $slug_berita = str_slug($request->judul_berita, '-');
@@ -338,9 +364,11 @@ class Berita extends Controller
     // Delete
     public function delete($id_berita)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         DB::table('berita')->where('id_berita', $id_berita)->delete();
         return redirect('admin/berita')->with(['sukses' => 'Data telah dihapus']);
     }

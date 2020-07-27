@@ -34,22 +34,8 @@ use Illuminate\Support\Facades\DB;
                 <ul class="nav navbar-nav navbar-right">
                     <li class="<?php if($aktif == 'nameweb'){echo " active";} ?>"><a href="{{ asset('/') }}">Home</a>
                     </li>
-                    <li class="dropdown <?php if($aktif == 'read'){echo " active";} ?>"><a href="#">Tentang Kami <b
-                                class="caret"></b></a>
-                        <!-- submenu-wrapper -->
-                        <div class="submenu-wrapper submenu-wrapper-topbottom">
-                            <div class="submenu-inner  submenu-inner-topbottom">
-                                <ul class="dropdown-menu">
-                                    @foreach($nav_profil as $nav_profil)
-                                    <li><a
-                                            href="{{ asset('berita/read/'.$nav_profil->slug_berita) }}"><?=$nav_profil->judul_berita ?></a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div><!-- /.submenu-inner -->
-                        </div> <!-- /.submenu-wrapper -->
+                    <li class="<?php if($aktif == 'read'){echo " active";} ?>"><a href="#profile">Tentang Kami</a>
                     </li>
-
                     <li class="dropdown <?php if($aktif == 'produk'){echo " active";} ?>"><a
                             href="{{ asset('produk') }}">Produk <b class="caret"></b></a>
                         <!-- submenu-wrapper -->
@@ -74,6 +60,18 @@ use Illuminate\Support\Facades\DB;
                             href="{{ asset('download') }}">Laporan</a></li>
                     <li class="<?php if($aktif == 'kontak'){echo " active";} ?>"><a
                             href="{{ asset('kontak') }}">Kontak</a></li>
+                    <li class="language active" style="margin-right: inherit;"><a href="javascript:;" id="Indonesia"
+                            onclick="translateLanguage(this.id);">
+                            <img src="{{asset('public/upload/image/flag/indonesia.png')}}" alt="" width="30px"
+                                height="30px" /></a> </li>
+                    <li class="language " style="margin-right: inherit;"><a href="javascript:;" id="Chinese"
+                            onclick="translateLanguage(this.id);">
+                            <img src="{{asset('public/upload/image/flag/china.png')}}" alt="" width="30px" height="30px" /></a>
+                    </li>
+                    <li class="language " style="margin-right: inherit;"><a href="javascript:;" id="English"
+                            onclick="translateLanguage(this.id);">
+                            <img src="{{asset('public/upload/image/flag/uk.png')}}" alt="" width="30px" height="30px" /></a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
@@ -93,7 +91,7 @@ use Illuminate\Support\Facades\DB;
     <div class="carousel-inner">
         @foreach($slider as $key => $slider)
         <div class="item {{ $key == 0 ? "active" : "" }}">
-            <img src="{{ asset('public/upload/image/'.$slider->gambar) }}" alt="<?= $slider->judul_galeri ?>">
+            <img src="{{ asset('public/upload/image/slider/'.$slider->gambar) }}" alt="<?= $slider->judul_galeri ?>">
             <!-- Static Header -->
             <div class="header-text hidden-xs">
                 <div class="col-md-12 text-center">

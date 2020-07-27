@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
 use App\Galeri_model;
+use Ramsey\Uuid\Uuid;
 
 class Galeri extends Controller
 {
@@ -107,7 +108,7 @@ class Galeri extends Controller
 
         $data = array(  'title'             => 'Tambah Galeri',
                         'kategori_galeri'   => $kategori_galeri,
-                        'aktif'             => 'tambah',
+                        'aktif'             => 'tambah-galeri',
                         'content'           => 'admin/galeri/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -143,14 +144,14 @@ class Galeri extends Controller
         $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/thumbs/');
+        $destinationPath        = public_path('upload/image/galeri/');
         $img = Image::make($image->getRealPath(),array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath.'/'.$input['nama_file']);
-        $destinationPath = public_path('upload/image/');
+        $destinationPath = public_path('upload/image/galeri/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         $slug_nama_galeri = str_slug($request->nama_galeri, '-');
@@ -165,6 +166,7 @@ class Galeri extends Controller
             $selesai_diskon = date('Y-m-d',strtotime($request->selesai_diskon)); 
         }
         DB::table('galeri')->insert([
+            'id_galeri'             => Uuid::uuid4(),
             'id_user'               => Session()->get('id_user'),
             'id_kategori_galeri'    => $request->id_kategori_galeri,
             'id_user'               => Session()->get('id_user'),
@@ -193,14 +195,14 @@ class Galeri extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/galeri/');
             $img = Image::make($image->getRealPath(),array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath.'/'.$input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/galeri/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             $slug_nama_galeri = str_slug($request->nama_galeri, '-');

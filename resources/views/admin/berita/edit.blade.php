@@ -26,15 +26,6 @@
                         value="<?php echo $berita->judul_berita ?>">
                 </div>
             </div>
-
-            <div class="row form-group">
-                <label class="col-md-3">Icon berita/profil/layanan</label>
-                <div class="col-md-6">
-                    <input type="text" name="icon" class="form-control" placeholder="Icon berita/profil/layanan"
-                        value="<?php echo $berita->icon ?>">
-                </div>
-            </div>
-
             <div class="row form-group">
                 <label class="col-md-3">Status Publish</label>
                 <div class="col-md-6">
@@ -50,13 +41,8 @@
                 <label class="col-md-3">Jenis &amp; Kategori Berita</label>
                 <div class="col-md-3">
                     <select name="jenis_berita" class="form-control select2">
-                        <option value="Berita">Berita</option>
-                        <option value="Profil" <?php if($berita->jenis_berita=="Profil") { echo "selected"; } ?>>Profil
+                        <option value="Berita" <?php if($berita->jenis_berita=="Berita") { echo "selected"; } ?>>Berita
                         </option>
-                        <option value="Layanan" <?php if($berita->jenis_berita=="Layanan") { echo "selected"; } ?>>
-                            Layanan</option>
-                        <option value="Keunggulan"
-                            <?php if($berita->jenis_berita=="Keunggulan") { echo "selected"; } ?>>Keunggulan</option>
                     </select>
                 </div>
 
@@ -72,14 +58,9 @@
             </div>
 
             <div class="row form-group">
-                <label class="col-md-3">Upload gambar &amp; Urutan</label>
-                <div class="col-md-3">
+                <label class="col-md-3">Upload gambar</label>
+                <div class="col-md-6">
                     <input type="file" name="gambar" class="form-control" placeholder="Upload gambar">
-                </div>
-
-                <div class="col-md-3">
-                    <input type="number" name="urutan" class="form-control" placeholder="Urutan"
-                        value="<?php echo $berita->urutan ?>">
                 </div>
             </div>
 

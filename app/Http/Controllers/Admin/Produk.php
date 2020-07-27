@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
 use App\Produk_model;
+use Ramsey\Uuid\Uuid;
 
 class Produk extends Controller
 {
@@ -129,7 +130,7 @@ class Produk extends Controller
 
         $data = array(  'title'             => 'Tambah Produk',
                         'kategori_produk'   => $kategori_produk,
-                        'aktif'             => 'tambah',
+                        'aktif'             => 'tambah-produk',
                         'content'           => 'admin/produk/tambah'
                     );
         return view('admin/layout/wrapper',$data);
@@ -158,23 +159,21 @@ class Produk extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         request()->validate([
                             'nama_produk'   => 'required|unique:produk',
-                            'kode_produk'   => 'required|unique:produk',
-                            'isi'           => 'required',
-                            'gambar'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+                            'gambar'        => 'file|image|mimes:jpeg,png,jpg|max:2048',
                             ]);
         // UPLOAD START
         $image                  = $request->file('gambar');
         $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/thumbs/');
+        $destinationPath        = public_path('upload/image/produk/');
         $img = Image::make($image->getRealPath(),array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath.'/'.$input['nama_file']);
-        $destinationPath = public_path('upload/image/');
+        $destinationPath = public_path('upload/image/produk/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         $slug_nama_produk = str_slug($request->nama_produk, '-');
@@ -189,7 +188,8 @@ class Produk extends Controller
             $selesai_diskon = date('Y-m-d',strtotime($request->selesai_diskon)); 
         }
         DB::table('produk')->insert([
-           'id_user'                => Session()->get('id_user'),
+            'id_produk'             => Uuid::uuid4(),
+            'id_user'               => Session()->get('id_user'),
             'id_kategori_produk'    => $request->id_kategori_produk,
             'slug_produk'           => $slug_nama_produk,
             'kode_produk'           => strtoupper(str_replace(' ','',$request->kode_produk)),
@@ -226,9 +226,8 @@ class Produk extends Controller
         if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
         request()->validate([
                             'nama_produk'   => 'required',
-                            'kode_produk'   => 'required',
                             'isi'           => 'required',
-                            'gambar'        => 'file|image|mimes:jpeg,png,jpg|max:2048',
+                            'gambar'        => 'file|image|dimensions:max_width=570,max_height=400|mimes:jpeg,png,jpg|max:2048',
                             ]);
         // UPLOAD START
         $image                  = $request->file('gambar');
@@ -236,14 +235,14 @@ class Produk extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/produk/');
             $img = Image::make($image->getRealPath(),array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath.'/'.$input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/produk/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             $slug_nama_produk = str_slug($request->nama_produk, '-');

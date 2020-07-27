@@ -51,7 +51,7 @@
                         <label>
                             <h4>Gambar yang sudah diupload</h4>
                         </label><br>
-                        <img src="{{ asset('public/upload/image/'.$site->gambar_pembayaran) }}"
+                        <img src="{{ asset('public/upload/image/rekening/'.$site->gambar_pembayaran) }}"
                             class="img img-thumbnail img-fluid">
                     </div>
                 </div>

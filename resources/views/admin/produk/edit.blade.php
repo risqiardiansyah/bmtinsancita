@@ -60,22 +60,7 @@ if(isset($error)) {
                     <small class="text-gray">Setiap awal kata gunakan huruf capital. Misal: <strong>Coklat
                             Nitrico</strong></small>
                 </div>
-                <div class="col-sm-2">
-                    <input type="text" name="kode_produk" class="form-control" placeholder="Kode Produk" required
-                        value="{{ $produk->kode_produk }}">
-                    <small class="text-gray">Huruf capital. Misal: <strong>WDEV</strong></small>
-                </div>
-                <label class="col-sm-3 control-label text-right">Nama Client <span
-                        class="text-danger">*</span></label>
-                <div class="col-sm-6">
-                    <input type="text" name="client_name" class="form-control" placeholder="Nama Client" required
-                        value="{{ $produk->client_name }}">
-                    <small class="text-gray">Setiap awal kata gunakan huruf capital. Misal: <strong>Coklat
-                            Nitrico</strong></small>
-                </div>
             </div>
-
-
 
             <div class="form-group row">
                 <label class="col-sm-3 control-label text-right">Deskripsi Produk</label>
@@ -105,6 +90,8 @@ if(isset($error)) {
                 <label class="col-sm-3 control-label text-right">Upload gambar</label>
                 <div class="col-sm-9">
                     <input type="file" name="gambar" class="form-control" placeholder="Upload gambar" id="file">
+                    <small class="text-danger" style="font-weight: bold;">Gambar harus Ukuran 570 px in width heigt in
+                        400</small>
                     <div id="imagePreview"></div>
                 </div>
             </div>

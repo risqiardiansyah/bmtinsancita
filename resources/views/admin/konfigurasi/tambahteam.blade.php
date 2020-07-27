@@ -24,27 +24,19 @@
 					</div>
                 </div>
                 
-                <div class="form-group row">
-					<label class="col-sm-3 control-label text-right">Telp</label>
-					<div class="col-sm-9">
-						<input type="text" name="telp" class="form-control" placeholder="Telp"  onkeypress="return hanyaAngka(this);" value="{{old('telp')}}" minlength="10"
-                        maxlength="13" required>
-					</div>
-                </div>
-
-                <div class="form-group row">
-					<label class="col-sm-3 control-label text-right">Facebook</label>
-					<div class="col-sm-9">
-						<input type="text" name="facebook" class="form-control" placeholder="Facebook"  value="{{ old('facebook') }}" required>
-					</div>
-				</div>
-
 				<div class="form-group row">
 					<label class="col-sm-3 control-label text-right">Upload foto profil</label>
 					<div class="col-sm-9">
                         <input type="file" name="foto" class="form-control" id="file" placeholder="Upload Foto" value="{{ old('foto') }}">
                         <div id="imagePreview"></div>
 					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-3 control-label text-right">Deskripsi profile</label>
+					<div class="col-md-9">
+						<textarea name="deskripsi" class="form-control konten" placeholder="Deskripsi Profile">{{ old('deskripsi') }}</textarea>
+					  </div>
 				</div>
 
 				<div class="form-group row">

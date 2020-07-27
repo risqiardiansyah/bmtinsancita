@@ -15,9 +15,11 @@ class Konfigurasi extends Controller
     // Main page
     public function index()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi     = new Konfigurasi_model();
         $site             = $mykonfigurasi->listing();
 
@@ -32,9 +34,11 @@ class Konfigurasi extends Controller
 
     public function service()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
@@ -50,9 +54,11 @@ class Konfigurasi extends Controller
     // logo
     public function logo()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
@@ -68,9 +74,11 @@ class Konfigurasi extends Controller
     // gambar
     public function gambar()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
@@ -86,9 +94,11 @@ class Konfigurasi extends Controller
     // icon
     public function icon()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
@@ -104,9 +114,11 @@ class Konfigurasi extends Controller
     // email
     public function email()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
@@ -122,9 +134,11 @@ class Konfigurasi extends Controller
     // pembayaran
     public function pembayaran()
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $mykonfigurasi  = new Konfigurasi_model();
         $site           = $mykonfigurasi->listing();
 
@@ -140,9 +154,11 @@ class Konfigurasi extends Controller
     // Proses
     public function proses(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'namaweb'          => 'required'
         ]);
@@ -171,8 +187,14 @@ class Konfigurasi extends Controller
             'nama_twitter'      => $request->nama_twitter,
             'nama_instagram'    => $request->nama_instagram,
             'google_map'        => $request->google_map,
-            'text_bawah_peta'   => $request->text_bawah_peta,
+            'text_bawah_peta'   => $request->color,
             'link_bawah_peta'   => $request->link_bawah_peta,
+            'link_1'            => $request->heading_donasi_1,
+            'link_2'            => $request->heading_donasi_2,
+            'link_3'            => $request->heading_berita,
+            'isi_1'             => $request->desk_donasi_1,
+            'isi_2'             => $request->desk_donasi,
+            'isi_3'             => $request->desk_berita,
             'cara_pesan'        => $request->cara_pesan,
             'id_user'           => Session()->get('id_user'),
         ]);
@@ -182,9 +204,11 @@ class Konfigurasi extends Controller
     //proses Our Service
     public function proses_our_service(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'setting_title_service_1'          => 'required'
         ]);
@@ -211,9 +235,11 @@ class Konfigurasi extends Controller
     // Proses
     public function proses_email(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'protocol'          => 'required',
             'smtp_host'          => 'required',
@@ -237,9 +263,11 @@ class Konfigurasi extends Controller
     // logo
     public function proses_logo(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'logo'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -248,14 +276,14 @@ class Konfigurasi extends Controller
         $filenamewithextension  = $request->file('logo')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/thumbs/');
+        $destinationPath        = public_path('upload/image/logo/');
         $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath . '/' . $input['nama_file']);
-        $destinationPath = public_path('upload/image/');
+        $destinationPath = public_path('upload/image/logo/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
@@ -268,9 +296,11 @@ class Konfigurasi extends Controller
     // icon
     public function proses_icon(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'icon'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -279,14 +309,14 @@ class Konfigurasi extends Controller
         $filenamewithextension  = $request->file('icon')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/thumbs/');
+        $destinationPath        = public_path('upload/image/icon/');
         $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath . '/' . $input['nama_file']);
-        $destinationPath = public_path('upload/image/');
+        $destinationPath = public_path('upload/image/icon/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
@@ -299,9 +329,11 @@ class Konfigurasi extends Controller
     // gambar
     public function proses_gambar(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'gambar'        => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -310,14 +342,14 @@ class Konfigurasi extends Controller
         $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/thumbs/');
+        $destinationPath        = public_path('upload/image/galeri/');
         $img = Image::make($image->getRealPath(), array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath . '/' . $input['nama_file']);
-        $destinationPath = public_path('upload/image/');
+        $destinationPath = public_path('upload/image/galeri/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
         DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([
@@ -330,9 +362,11 @@ class Konfigurasi extends Controller
     // edit
     public function proses_pembayaran(Request $request)
     {
-        if (Session()->get('username') == "") {
-            return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
-        }
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         request()->validate([
             'judul_pembayaran'  => 'required',
             'isi_pembayaran'    => 'required',
@@ -344,14 +378,14 @@ class Konfigurasi extends Controller
             $filenamewithextension  = $request->file('gambar_pembayaran')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-') . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/rekening/');
             $img = Image::make($image->getRealPath(), array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath . '/' . $input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/rekening/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             DB::table('konfigurasi')->where('id_konfigurasi', $request->id_konfigurasi)->update([

@@ -47,45 +47,21 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Nama Singkat</label>
-                        <input type="text" name="nama_singkat" placeholder="Nama singkat organisasi/perusahaan"
-                            value="<?= $site->nama_singkat ?>" required class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Singkatan</label>
-                        <input type="text" name="singkatan" placeholder="ABC" value="<?= $site->singkatan ?>"
-                            required class="form-control">
-                    </div>
-
-                    <div class="form-group">
                         <label>Company tagline/motto</label>
                         <input type="text" name="tagline" placeholder="Company tagline/motto"
                             value="<?= $site->tagline ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label>Company tagline/motto 2</label>
-                        <input type="text" name="tagline2" placeholder="Company tagline/motto 2"
-                            value="<?= $site->tagline2 ?>" class="form-control">
-                    </div>
-
-                    <div class="form-group">
                         <label>Website address</label>
-                        <input type="url" name="website" placeholder="{{ asset('/') }}"
-                            value="<?= $site->website ?>" class="form-control">
+                        <input type="url" name="website" placeholder="{{ asset('/') }}" value="<?= $site->website ?>"
+                            class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label>Official email</label>
-                        <input type="email" name="email" placeholder="youremail@address.com"
-                            value="<?= $site->email ?>" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Registrasion &amp; Order email</label>
-                        <input type="email" name="email_cadangan" placeholder="youremail@address.com"
-                            value="<?= $site->email_cadangan ?>" class="form-control" required>
+                        <input type="email" name="email" placeholder="youremail@address.com" value="<?= $site->email ?>"
+                            class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -154,18 +130,59 @@
                 </div>
 
                 <div class="col-md-6">
-                    <h3>Text di bawah peta dan link downloadnya</h3>
+                    <h3>Informasi Heading & Description Frontend</h3>
                     <hr>
-                    <div class="form-group">
-                        <label>Text bawah peta</label>
-                        <input type="text" name="text_bawah_peta" placeholder="Text bawah peta"
-                            value="<?= $site->text_bawah_peta ?>" class="form-control">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Title Heading Our Service</label>
+                                <input type="text" name="heading_donasi_1" placeholder="Heading Our Service" value="{{$site->link_1}}"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Title Heading Our Project</label>
+                                <input type="text" name="heading_donasi_2" placeholder="Heading Our Project" value="{{$site->link_2}}"
+                                    class="form-control" required>
+                            </div>
+                        </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Title Heading Testimoni</label>
+                                <input type="text" name="desk_donasi_1" placeholder="Heading Testimoni" value="{{$site->isi_1}}"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Title Heading Tim Kami</label>
+                                <input type="text" name="desk_donasi" placeholder="Heading Tim Kami" value="{{$site->isi_2}}"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="form-group">
+                        <label>Color Header Menu</label>
+                        <input type="color" name="color" placeholder="Color Header Menu" value="{{$site->text_bawah_peta}}"
+                            class="form-control" required>
+                    </div>  --}}
                     <div class="form-group">
-                        <label>Link text di bawah peta <i class="fa fa-link"></i></label>
-                        <input type="text" name="link_bawah_peta" placeholder="Link text di bawah peta"
-                            value="<?= $site->link_bawah_peta ?>" class="form-control">
+                        <label>Title Heading Official</label>
+                        <input type="text" name="link_bawah_peta" placeholder="Heading Official" value="{{$site->link_bawah_peta}}"
+                            class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Title Heading Berita</label>
+                        <input type="text" name="heading_berita" placeholder="Heading Berita" value="{{$site->link_3}}"
+                            class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description Berita</label>
+                        <textarea name="desk_berita" rows="3" class="form-control"
+                            placeholder="Description Berita">{{$site->isi_3}}</textarea>
                     </div>
 
                     <h3>Modul SEO (Search Engine Optimization)</h3>
@@ -178,7 +195,7 @@
 
                     <div class="form-group">
                         <label>Metatext</label>
-                        <textarea name="metatext" rows="5" class="form-control"
+                        <textarea name="metatext" rows="3" class="form-control"
                             placeholder="Kode metatext"><?= $site->metatext ?></textarea>
                     </div>
 

@@ -32,9 +32,9 @@ class Home extends Controller
         $model_team = new Team_model();
         $team= $model_team->semua();
         $news   = new Berita_model();
-        $sliderPerusahaan = DB::table('galeri')->where('jenis_galeri', 'Galeri')->limit(5)->orderBy('id_galeri', 'DESC')->get();
+        $sliderPerusahaan = DB::table('galeri')->where('jenis_galeri', 'Partner')->limit(5)->orderBy('urutan', 'ASC')->get();
 
-        $berita = $news->home();
+        $berita = $news->listing();
 
         $data = array(
             'title'     => $site->namaweb . ' - ' . $site->tagline,

@@ -35,14 +35,14 @@ class Kategori_produk extends Controller
         $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
         $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
         $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-        $destinationPath        = public_path('upload/image/thumbs/');
+        $destinationPath        = public_path('upload/image/produk/');
         $img = Image::make($image->getRealPath(),array(
             'width'     => 150,
             'height'    => 150,
             'grayscale' => false
         ));
         $img->save($destinationPath.'/'.$input['nama_file']);
-        $destinationPath = public_path('upload/image/');
+        $destinationPath = public_path('upload/image/produk/');
         $image->move($destinationPath, $input['nama_file']);
         // END UPLOAD
     	$slug_kategori_produk = str_slug($request->nama_kategori_produk, '-');
@@ -72,14 +72,14 @@ class Kategori_produk extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/produk/');
             $img = Image::make($image->getRealPath(),array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath.'/'.$input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/produk/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             $slug_kategori_produk = str_slug($request->nama_kategori_produk, '-');

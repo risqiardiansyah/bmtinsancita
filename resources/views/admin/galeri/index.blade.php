@@ -62,7 +62,7 @@
                                 </div>
                             </td>
 
-                            <td><img src="{{ asset('public/upload/image/thumbs/'.$galeri->gambar) }}"
+                            <td><img src="{{ asset('public/upload/image/galeri/'.$galeri->gambar) }}"
                                     class="img img-thumbnail img-fluid"></td>
                             <td><?php echo $galeri->judul_galeri ?></td>
                             <td><a

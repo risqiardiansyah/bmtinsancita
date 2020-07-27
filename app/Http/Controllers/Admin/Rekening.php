@@ -10,7 +10,11 @@ class Rekening extends Controller
     // Index
     public function index()
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
 		$rekening 	= DB::table('rekening')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'     => 'Data Rekening',
@@ -24,7 +28,11 @@ class Rekening extends Controller
     // Edit
     public function edit($id_rekening)
     {
-        if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+        if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
         $rekening   = DB::table('rekening')->where('id_rekening',$id_rekening)->orderBy('urutan','ASC')->first();
 
         $data = array(  'title'     => 'Edit Data Rekening',
@@ -53,7 +61,11 @@ class Rekening extends Controller
     // tambah
     public function tambah(Request $request)
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
     	request()->validate([
 					        'nama_bank' => 'required|unique:rekening',
                             'gambar'    => 'file|image|mimes:jpeg,png,jpg|max:2048',
@@ -64,14 +76,14 @@ class Rekening extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/rekening/');
             $img = Image::make($image->getRealPath(),array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath.'/'.$input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/rekening/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             DB::table('rekening')->insert([
@@ -95,7 +107,11 @@ class Rekening extends Controller
     // edit
     public function proses_edit(Request $request)
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
     	request()->validate([
 					       'nama_bank' => 'required',
                             'gambar'    => 'file|image|mimes:jpeg,png,jpg|max:2048',
@@ -107,14 +123,14 @@ class Rekening extends Controller
             $filenamewithextension  = $request->file('gambar')->getClientOriginalName();
             $filename               = pathinfo($filenamewithextension, PATHINFO_FILENAME);
             $input['nama_file']     = str_slug($filename, '-').'-'.time().'.'.$image->getClientOriginalExtension();
-            $destinationPath        = public_path('upload/image/thumbs/');
+            $destinationPath        = public_path('upload/image/rekening/');
             $img = Image::make($image->getRealPath(),array(
                 'width'     => 150,
                 'height'    => 150,
                 'grayscale' => false
             ));
             $img->save($destinationPath.'/'.$input['nama_file']);
-            $destinationPath = public_path('upload/image/');
+            $destinationPath = public_path('upload/image/rekening/');
             $image->move($destinationPath, $input['nama_file']);
             // END UPLOAD
             DB::table('rekening')->where('id_rekening',$request->id_rekening)->update([
@@ -138,7 +154,11 @@ class Rekening extends Controller
     // Delete
     public function delete($id_rekening)
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
     	DB::table('rekening')->where('id_rekening',$id_rekening)->delete();
     	return redirect('admin/rekening')->with(['sukses' => 'Data telah dihapus']);
     }

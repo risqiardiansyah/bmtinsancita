@@ -1,4 +1,4 @@
-<section class="intro-wrapper">
+<section class="intro-wrapper" id="profile">
     <div class="row">
         <div class="col-lg-6 col-md-6">
             <h2 class="wow fadeInDown">Welcome to <span style="color: darkred;">{!! $site->namaweb !!}</span></h2>
@@ -56,14 +56,14 @@
                         sebelum menekan tombol submit.</span>
                 </div>
                 <div class="form-group row">
-                        <div class="col-md-6 offset-md-4">
-                            <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
-                            @if ($errors->has('g-recaptcha-response'))
-                                <span class="invalid-feedback" style="display: block"></span>
-                                <strong>{{$errors->first('g-recaptcha-response')}}</strong>
-                            @endif
-                        </div>
-                        
+                    <div class="col-md-6 offset-md-4">
+                        <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
+                        @if ($errors->has('g-recaptcha-response'))
+                        <span class="invalid-feedback" style="display: block"></span>
+                        <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                        @endif
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary" title="Mengirim data ke admin">Submit</button>
@@ -131,29 +131,20 @@
 
 <!-- Our Project-->
 <section class="handover-wrapper">
-    <h2 class="section-title wow fadeInDown">Our Project</h2>
+    <h2 class="section-title wow fadeInDown">{{$site->link_2}}</h2>
     <ul class="row">
         <div id="project-kami-slider" class="owl-carousel">
             @foreach($produks as $produk)
             <li class="col-md-10 col-sm-6">
-                <div class="example-2 card">
-                    <div class="wrapper"
-                        style="background: url('{{ asset('public/upload/image/'.$produk->gambar) }}') center/cover no-repeat; ">
-                        <div class="header">
-                            <div class="date">
-                                {!! $produk->tanggal_post!!}
-                            </div>
-
-                        </div>
-                        <div class="data">
-                            <div class="content">
-                                <h3 class="title"><a
-                                        href="{{ asset('produk/detail/'.$produk->slug_produk) }}"><?php  echo $produk->nama_produk ?></a>
-                                </h3>
-                                <p class="text"><?= nl2br($produk->deskripsi) ?></p>
-                                <a href="{{ asset('produk/detail/'.$produk->slug_produk) }}" class="button">Read
-                                    more</a>
-                            </div>
+                <div class="news-card">
+                    <a href="#" class="news-card__card-link"></a>
+                    <img src="{{ asset('public/upload/image/produk/'.$produk->gambar) }}" alt="{{$produk->nama_produk}}"
+                        class="news-card__image">
+                    <div class="news-card__text-wrapper">
+                        <h2 class="news-card__title">{{$produk->nama_produk}}</h2>
+                        <div class="news-card__post-date">{!! $produk->tanggal_post!!}</div>
+                        <div class="news-card__details-wrapper">
+                            <p class="news-card__excerpt"><?= nl2br($produk->deskripsi) ?></p>
                         </div>
                     </div>
                 </div>
@@ -212,10 +203,11 @@
         @foreach($testimoni as $value)
         <div class="testimonial">
             <div class="pic">
-                <img src="{{asset('public/frontend/html')}}/img/icone-people.png">
+                <img src="{{ asset('public/upload/image/galeri/'.$value->foto) }}">
             </div>
             <p class="description">
-                {!! $value->message!!} - <?= \Illuminate\Support\Str::limit(strip_tags($value->nama_produk), 20, $end='...') ?>
+                {!! $value->message!!} -
+                <?= \Illuminate\Support\Str::limit(strip_tags($value->nama_produk), 20, $end='...') ?>
             </p>
             <h3 class="title">{!! $value->nama_lengkap!!}</h3>
             <small class="post">- {!! $value->pekerjaan!!}</small>
@@ -233,18 +225,15 @@
             @foreach($teams as $value)
             <li class="col-md-12 ">
                 <div class="cnt-block equal-hight" style="height: 349px;">
-                    <figure><img src="{{ asset('public/upload/image/thumbs/'.$value->foto) }}" class="img-responsive"
+                    <figure><img src="{{ asset('public/upload/image/team/'.$value->foto) }}" class="img-responsive"
                             alt="{!! $value->nama_lengkap!!}">
                     </figure>
+                    @if($value->id=='4a9de387-9b42-4768-b327-c1ef31429812')
+                    <h3><a href="{{ asset('team/read/'.$value->slug_name) }}">{!! $value->nama_lengkap!!}</a></h3>
+                    @else
                     <h3><a href="#">{!! $value->nama_lengkap!!}</a></h3>
+                    @endif
                     <p>{!! $value->jabatan!!}</p>
-                    <ul class="follow-us clearfix">
-                        <li><a href="https://facebook.com/{!! $value->facebook!!}"><i class="fa fa-facebook"
-                                    aria-hidden="true"></i></a></li>
-                        <li><a href="tel:{!! $value->telp!!}"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    </ul>
                 </div>
             </li>
             @endforeach
@@ -256,21 +245,9 @@
 <!-- Our Trusted by-->
 <section class="trusted-client-wrapper">
     <h2 class="section-title wow fadeInDown">We are Trusted by</h2>
-    <div id="carousel-trusted-generic" class="carousel slide" data-ride="carousel">
-        <!--Indicators -->
+    <section class="customer-logos slider">
         @foreach($sliderPerusahaan as $key => $value)
-        <ol class="carousel-indicators">
-            <li data-target="#ccarousel-trusted-generic"
-            data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}></li>
-        </ol>
+        <div class="slide"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" alt="{{$value->judul_galeri}}"></div>
         @endforeach
-        <!--Wrapper for slides -->
-        <div class="carousel-inner">
-            @foreach($sliderPerusahaan as $key => $value)
-            <div class="item {{ $key == 0 ? "active" : "" }}">
-                <img src="{{ asset('public/upload/image/'.$value->gambar) }}"
-                    alt="<?= $value->judul_galeri ?>">
-            </div>
-            @endforeach
-        </div><!-- Carousel END -->
+    </section>
 </section>

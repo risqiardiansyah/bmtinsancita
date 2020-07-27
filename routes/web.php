@@ -41,6 +41,9 @@ Route::get('galeri/detail/{par1}', 'Galeri@detail');
 // video
 Route::get('video', 'Video@index');
 Route::get('video/detail/{par1}', 'Video@detail');
+// Team
+Route::get('team/read/{par1}', 'Team@read');
+
 // Produk
 Route::get('produk', 'Produk@index');
 Route::post('produk/proses_testimoni', 'Produk@proses_testimoni');
@@ -56,21 +59,16 @@ function()
     Route::get('admin/dasbor', 'Dasbor@index');
     Route::get('admin/dasbor/pendaftaran', 'Dasbor@pendaftaran');
     Route::get('admin/dasbor/konfigurasi', 'Dasbor@konfigurasi');
-    // pemesanan
-    Route::get('admin/pemesanan', 'Pemesanan@index');
-    Route::get('admin/pemesanan/tambah', 'Pemesanan@tambah');
-    Route::get('admin/pemesanan/detail/{par1}', 'Pemesanan@detail');
-    Route::get('admin/pemesanan/status_pemesanan/{par1}', 'Pemesanan@status_pemesanan');
-    Route::get('admin/pemesanan/cetak/{par1}', 'Pemesanan@cetak');
-    Route::get('admin/pemesanan/edit/{par1}', 'Pemesanan@edit');
-    Route::get('admin/pemesanan/filter/{par1}/{par2}/{par3}', 'Pemesanan@filter');
-    Route::get('admin/pemesanan/cari', 'Pemesanan@cari');
-    Route::post('admin/pemesanan/proses', 'Pemesanan@proses');
-    Route::post('admin/pemesanan/tambah_proses', 'Pemesanan@tambah_proses');
-    Route::post('admin/pemesanan/edit_proses', 'Pemesanan@edit_proses');
+    
     // pesan
     Route::get('admin/pesan', 'Pesan@index');
     Route::post('admin/pesan/proses', 'Pesan@proses');
+    // testimoni
+    Route::get('admin/testimoni', 'Testimoni@index');
+    Route::post('admin/testimoni/addtestnimoni', 'Testimoni@addtestnimoni');
+    Route::post('admin/testimoni/prosesedit', 'Testimoni@prosesedit');
+    Route::get('admin/testimoni/delete/{par1}', 'Testimoni@delete');
+    Route::post('admin/testimoni/proses_multi', 'Testimoni@proses_multi');
 
     // user
     Route::get('admin/user', 'User@index');
@@ -98,8 +96,10 @@ function()
     // team
     Route::get('admin/team', 'Team@index');
     Route::post('admin/team/tambahteam', 'Team@tambahteam');
-    Route::get('admin/team/delete{par1}', 'Team@delete');
+    Route::get('admin/team/delete/{par1}', 'Team@delete');
     Route::post('admin/team/proses', 'Team@proses');
+    Route::post('admin/team/proses_multi', 'Team@proses_multi');
+
     // berita
     Route::get('admin/berita', 'Berita@index');
     Route::get('admin/berita/cari', 'Berita@cari');

@@ -60,6 +60,8 @@ if(isset($error)) {
                         <option value="Galeri">Galeri Biasa</option>
                         <option value="Homepage" <?php if($galeri->jenis_galeri=="Homepage") { echo "selected"; } ?>>
                             Homepage - Gambar Slider</option>
+                            <option value="Partner" <?php if($galeri->jenis_galeri=="Partner") { echo "selected"; } ?>>
+                                Partner - Gambar Slider</option>
                         <option value="Pop up" <?php if($galeri->jenis_galeri=="Pop up") { echo "selected"; } ?>>Pop up
                             Homepage</option>
                         <option value="Testimonial"

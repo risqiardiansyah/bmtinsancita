@@ -10,85 +10,27 @@ $myprofil             = new Nav_model();
 $nav_profil           = $myproduk->nav_profil();
 ?>
 <section class="footer-widget-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="footer-widget">
-                    <p class="subcsribe-text wow fadeInDown">{!! $site->deskripsi!!}</p>
-
-                    <h3 class="wow fadeInDown">Subscribe to newsletter</h3>
-
-                    <form class="wow fadeInDown">
-                        <div class="form-group">
-                            <label class="sr-only" for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-
-                    <div class="social-link wow fadeInDown">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="{{$site->facebook}}"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="{{$site->twitter}}"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="{{$site->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="{{$site->instagram}}"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div><!-- /.footer-widget -->
-            </div><!-- /.col-md-6 -->
-            <div class="col-md-2 col-sm-4 col-xs-4">
-                <div class="footer-widget">
-                    <h3 class="wow fadeInDown">Customer Care</h3>
-                    <ul class="wow fadeInDown">
-                        <li><a href="{{'kontak'}}">Kontak</a></li>
-                    </ul>
-                </div><!-- /.footer-widget -->
-            </div><!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-4">
-                <div class="footer-widget">
-                    <h3 class="wow fadeInDown">Information</h3>
-                    <ul class="wow fadeInDown">
-                        <li><a href="{{'/'}}">Beranda</a></li>
-                        <li><a href="{{'produk'}}">Produk</a></li>
-                        <li><a href="{{'berita/read/profil-bmtinsan-cita'}}">Tentang Kami</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Awards</a></li>
-                        <li><a href="{{'video'}}">Video</a></li>
-                        <li><a href="{{'berita'}}">Blog</a></li>
-                    </ul>
-                </div><!-- /.footer-widget -->
-            </div><!-- /.col-md-2 -->
-            <div class="col-md-2 col-sm-4 col-xs-4">
-                <div class="footer-widget">
-                    <h3 class="wow fadeInDown">Solutions</h3>
-                    <ul class="wow fadeInDown">
-                        <li><a href="#">Contact Center</a></li>
-                        <li><a href="#">Knowledge</a></li>
-                        <li><a href="#">Management</a></li>
-                        <li><a href="#">Web Self-Service</a></li>
-                        <li><a href="#">Performance Metrics</a></li>
-                    </ul>
-                </div><!-- /.footer-widget -->
-            </div><!-- /.col-md-2 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section>
-
-<footer class="footer-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright wow fadeInDown">
-                    <p>Copyright &copy; {{date('Y')}}
-                        <a href="{{$site->website}}">{{$site->namaweb}}</a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">{!! $site->deskripsi!!}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; {{date('Y')}} All Rights Reserved by
+                        <a href="#"> {{$site->namaweb}}</a>.
                     </p>
-                </div><!-- /.copyright -->
-            </div><!-- /.col-md-12 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</footer>
+                </div>
+            </div>
+        </div>
+    </footer>
+</section>
 </div> <!-- .st-content-inner -->
 </div> <!-- .st-content -->
 </div> <!-- .st-pusher -->
@@ -157,7 +99,6 @@ $nav_profil           = $myproduk->nav_profil();
         <div class="status-mes"></div>
     </div>
 </div>
-
 <!-- jQuery -->
 <script src="{{ asset("public/frontend/html") }}/js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
@@ -181,6 +122,92 @@ $nav_profil           = $myproduk->nav_profil();
 <!-- Custom Script -->
 <script src="{{ asset("public/frontend/html") }}/js/scripts.js"></script>
 <script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
+
+<script type="text/javascript">
+    //Rotating Menu Share Button DesainKode
+    $(document).ready(function (ev) {
+        var toggle = $('#ss_toggle');
+        var menu = $('#ss_menu');
+        var rot;
+
+        $('#ss_toggle').on('click', function (ev) {
+            rot = parseInt($(this).data('rot')) - 180;
+            menu.css('transform', 'rotate(' + rot + 'deg)');
+            menu.css('webkitTransform', 'rotate(' + rot + 'deg)');
+            if ((rot / 180) % 2 == 0) {
+                //Moving in
+                toggle.parent().addClass('ss_active');
+                toggle.addClass('close');
+            } else {
+                //Moving Out
+                toggle.parent().removeClass('ss_active');
+                toggle.removeClass('close');
+            }
+            $(this).data('rot', rot);
+        });
+
+        menu.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+            if ((rot / 180) % 2 == 0) {
+                $('#ss_menu div i').addClass('ss_animate');
+            } else {
+                $('#ss_menu div i').removeClass('ss_animate');
+            }
+        });
+
+    });
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.customer-logos').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+
+</script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'id',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+</script>
+<script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript">
+</script>
+<script>
+    function translateLanguage(lang) {
+
+        var $frame = $('.goog-te-menu-frame:first');
+        if (!$frame.size()) {
+            alert("Error: Could not find Google translate frame.");
+            return false;
+        }
+        $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+        return false;
+    }
+
+</script>
 <script>
     $(document).ready(function () {
         $("#testimonial-slider").owlCarousel({
@@ -361,6 +388,49 @@ $nav_profil           = $myproduk->nav_profil();
             return false;
         return true;
     }
+
+</script>
+<script type="text/javascript">
+    //Rotating Menu Share Button DesainKode
+    $(document).ready(function (ev) {
+        var toggle = $('#ss_toggle');
+        var menu = $('#ss_menu');
+        var rot;
+
+        $('#ss_toggle').on('click', function (ev) {
+            rot = parseInt($(this).data('rot')) - 180;
+            menu.css('transform', 'rotate(' + rot + 'deg)');
+            menu.css('webkitTransform', 'rotate(' + rot + 'deg)');
+            if ((rot / 180) % 2 == 0) {
+                //Moving in
+                toggle.parent().addClass('ss_active');
+                toggle.addClass('close');
+            } else {
+                //Moving Out
+                toggle.parent().removeClass('ss_active');
+                toggle.removeClass('close');
+            }
+            $(this).data('rot', rot);
+        });
+
+        menu.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+            if ((rot / 180) % 2 == 0) {
+                $('#ss_menu div i').addClass('ss_animate');
+            } else {
+                $('#ss_menu div i').removeClass('ss_animate');
+            }
+        });
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        $(".language").on("click", function (e) {
+            $("li.language").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
 
 </script>
 </body>

@@ -9,11 +9,16 @@ class Kategori extends Controller
     // Index
     public function index()
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
 		$kategori 	= DB::table('kategori')->orderBy('urutan','ASC')->get();
 
 		$data = array(  'title'     => 'Kategori Berita',
-						'kategori'	=> $kategori,
+                        'kategori'	=> $kategori,
+                        'aktif'     => 'Kategori',
                         'content'   => 'admin/kategori/index'
                     );
         return view('admin/layout/wrapper',$data);
@@ -22,7 +27,11 @@ class Kategori extends Controller
     // tambah
     public function tambah(Request $request)
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
     	request()->validate([
 					        'nama_kategori' => 'required|unique:kategori',
 					        'urutan' 		=> 'required',
@@ -39,7 +48,11 @@ class Kategori extends Controller
     // edit
     public function edit(Request $request)
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
     	request()->validate([
 					        'nama_kategori' => 'required',
 					        'urutan' 		=> 'required',
@@ -56,7 +69,11 @@ class Kategori extends Controller
     // Delete
     public function delete($id_kategori)
     {
-    	if(Session()->get('username')=="") { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);}
+    	if(Session()->get('username')=="") 
+        { return redirect('login')->with(['warning' => 'Mohon maaf, Anda belum login']);
+        }elseif(Session()->get('akses_level')=="User") 
+        { return redirect('admin\dasbor')->with(['warning' => 'Mohon maaf, Anda Bukan Admin']);
+        }else
     	DB::table('kategori')->where('id_kategori',$id_kategori)->delete();
     	return redirect('admin/kategori')->with(['sukses' => 'Data telah dihapus']);
     }
