@@ -64,10 +64,6 @@ use Illuminate\Support\Facades\DB;
                             onclick="translateLanguage(this.id);">
                             <img src="{{asset('public/upload/image/flag/indonesia.png')}}" alt="" width="30px"
                                 height="30px" /></a> </li>
-                    <li class="language " style="margin-right: inherit;"><a href="javascript:;" id="Chinese"
-                            onclick="translateLanguage(this.id);">
-                            <img src="{{asset('public/upload/image/flag/china.png')}}" alt="" width="30px" height="30px" /></a>
-                    </li>
                     <li class="language " style="margin-right: inherit;"><a href="javascript:;" id="English"
                             onclick="translateLanguage(this.id);">
                             <img src="{{asset('public/upload/image/flag/uk.png')}}" alt="" width="30px" height="30px" /></a>

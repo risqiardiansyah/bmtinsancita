@@ -26,29 +26,29 @@
                 <div class="form-group">
                     <label for>Nama Lengkap</label>
                     <input type="text" name="nama_lengkap" class="form-control" value="{{old('nama_lengkap')}}"
-                        placeholder="Nama lengkap" onkeypress="return hanyaHuruf(this);" maxlength="255" required>
+                        placeholder="Nama lengkap" onkeyup="manage(this)" onkeypress="return hanyaHuruf(this);" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label for>Nomor KTP </label>
                     <input type="tel" name="no_ktp" class="form-control" value placeholder="Nomor Kartu Tanda Penduduk"
-                        onkeypress="return hanyaAngka(this);" minlength="16" maxlength="16" required
+                        onkeypress="return hanyaAngka(this);" onkeyup="manage(this)" minlength="16" maxlength="16" required
                         value="{{old('no_ktp')}}">
                 </div>
                 <div class="form-group">
                     <label for>Nomor KK</label>
                     <input type="text" name="no_kk" class="form-control" onkeypress="return hanyaAngka(this);"
-                        placeholder="Nomor Kartu Keluarga" required minlength="16" maxlength="16"
+                        placeholder="Nomor Kartu Keluarga" onkeyup="manage(this)" required minlength="16" maxlength="16"
                         value="{{old('no_kk')}}">
                 </div>
                 <div class="form-group">
                     <label for>Nomor Whatsapp </label>
-                    <input type="tel" name="no_whatsapp" class="form-control" value placeholder="Nomor WA yang aktif"
-                        onkeypress="return hanyaAngka(this);" value="{{old('no_whatsapp')}}" minlength="10"
+                    <input type="text" name="no_whatsapp" class="form-control" value placeholder="Nomor WA yang aktif"
+                        onkeypress="return hanyaAngka(this);" onkeyup="manage(this)" value="{{old('no_whatsapp')}}" minlength="10"
                         maxlength="13" required>
                 </div>
                 <div class="form-group">
                     <label for>Pekerjaan</label>
-                    <input type="tel" name="pekerjaan" class="form-control" value="{{old('pekerjaan')}}"
+                    <input type="text" name="pekerjaan" onkeyup="manage(this)" class="form-control" value="{{old('pekerjaan')}}"
                         placeholder="Pekerjaan" required>
                 </div>
                 <div class="form-group">
@@ -66,7 +66,7 @@
 
                 </div>
                 <div class="form-group action">
-                    <input type="submit" class="btn btn-primary" title="Mengirim data ke admin" value="Submit" />
+                    <input type="submit" class="btn btn-primary" disabled id="submit" title="Mengirim data ke admin" value="Submit" />
                     <button type="reset" class="btn btn-danger" title="Menghapus semua isi form">Reset</button>
                 </div>
             </form>

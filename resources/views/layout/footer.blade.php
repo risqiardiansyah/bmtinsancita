@@ -131,23 +131,23 @@ $nav_profil           = $myproduk->nav_profil();
 <script src="{{ asset("public/frontend/html") }}/js/scripts.js"></script>
 <script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
 <script>
-    $(document).ready(function () {
-        $('input[type="submit"]').attr('disabled', true);
-        $('input[type="text"]').on('keyup', function () {
-            var text_nama_lengkap = $('input[name="nama_lengkap"]').val();
-            var text_no_ktp = $('input[name="no_ktp"]').val();
-            var text_no_kk = $('input[name="no_kk"]').val();
-            var text_no_whatsapp = $('input[name="no_whatsapp"]').val();
-            var text_pekerjaan = $('input[name="pekerjaan"]').val();
-            if (text_nama_lengkap != '' && text_no_ktp != '' && text_no_kk != '' &&
-                text_no_whatsapp != '' && text_pekerjaan != ''
-            ) {
-                $('input[type="submit"]').attr('disabled', false);
-            } else {
-                $('input[type="submit"]').attr('disabled', true);
+    function manage(txt) {
+        var bt = document.getElementById('submit');
+        var ele = document.getElementsByTagName('input'); 
+
+        // Loop through each element.
+        for (i = 0; i < ele.length; i++) {
+
+            // Check the element type
+            if (ele[i].type == 'text' && ele[i].value == '') {
+                bt.disabled = true;    // Disable the button.
+                return false;
             }
-        });
-    });
+            else {
+                bt.disabled = false;   // Enable the button.
+            }
+        }
+    }    
 
 </script>
 <script type="text/javascript">
