@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
                 </button>
                 <!-- offcanvas-trigger-effects -->
                 <a style="width: 195px; margin-left: 20px" href=""><img style="width: 60px;"
-                        src="{{ asset('public/upload/image/logo/'.$site->logo) }}" alt="{!! $site->namaweb !!}"></a>
+                        src="{{ asset('upload/image/logo/'.$site->logo) }}" alt="{!! $site->namaweb !!}"></a>
                 <span class="text-uppercase " style="color: white;font-size: small;font-weight: bold;">{!!
                     $site->namaweb !!}</span>
 
@@ -62,11 +62,11 @@ use Illuminate\Support\Facades\DB;
                             href="{{ asset('kontak') }}">Kontak</a></li>
                     <!--<li class="language active" style="margin-right: inherit;"><a href="javascript:;" id="Indonesia"-->
                     <!--        onclick="translateLanguage(this.id);">-->
-                    <!--        <img src="{{asset('public/upload/image/flag/indonesia.png')}}" alt="" width="30px"-->
+                    <!--        <img src="{{asset('upload/image/flag/indonesia.png')}}" alt="" width="30px"-->
                     <!--            height="30px" /></a> </li>-->
                     <!--<li class="language " style="margin-right: inherit;"><a href="javascript:;" id="English"-->
                     <!--        onclick="translateLanguage(this.id);">-->
-                    <!--        <img src="{{asset('public/upload/image/flag/uk.png')}}" alt="" width="30px" height="30px" /></a>-->
+                    <!--        <img src="{{asset('upload/image/flag/uk.png')}}" alt="" width="30px" height="30px" /></a>-->
                     <!--</li>-->
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -87,7 +87,7 @@ use Illuminate\Support\Facades\DB;
     <div class="carousel-inner" role="listbox">
         @foreach($slider as $key => $value)
         <div class="item {{ $key == 0 ? "active" : "" }}">
-            <img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" alt="{{$value->judul_galeri}}">
+            <img src="{{ asset('upload/image/galeri/'.$value->gambar) }}" alt="{{$value->judul_galeri}}">
             <!--Slide Image-->
             <div class="container">
                 <div class="carousel-caption">

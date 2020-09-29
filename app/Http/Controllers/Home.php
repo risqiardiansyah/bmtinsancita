@@ -37,7 +37,7 @@ class Home extends Controller
         $video = DB::table('video')->where('posisi', 'Video')->limit(5)->orderBy('urutan', 'ASC')->get();
 
         $berita = $news->listing();
-
+        
         $data = array(
             'title'     => $site->namaweb . ' - ' . $site->tagline,
             'deskripsi' => $site->namaweb . ' - ' . $site->tagline,

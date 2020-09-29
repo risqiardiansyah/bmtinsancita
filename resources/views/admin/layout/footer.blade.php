@@ -108,7 +108,7 @@ $(document).on("click", ".approval-link", function(e){
 tinymce.init({
   selector: '.konten',
   height: 300,
-  content_css: '{{ asset("public/template/assets/vendor/bootstrap/css/bootstrap.min.css") }}',
+  content_css: '{{ asset("template/assets/vendor/bootstrap/css/bootstrap.min.css") }}',
   content_css_cors: true,
   content_style: 'div { margin: 10px; border: 5px solid red; padding: 10px; }',
   plugins: 'print preview paste searchreplace autolink directionality visualblocks visualchars code fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools colorpicker textpattern code preview help',
@@ -129,7 +129,7 @@ tinymce.init({
   'bold italic backcolor | alignleft aligncenter ' +
   'alignright alignjustify | bullist numlist outdent indent | ' +
   'removeformat | help',
-  content_css: '{{ asset("public/template/assets/vendor/bootstrap/css/bootstrap.min.css") }}',
+  content_css: '{{ asset("template/assets/vendor/bootstrap/css/bootstrap.min.css") }}',
   content_css_cors: true
 });
 </script>
@@ -181,15 +181,15 @@ tinymce.init({
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <!-- Core plugin JavaScript-->
-  <script src="{{ asset('public/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
   <!-- Custom scripts for all pages-->
-  <script src="{{ asset('public/admin/js/sb-admin-2.min.js') }}"></script>
+  <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
   <!-- Page level plugins -->
-  <script src="{{ asset('public/admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('public/admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
   <!-- Page level custom scripts -->
-  <script src="{{ asset('public/admin/js/demo/datatables-demo.js') }}"></script>
+  <script src="{{ asset('admin/js/demo/datatables-demo.js') }}"></script>
 </body>
 </html>

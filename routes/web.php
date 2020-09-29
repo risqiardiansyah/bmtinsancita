@@ -50,6 +50,7 @@ Route::post('produk/proses_testimoni', 'Produk@proses_testimoni');
 Route::get('produk/kategori/{par1}', 'Produk@kategori');
 Route::get('produk/detail/{par1}', 'Produk@detail');
 Route::get('produk/cetak/{par1}', 'Produk@cetak');
+Route::get('make_hash', 'Login@make_hash');
 /* END FRONT END */
 /* BACK END */
 Route::group(['namespace' => 'Admin'], 

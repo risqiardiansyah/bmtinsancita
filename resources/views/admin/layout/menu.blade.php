@@ -58,7 +58,7 @@ $pesan          =  DB::table('pesan')->orderBy('id','ASC')->get();
                                 href="{{ asset('admin/pendaftaran/detail/'.$pendaftaran->id) }}">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle"
-                                        src="{{asset('public/frontend/html')}}/img/icone-people.png" alt="">
+                                        src="{{asset('frontend/html')}}/img/icone-people.png" alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -97,7 +97,7 @@ $pesan          =  DB::table('pesan')->orderBy('id','ASC')->get();
                                 href="{{ asset('admin/pendaftaran/detail/'.$testimoni->id) }}">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle"
-                                        src="{{asset('public/frontend/html')}}/img/icone-people.png" alt="">
+                                        src="{{asset('frontend/html')}}/img/icone-people.png" alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -140,7 +140,7 @@ $pesan          =  DB::table('pesan')->orderBy('id','ASC')->get();
                                 href="{{ asset('admin/pesan') }}">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle"
-                                        src="{{asset('public/frontend/html')}}/img/icone-people.png" alt="">
+                                        src="{{asset('frontend/html')}}/img/icone-people.png" alt="">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
@@ -170,7 +170,7 @@ $pesan          =  DB::table('pesan')->orderBy('id','ASC')->get();
                         aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= Session()->get('nama'); ?>
                             (<?= Session()->get('akses_level'); ?>)</span>
-                        <img class="img-profile rounded-circle" src="{{asset('public/frontend/html')}}/img/icone-people.png">
+                        <img class="img-profile rounded-circle" src="{{asset('frontend/html')}}/img/icone-people.png">
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

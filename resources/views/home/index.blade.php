@@ -134,11 +134,11 @@
     <h2 class="section-title wow fadeInDown">{{$site->link_2}}</h2>
     @forelse ($produks as $produk)
     <ul class="row">
-        <div id="project-kami-slider" class="owl-carousel">
+        <div id="project-kami-slider" class="owl-carousel" style="background-image: {{ asset('upload/image/galeri/ilustrasi-umkm-1598501112.jpg') }}">
             <li class="col-md-10 col-sm-6">
                 <div class="news-card">
                     <a href="#" class="news-card__card-link"></a>
-                    <img src="{{ asset('public/upload/image/produk/'.$produk->gambar) }}" alt="{{$produk->nama_produk}}"
+                    <img src="{{ asset('upload/image/produk/'.$produk->gambar) }}" alt="{{$produk->nama_produk}}"
                         class="news-card__image">
                     <div class="news-card__text-wrapper">
                         <h2 class="news-card__title">{{$produk->nama_produk}}</h2>
@@ -170,7 +170,7 @@
 <!--        <div class="item {{ $key == 0 ? "active" : "" }}">-->
 <!--            <div class="container-fluid">-->
 <!--                <div class="row">-->
-<!--                    <div class="col-md-3"><img src="{{ asset('public/upload/image/berita/'.$value->gambar) }}"-->
+<!--                    <div class="col-md-3"><img src="{{ asset('upload/image/berita/'.$value->gambar) }}"-->
 <!--                            alt="<?=$value->judul_berita ?>" class="img-responsive"></div>-->
 <!--                    <div class="col-md-9">-->
 <!--                        <h2><a href="{{ asset('berita/read/'.$value->slug_berita) }}"><?=$value->judul_berita ?></a>-->
@@ -187,7 +187,7 @@
 <!--        <ul class="nav">-->
 <!--            <li data-target="#custom_carousel" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}><a-->
 <!--                    href="{{ asset('berita/read/'.$value->slug_berita) }}"><img style="width: 50px"-->
-<!--                        src="{{ asset('public/upload/image/berita/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>-->
+<!--                        src="{{ asset('upload/image/berita/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>-->
 <!--            </li>-->
 <!--        </ul>-->
 <!--    </div>-->
@@ -199,32 +199,32 @@
     @forelse ($berita as $key => $value)
                 @if($key < 2)
                 <div class="row" style="margin-top:10px;">
-                    <div class="col-md-3"><img src="{{ asset('public/upload/image/berita/'.$value->gambar) }}"
+                    <div class="col-md-3"><img src="{{ asset('upload/image/berita/'.$value->gambar) }}"
                             alt="<?=$value->judul_berita ?>" class="img-responsive"></div>
                     <div class="col-md-9">
-                        <h2><a href="{{ asset('berita/read/'.$value->slug_berita) }}"><?=$value->judul_berita ?></a>
+                        <h2><a href="{{ asset('berita/read/'.$value->slug_berita) }}" style="color: black!important;"><?=$value->judul_berita ?></a>
                         </h2>
                         <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 500, $end='...') ?></p>
                     </div>
+                </div>
+                <div class="text-center" style="margin-bottom:10px;">
+                    <a href="/berita" class="btn btn-primary">Read More</a>
                 </div>
                 @endif
     @empty
     <p class="text-center" style="margin: 10px;">Berita dan Agenda Tidak Ada</p>
     @endforelse
-    <div class="text-center" style="margin-bottom:10px;">
-        <a href="/berita" class="btn btn-primary">Read More</a>
-    </div>
 </div>
 <!-- Our Berita-->
 
 <!-- Our Testimoni-->
 <section class="testimonial-wrapper">
     <h2 class="section-title wow fadeInDown">Testimoni Member</h2>
-    @forelse ($testimoni as $value)
     <div id="testimonial-slider" class="owl-carousel">
+        @foreach($testimoni as $value)
         <div class="testimonial">
-            <div class="pic">
-                <img src="{{ asset('public/upload/image/galeri/'.$value->foto) }}">
+            <div class="pic" style="width: 80px;">
+                <img src="{{ asset('upload/image/galeri/'.$value->foto) }}">
             </div>
             <p class="description">
                 {!! $value->message!!} -
@@ -233,10 +233,12 @@
             <h3 class="title">{!! $value->nama_lengkap!!}</h3>
             <small class="post">- {!! $value->pekerjaan!!}</small>
         </div>
+        @endforeach
     </div>
-    @empty
+    @if(count($testimoni) == 0)
     <p>Testimoni Tidak Ada</p>
-    @endforelse
+    @endif
+    
     <!-- /.carousel -->
 </section><!-- /.testimonial-wrapper -->
 <!-- Our 2 column-->
@@ -257,7 +259,7 @@
                         <!-- .item -->
                         @foreach($sliderGaleri as $value )
                         <div class="item">
-                            <div class="img-fill"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"
+                            <div class="img-fill"><img src="{{ asset('upload/image/galeri/'.$value->gambar) }}"
                                     alt="{{$value->judul_galeri}}"></div>
                         </div>
                         @endforeach
@@ -284,7 +286,7 @@
                         <!-- .item -->
                         @foreach($sliderGaleri as $value)
                         <div class="item">
-                            <div class="img-fill"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"
+                            <div class="img-fill"><img src="{{ asset('upload/image/galeri/'.$value->gambar) }}"
                                     alt="{{$value->judul_galeri}}"></div>
                         </div>
                         @endforeach
@@ -321,7 +323,7 @@
 </div>
 <!-- Our Trusted by-->
 <section class="trusted-client-wrapper">
-    <h2 class="section-title wow fadeInDown">We are Trusted by</h2>
+    <h2 class="section-title wow fadeInDown">Mitra Kami</h2>
     
     <div id="myCarousel" class="carousel slide mitra" data-ride="carousel">
       <!-- Indicators -->
@@ -330,13 +332,14 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         @foreach($sliderPerusahaan as $key => $value)
+
             @if($key == 0)
                 <div class="item active">
-                  <img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" class="tales">
+                  <img src="{{ asset('upload/image/galeri/'.$value->gambar) }}" class="tales" style="width: 40%!important; margin-top: -50px!important; height: auto!important;">
                 </div>    
             @else
                 <div class="item">
-                  <img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" class="tales">
+                  <img src="{{ asset('upload/image/galeri/'.$value->gambar) }}" class="tales" style="width: 40%!important; margin-top: -50px!important; height: auto!important;">
                 </div>
             @endif
         @endforeach
@@ -356,7 +359,7 @@
     
     <!--<section class="customer-logos slider">-->
     <!--    @foreach($sliderPerusahaan as $key => $value)-->
-    <!--    <div class="slide"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"-->
+    <!--    <div class="slide"><img src="{{ asset('upload/image/galeri/'.$value->gambar) }}"-->
     <!--            alt="{{$value->judul_galeri}}"></div>-->
     <!--    @endforeach-->
     <!--</section>-->

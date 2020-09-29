@@ -108,27 +108,27 @@ $nav_profil           = $myproduk->nav_profil();
     </div>
 </div>
 <!-- jQuery -->
-<script src="{{ asset("public/frontend/html") }}/js/jquery.js"></script>
+<script src="{{ asset("frontend/html") }}/js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ asset("public/frontend/html") }}/js/bootstrap.min.js"></script>
+<script src="{{ asset("frontend/html") }}/js/bootstrap.min.js"></script>
 <!-- wow.min.js -->
-<script src="{{ asset("public/frontend/html") }}/js/wow.min.js"></script>
+<script src="{{ asset("frontend/html") }}/js/wow.min.js"></script>
 <!-- owl-carousel -->
-<script src="{{ asset("public/frontend/html") }}/owl-carousel/owl.carousel.min.js"></script>
+<script src="{{ asset("frontend/html") }}/owl-carousel/owl.carousel.min.js"></script>
 <!-- smoothscroll -->
-<script src="{{ asset("public/frontend/html") }}/js/smoothscroll.js"></script>
+<script src="{{ asset("frontend/html") }}/js/smoothscroll.js"></script>
 <!-- Offcanvas Menu -->
-<script src="{{ asset("public/frontend/html") }}/js/hippo-offcanvas.js"></script>
+<script src="{{ asset("frontend/html") }}/js/hippo-offcanvas.js"></script>
 <!-- easypiechart -->
-<script src="{{ asset("public/frontend/html") }}/js/jquery.easypiechart.min.js"></script>
+<script src="{{ asset("frontend/html") }}/js/jquery.easypiechart.min.js"></script>
 <!-- Scrolling Nav JavaScript -->
-<script src="{{ asset("public/frontend/html") }}/js/jquery.easing.min.js"></script>
+<script src="{{ asset("frontend/html") }}/js/jquery.easing.min.js"></script>
 <!-- Magnific-popup -->
-<script src="{{ asset("public/frontend/html") }}/js/jquery.magnific-popup.min.js"></script>
+<script src="{{ asset("frontend/html") }}/js/jquery.magnific-popup.min.js"></script>
 <!-- Shuffle.min js -->
-<script src="{{ asset("public/frontend/html") }}/js/jquery.shuffle.min.js"></script>
+<script src="{{ asset("frontend/html") }}/js/jquery.shuffle.min.js"></script>
 <!-- Custom Script -->
-<script src="{{ asset("public/frontend/html") }}/js/scripts.js"></script>
+<script src="{{ asset("frontend/html") }}/js/scripts.js"></script>
 <script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
 <script>
     function manage(txt) {

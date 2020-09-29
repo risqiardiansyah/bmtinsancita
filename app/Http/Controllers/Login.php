@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User_model;
 use App\Rules\Captcha;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 class Login extends Controller
 {
@@ -17,9 +18,9 @@ class Login extends Controller
     // Cek
     public function cek(Request $request)
     {
-        $request->validate([
-            'g-recaptcha-response' => new Captcha(),
-        ]);
+        // $request->validate([
+        //     'g-recaptcha-response' => new Captcha(),
+        // ]);
         $username   = $request->username;
         $password   = $request->password;
         $model      = new User_model();
@@ -50,5 +51,12 @@ class Login extends Controller
     {
         $data = array(  'title'     => 'Login - Java Web Media');
         return view('login/lupa',$data);
+    }
+
+    public function make_hash()
+    {
+        $password = Hash::make('12345678');
+        echo $password;
+        exit();
     }
 }
