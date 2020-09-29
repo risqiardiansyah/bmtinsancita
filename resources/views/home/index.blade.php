@@ -163,13 +163,42 @@
         <p class="lead"></p>
     </div>
 </section>
-<div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+<!--<div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">-->
     <!-- Wrapper for slides -->
+<!--    @forelse ($berita as $key => $value)-->
+<!--    <div class="carousel-inner">-->
+<!--        <div class="item {{ $key == 0 ? "active" : "" }}">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-md-3"><img src="{{ asset('public/upload/image/berita/'.$value->gambar) }}"-->
+<!--                            alt="<?=$value->judul_berita ?>" class="img-responsive"></div>-->
+<!--                    <div class="col-md-9">-->
+<!--                        <h2><a href="{{ asset('berita/read/'.$value->slug_berita) }}"><?=$value->judul_berita ?></a>-->
+<!--                        </h2>-->
+<!--                        <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 500, $end='...') ?></p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- End Item -->
+<!--    </div>-->
+    <!-- End Carousel Inner -->
+<!--    <div class="controls">-->
+<!--        <ul class="nav">-->
+<!--            <li data-target="#custom_carousel" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}><a-->
+<!--                    href="{{ asset('berita/read/'.$value->slug_berita) }}"><img style="width: 50px"-->
+<!--                        src="{{ asset('public/upload/image/berita/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    @empty-->
+<!--    <p class="text-center" style="margin: 10px;">Berita dan Agenda Tidak Ada</p>-->
+<!--    @endforelse-->
+<!--</div>-->
+<div class="container-fluid">
     @forelse ($berita as $key => $value)
-    <div class="carousel-inner">
-        <div class="item {{ $key == 0 ? "active" : "" }}">
-            <div class="container-fluid">
-                <div class="row">
+                @if($key < 2)
+                <div class="row" style="margin-top:10px;">
                     <div class="col-md-3"><img src="{{ asset('public/upload/image/berita/'.$value->gambar) }}"
                             alt="<?=$value->judul_berita ?>" class="img-responsive"></div>
                     <div class="col-md-9">
@@ -178,22 +207,13 @@
                         <p><?= \Illuminate\Support\Str::limit(strip_tags($value->isi), 500, $end='...') ?></p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- End Item -->
-    </div>
-    <!-- End Carousel Inner -->
-    <div class="controls">
-        <ul class="nav">
-            <li data-target="#custom_carousel" data-slide-to="{{ $key }}" {{ $key == 0 ? 'class="active"' : "" }}><a
-                    href="{{ asset('berita/read/'.$value->slug_berita) }}"><img style="width: 50px"
-                        src="{{ asset('public/upload/image/berita/'.$value->gambar) }} "><small>{{ $value->judul_berita}}</small></a>
-            </li>
-        </ul>
-    </div>
+                @endif
     @empty
     <p class="text-center" style="margin: 10px;">Berita dan Agenda Tidak Ada</p>
     @endforelse
+    <div class="text-center" style="margin-bottom:10px;">
+        <a href="/berita" class="btn btn-primary">Read More</a>
+    </div>
 </div>
 <!-- Our Berita-->
 
@@ -302,10 +322,42 @@
 <!-- Our Trusted by-->
 <section class="trusted-client-wrapper">
     <h2 class="section-title wow fadeInDown">We are Trusted by</h2>
-    <section class="customer-logos slider">
+    
+    <div id="myCarousel" class="carousel slide mitra" data-ride="carousel">
+      <!-- Indicators -->
+     
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
         @foreach($sliderPerusahaan as $key => $value)
-        <div class="slide"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"
-                alt="{{$value->judul_galeri}}"></div>
+            @if($key == 0)
+                <div class="item active">
+                  <img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" class="tales">
+                </div>    
+            @else
+                <div class="item">
+                  <img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}" class="tales">
+                </div>
+            @endif
         @endforeach
-    </section>
+        
+      </div>
+    
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    
+    <!--<section class="customer-logos slider">-->
+    <!--    @foreach($sliderPerusahaan as $key => $value)-->
+    <!--    <div class="slide"><img src="{{ asset('public/upload/image/galeri/'.$value->gambar) }}"-->
+    <!--            alt="{{$value->judul_galeri}}"></div>-->
+    <!--    @endforeach-->
+    <!--</section>-->
 </section>

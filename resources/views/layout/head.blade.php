@@ -31,7 +31,7 @@ $site = DB::table('konfigurasi')->first();
     <!-- animate CSS -->
     <link href="{{ asset("public/frontend/html") }}/css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset("public/frontend/html") }}/css/style.css" rel="stylesheet">
+    <link href="{{ asset("public/frontend/html") }}/css/code-style.css" rel="stylesheet">
     <!-- Responsive CSS -->
     <link href="{{ asset("public/frontend/html") }}/css/responsive.css" rel="stylesheet">
     @stack("custom-css")
@@ -50,6 +50,44 @@ $site = DB::table('konfigurasi')->first();
         .h3 .title::after{
             content:"";
             opacity: 0.5;
+        }
+        .hero-slide .carousel-caption{
+            background: #ffffff;
+            padding: 10px 20px;
+            opacity : 0.7;
+        }
+        .hero-slide .carousel-caption a.btn:hover{
+            background : #ffffff;
+            color : #fcbb3c;
+            outline : #fcbb3c;
+        }
+        .mitra .item{
+            height: 250px;
+        }
+        .mitra .item img{
+            width : 80%;
+            height : 100%;
+            margin : 0 auto;
+        }
+        .gallery-slider__thumbnails{
+            position : absolute;
+            bottom : 10px;
+        }
+            .gallery-slider__images .item .img-fill {
+                height: 400px;
+            }
+            .gallery-slider__images .item .img-fill img {
+                all: revert;    
+            }
+            
+        .gallery-slider__images .item .img-fill img {
+            position : absolute;
+            height :100%;
+            width : 100%;
+            top : 0;
+            left : 0;
+            right : 0;
+            bottom : 0;
         }
     </style>
     <?php echo $site->metatext; ?>
