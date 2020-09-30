@@ -130,11 +130,15 @@
 <!-- End Our Service-->
 
 <!-- Our Project-->
-<section class="handover-wrapper">
+<section class="handover-wrapper" style='
+  background-image: url("https://get.clt.re/wp-content/uploads/2014/12/Parallax-Background-Dark-07.jpg"); height: 500px;background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; height: 700px;'>
     <h2 class="section-title wow fadeInDown">{{$site->link_2}}</h2>
-    @forelse ($produks as $produk)
+    
     <ul class="row">
-        <div id="project-kami-slider" class="owl-carousel" style="background-image: {{ asset('upload/image/galeri/ilustrasi-umkm-1598501112.jpg') }}">
+        
+        {{-- {{dd($produk)}} --}}
+        <div id="project-kami-slider" class="owl-carousel">
+            @foreach ($produks as $produk)
             <li class="col-md-10 col-sm-6">
                 <div class="news-card">
                     <a href="#" class="news-card__card-link"></a>
@@ -149,11 +153,14 @@
                     </div>
                 </div>
             </li>
+            @if(count($produks) == 0)
+                <p>Produk Tidak Ada</p>
+            @endif
+            @endforeach
         </div>
+
     </ul>
-    @empty
-    <p>Produk Tidak Ada</p>
-    @endforelse
+    
 </section>
 
 <!-- Our Berita-->
@@ -260,7 +267,7 @@
                         @foreach($sliderGaleri as $value )
                         <div class="item">
                             <div class="img-fill"><img src="{{ asset('upload/image/galeri/'.$value->gambar) }}"
-                                    alt="{{$value->judul_galeri}}"></div>
+                                    alt="{{$value->judul_galeri}}" style="position: fixed!important;"></div>
                         </div>
                         @endforeach
                         <!-- /.item -->
@@ -312,10 +319,11 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-        <div class="box">
+        <div id="parent">
             @foreach ($video as $item)
             <iframe id="vid_frame" src="http://youtube.com/embed/{{$item->video}}" width="700" height="390"
                 frameborder="0"></iframe>
+                <a href="#" class="btn btn-primary" style="color: black">Lihat Lainnya <i class="fa fa-share"></i></a>
             @endforeach
         </div>
     </div>

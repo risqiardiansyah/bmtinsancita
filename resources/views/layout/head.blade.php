@@ -89,6 +89,38 @@ $site = DB::table('konfigurasi')->first();
             right : 0;
             bottom : 0;
         }
+        /* Playground by EThaiZone */
+        #parent {
+            width: 200px;
+            height: 200px;
+            border:solid 1px #000;
+            background-color: blanchedalmond;
+            width: auto;
+            height: 422px;
+            margin-top: 20px;
+            border-width: 11px;
+            border-color: grey;
+            padding: 0px;
+
+        }
+        iframe {
+            width:100%;
+            height:100%;
+            border:0px;
+        }
+
+        #parent > a {
+            opacity: 0.3;
+            position:relative;
+            float: right;
+            right:10px;
+            bottom:50px;
+            transition: 0.5s;
+        }
+        #parent > a {
+            opacity: 1;
+        }  
+  
     </style>
     <?php echo $site->metatext; ?>
     
