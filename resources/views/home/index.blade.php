@@ -5,7 +5,7 @@
             {!! $site->tentang!!}
         </div>
         <div class="col-lg-6 col-md-6" style="background: whitesmoke; border-radius: 6px; padding-top: 10px!important;">
-            <form action="{{ asset('proses_pendaftaran') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('proses_pendaftaran') }}" method="post" enctype="multipart/form-data">
                 <h2 class="wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Formulir
                     Registrasi Anggota
                 </h2>
@@ -65,7 +65,7 @@
                     </div>
 
                 </div>
-                <div class="form-group action">
+                <div class="form-group action" style="margin-top: 100px;">
                     <input type="submit" class="btn btn-primary" disabled id="submit" title="Mengirim data ke admin" value="Submit" />
                     <button type="reset" class="btn btn-danger" title="Menghapus semua isi form">Reset</button>
                 </div>
